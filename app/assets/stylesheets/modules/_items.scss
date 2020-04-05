@@ -1,3 +1,788 @@
 * {
 box-sizing: border-box;
 }
+
+li{
+  list-style: none;
+}
+
+span{
+  font-weight: bold;
+  font-size: 18px;
+  color: #3ccace;
+}
+
+.header{
+  height: 120px;
+  width: 100%;
+  &__symbol{
+    padding: 15px 60px 0;
+    width: 100%;
+    display: flex;
+    &--mainIcon{
+      height:50px;
+      width:150px;
+    }
+    &--iconImage{
+      width: 150px;
+      margin-top: 5px;
+    }
+    &--searchBox{
+      height: 30px;
+      width:calc(100% - 50px);
+      margin-top: 10px;
+    }
+    &--searchButton{
+      height:30px;
+      width: 30px;
+      background-color: #3ccace;
+      text-align: center;
+      margin-top: 10px;
+    }
+    &--searchImage{
+      height:30px;
+      width: 30px;
+      color: white;
+      font-size: 20px;
+      margin-top: 5px;
+    }
+  }
+  &__navi{
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 14px;
+    &--leftMenu{
+      display: flex;
+    }
+    &--categoryButton{
+      height:20px;
+      width: 100px;
+    }
+    &--brandButton{
+      height:20px;
+      width: 100px;
+    }
+    &--rightMenu{
+      display: flex;
+    }
+    &--loginButton{
+      height:20px;
+      width: 100px;
+    }
+    &--registrationButton{
+      height:20px;
+      width: 100px;
+    }
+  }
+}
+.main{
+  &__topVisual{
+  width: 100%;
+    &--mainVisual{
+      text-align: center;
+      height: 500px;
+      position: relative;
+    }
+    &--mainImage{
+      height:500px;
+      background-size: contain;
+    }
+    &--theme{
+      position: absolute;
+        top: 150px;
+        left: 50px;
+    }
+    &--subtitle{
+      color: white;
+      font-size: 60px;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      text-align: left;
+    }
+    &--subtitleExplain{
+      color: white;
+      font-size: 20px;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      text-align: left;
+    }
+    &--appIcon{
+      display: flex;
+    }
+  }
+}
+
+.main{
+  &__topIntroduction{
+    height: 500px;
+    width: 100%;
+    text-align: center;
+    &--title{
+      font-size:20px;
+      font-weight: bold;
+      margin-top: 50px;
+      padding-bottom: 20px;
+      position: relative;
+      &::after{
+        content:"";
+        width: 70px;
+        height: 4px;
+        background-color: #3ccace;
+        text-emphasis: center;
+        position: absolute;
+          bottom: 0;
+          left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    &--explains{
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    &--explain1{
+      width: 200px;
+      height: 200px;
+      position: relative;
+      margin: 0 40px;
+    }
+    &--image1{
+      position: relative;
+    }
+    &--first{
+      width: 50px;
+      height: 50px;
+      background-color: #3ccace;
+      color: whitesmoke;
+      font-weight: bold;
+      font-size: 25px;
+      line-height: 50px;
+      position: absolute;
+        top:0;
+        left: 0;
+    }
+    &--subtitle1{
+      width: 100%;
+      position: absolute;
+        top:230px;
+        left: 50%;
+        transform: translateX(-50%);
+      font-size: 18px;
+    }
+    &--detail1{
+      width: 100%;
+      text-align: left;
+      position: absolute;
+        top:250px;
+        left: 50%;
+        transform: translateX(-50%);
+      font-size: 15px;
+      margin-top: 30px;
+    }
+
+    &--explain2{
+      width: 200px;
+      height: 200px;
+      position: relative;
+      margin: 0 40px;
+    }
+    &--image2{
+      position: relative;
+    }
+    &--second{
+      width: 50px;
+      height: 50px;
+      background-color: #3ccace;
+      color: whitesmoke;
+      font-weight: bold;
+      font-size: 25px;
+      line-height: 50px;
+      position: absolute;
+        top:0;
+        left: 0;
+    }
+    &--subtitle2{
+      width: 100%;
+      position: absolute;
+        top:230px;
+        left: 50%;
+        transform: translateX(-50%);
+      font-size: 18px;
+    }
+    &--detail2{
+      width: 100%;
+      text-align: left;
+      position: absolute;
+        top:250px;
+        left: 50%;
+        transform: translateX(-50%);
+      font-size: 15px;
+      margin-top: 30px;
+    }
+
+    &--explain3{
+      width: 200px;
+      height: 200px;
+      position: relative;
+      margin: 0 40px;
+    }
+    &--image3{
+      position: relative;
+    }
+    &--third{
+      width: 50px;
+      height: 50px;
+      background-color: #3ccace;
+      color: whitesmoke;
+      font-weight: bold;
+      font-size: 25px;
+      line-height: 50px;
+      position: absolute;
+      top:0;
+      left: 0;
+    }
+    &--subtitle3{
+      width: 100%;
+      position: absolute;
+        top:230px;
+        left: 50%;
+        transform: translateX(-50%);
+      font-size: 18px;
+    }
+    &--detail3{
+      width: 100%;
+      text-align: left;
+      position: absolute;
+        top:250px;
+        left: 50%;
+        transform: translateX(-50%);
+      font-size: 15px;
+      margin-top: 30px;
+    }
+  }
+}
+
+.main{
+  &__middleIntroduction{
+    height: 500px;
+    width: 100%;
+    text-align: center;
+    &--mainVisual{
+      height: 500px;
+      position: relative;
+    }
+    &--mainImage{
+      height:500px;
+      background-size: contain;
+    }
+    &--theme{
+      position: absolute;
+        top: 150px;
+        left: 50px;
+    }
+    &--subtitle{
+      color: white;
+      font-size: 60px;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      text-align: left;
+    }
+    &--subtitleExplain{
+      color: white;
+      font-size: 20px;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      text-align: left;
+    }
+    &--appIcon{
+      display: flex;
+    }
+  }
+}
+
+
+.main{
+  &__bottomIntroduction{
+    height: 500px;
+    width: 100%;
+    text-align: center;
+    &--title{
+      font-size:20px;
+      font-weight: bold;
+      margin-top: 50px;
+      padding-bottom: 20px;
+      position: relative;
+      &::after{
+        content:"";
+        width: 70px;
+        height: 4px;
+        background-color: #3ccace;
+        text-emphasis: center;
+        position: absolute;
+          bottom: 0;
+          left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    &--explains{
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    &--explain1{
+      width: 200px;
+      height: 200px;
+      position: relative;
+      margin: 0 40px;
+    }
+    &--subtitle1{
+      width: 100%;
+      position: absolute;
+        top:230px;
+        left: 50%;
+        transform: translateX(-50%);
+      font-size: 16px;
+    }
+    &--detail1{
+      width: 100%;
+      text-align: left;
+      position: absolute;
+        top:250px;
+        left: 50%;
+        transform: translateX(-50%);
+      font-size: 14px;
+      margin-top: 30px;
+    }
+
+    &--explain2{
+      width: 200px;
+      height: 200px;
+      position: relative;
+      margin: 0 40px;
+    }
+    &--subtitle2{
+      width: 100%;
+      position: absolute;
+        top:230px;
+        left: 50%;
+        transform: translateX(-50%);
+      font-size: 17px;
+    }
+    &--detail2{
+      width: 100%;
+      text-align: left;
+      position: absolute;
+        top:250px;
+        left: 50%;
+        transform: translateX(-50%);
+      font-size: 14px;
+      margin-top: 30px;
+    }
+
+    &--explain3{
+      width: 200px;
+      height: 200px;
+      position: relative;
+      margin: 0 40px;
+    }
+    &--subtitle3{
+      width: 100%;
+      position: absolute;
+        top:230px;
+        left: 50%;
+        transform: translateX(-50%);
+      font-size: 17px;
+    }
+    &--detail3{
+      width: 100%;
+      text-align: left;
+      position: absolute;
+        top:250px;
+        left: 50%;
+        transform: translateX(-50%);
+      font-size: 14px;
+      margin-top: 30px;
+    }
+  }
+}
+
+.main{
+  &__pickupCategory{
+    height: 450px;
+    width: 100%;
+    text-align: center;
+    background-color: #f8f8f8;
+    &--title{
+      font-size:20px;
+      font-weight: bold;
+      padding-top: 50px;
+      position: relative;
+    }
+    &--subtitle{
+      font-size:18px;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 40px;
+      color: #3ccace;
+    }
+    &--explains{
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    &--explain1{
+      width: 200px;
+      height: 200px;
+      position: relative;
+      margin: 0 40px;
+    }
+    &--product1{
+      width: 100%;
+      position: absolute;
+        top:200px;
+        left:10px;
+      font-size: 15px;
+      text-align: left;
+    }
+    &--price1{
+      width: 100%;
+      text-align: left;
+      position: absolute;
+        top:225px;
+        left:10px;
+      font-size: 15px;
+    }
+    &--tax1{
+      width: 100%;
+      text-align: left;
+      position: absolute;
+        top:250px;
+        left:10px;
+      font-size: 10px;
+    }
+    &--like1{
+      width: 100%;
+      text-align: right;
+      position: absolute;
+        top:225px;
+        right:10px;
+      font-size: 15px;
+    }
+
+    &--explain2{
+      width: 200px;
+      height: 200px;
+      position: relative;
+      margin: 0 40px;
+    }
+    &--product2{
+      width: 100%;
+      position: absolute;
+        top:200px;
+        left:10px;
+      font-size: 15px;
+      text-align: left;
+    }
+    &--price2{
+      width: 100%;
+      text-align: left;
+      position: absolute;
+        top:225px;
+        left:10px;
+      font-size: 15px;
+    }
+    &--tax2{
+      width: 100%;
+      text-align: left;
+      position: absolute;
+        top:250px;
+        left:10px;
+      font-size: 10px;
+    }
+    &--like2{
+      width: 100%;
+      text-align: right;
+      position: absolute;
+        top:225px;
+        right:10px;
+      font-size: 15px;
+    }
+
+    &--explain3{
+      width: 200px;
+      height: 200px;
+      position: relative;
+      margin: 0 40px;
+    }
+    &--product3{
+      width: 100%;
+      position: absolute;
+        top:200px;
+        left:10px;
+      font-size: 15px;
+      text-align: left;
+    }
+    &--price3{
+      width: 100%;
+      text-align: left;
+      position: absolute;
+        top:225px;
+        left:10px;
+      font-size: 15px;
+    }
+    &--tax3{
+      width: 100%;
+      text-align: left;
+      position: absolute;
+        top:250px;
+        left:10px;
+      font-size: 10px;
+    }
+    &--like3{
+      width: 100%;
+      text-align: right;
+      position: absolute;
+        top:225px;
+        right:10px;
+      font-size: 15px;
+    }
+  }
+}
+
+.main{
+  &__pickupBrand{
+    height: 450px;
+    width: 100%;
+    text-align: center;
+    background-color: #f8f8f8;
+    &--title{
+      font-size:20px;
+      font-weight: bold;
+      padding-top: 50px;
+      position: relative;
+    }
+    &--subtitle{
+      font-size:18px;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 40px;
+      color: #3ccace;
+    }
+    &--explains{
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    &--explain1{
+      width: 200px;
+      height: 200px;
+      position: relative;
+      margin: 0 40px;
+    }
+    &--product1{
+      width: 100%;
+      position: absolute;
+        top:200px;
+        left:10px;
+      font-size: 15px;
+      text-align: left;
+    }
+    &--price1{
+      width: 100%;
+      text-align: left;
+      position: absolute;
+        top:225px;
+        left:10px;
+      font-size: 15px;
+    }
+    &--tax1{
+      width: 100%;
+      text-align: left;
+      position: absolute;
+        top:250px;
+        left:10px;
+      font-size: 10px;
+    }
+    &--like1{
+      width: 100%;
+      text-align: right;
+      position: absolute;
+        top:225px;
+        right:10px;
+      font-size: 15px;
+    }
+
+    &--explain2{
+      width: 200px;
+      height: 200px;
+      position: relative;
+      margin: 0 40px;
+    }
+    &--product2{
+      width: 100%;
+      position: absolute;
+        top:200px;
+        left:10px;
+      font-size: 15px;
+      text-align: left;
+    }
+    &--price2{
+      width: 100%;
+      text-align: left;
+      position: absolute;
+        top:225px;
+        left:10px;
+      font-size: 15px;
+    }
+    &--tax2{
+      width: 100%;
+      text-align: left;
+      position: absolute;
+        top:250px;
+        left:10px;
+      font-size: 10px;
+    }
+    &--like2{
+      width: 100%;
+      text-align: right;
+      position: absolute;
+        top:225px;
+        right:10px;
+      font-size: 15px;
+    }
+
+    &--explain3{
+      width: 200px;
+      height: 200px;
+      position: relative;
+      margin: 0 40px;
+    }
+    &--product3{
+      width: 100%;
+      position: absolute;
+        top:200px;
+        left:10px;
+      font-size: 15px;
+      text-align: left;
+    }
+    &--price3{
+      width: 100%;
+      text-align: left;
+      position: absolute;
+        top:225px;
+        left:10px;
+      font-size: 15px;
+    }
+    &--tax3{
+      width: 100%;
+      text-align: left;
+      position: absolute;
+        top:250px;
+        left:10px;
+      font-size: 10px;
+    }
+    &--like3{
+      width: 100%;
+      text-align: right;
+      position: absolute;
+        top:225px;
+        right:10px;
+      font-size: 15px;
+    }
+  }
+}
+
+.main{
+  &__bottomAd{
+    height: 500px;
+    width: 100%;
+    text-align: center;
+    &--mainVisual{
+      height: 500px;
+      position: relative;
+    }
+    &--mainImage{
+      height:500px;
+      background-size: contain;
+    }
+    &--theme{
+      width: 100%;
+      position: absolute;
+        top: 200px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    &--subtitle{
+      width: 100%;
+      color: white;
+      font-size: 22px;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+    &--subtitleExplain{
+      color: white;
+      font-size: 40px;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+    &--appIcon{
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+.footer{
+  height: 400px;
+  width: 100%;
+  background-color: #272727;
+  &__menu{
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    color: #f8f8f8;
+    text-align: center;
+    &--title{
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      padding-bottom: 20px;
+    }
+    li{
+      padding-bottom: 15px;
+    }
+    ul{
+      margin: 0 60px;
+    }
+  }
+  &__icon{
+    text-align: center;
+    margin-top: 30px;
+  }
+  &__trademark{
+    color: white;
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
+.purchaseButton{
+  width: 120px;
+  height: 120px;
+  border-radius: 20px;
+  background-color: #3ccace;
+  text-align: center;
+  position: fixed;
+    right: 20px;
+    bottom: 20px;
+  z-index: 1;
+  &__text{
+    padding-top: 20px;
+    color: white;
+    font-size: 20px;
+  }
+  &__image{
+    font-size: 50px;
+    color: white;
+  }
+}
