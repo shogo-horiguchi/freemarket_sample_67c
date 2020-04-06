@@ -78,7 +78,7 @@ span{
 }
 .main{
   &__topVisual{
-  width: 100%;
+    width: 100%;
     &--mainVisual{
       text-align: center;
       height: 500px;
@@ -86,7 +86,9 @@ span{
     }
     &--mainImage{
       height:500px;
+      width: 100%;
       background-size: contain;
+      object-fit: cover;
     }
     &--theme{
       position: absolute;
@@ -112,7 +114,7 @@ span{
 }
 
 .main{
-  &__topIntroduction{
+  &__reason{
     height: 500px;
     width: 100%;
     text-align: center;
@@ -263,7 +265,7 @@ span{
 }
 
 .main{
-  &__middleIntroduction{
+  &__middleVisual{
     height: 500px;
     width: 100%;
     text-align: center;
@@ -273,7 +275,9 @@ span{
     }
     &--mainImage{
       height:500px;
+      width: 100%;
       background-size: contain;
+      object-fit: cover;
     }
     &--theme{
       position: absolute;
@@ -300,7 +304,7 @@ span{
 
 
 .main{
-  &__bottomIntroduction{
+  &__feature{
     height: 500px;
     width: 100%;
     text-align: center;
@@ -407,7 +411,7 @@ span{
 
 .main{
   &__pickupCategory{
-    height: 450px;
+    height: 500px;
     width: 100%;
     text-align: center;
     background-color: #f8f8f8;
@@ -551,7 +555,7 @@ span{
 
 .main{
   &__pickupBrand{
-    height: 450px;
+    height: 500px;
     width: 100%;
     text-align: center;
     background-color: #f8f8f8;
@@ -694,7 +698,7 @@ span{
 }
 
 .main{
-  &__bottomAd{
+  &__bottomVisual{
     height: 500px;
     width: 100%;
     text-align: center;
@@ -704,7 +708,9 @@ span{
     }
     &--mainImage{
       height:500px;
+      width: 100%;
       background-size: contain;
+      object-fit: cover;
     }
     &--theme{
       width: 100%;
@@ -716,12 +722,12 @@ span{
     &--subtitle{
       width: 100%;
       color: white;
-      font-size: 22px;
+      font-size: 25px;
       text-shadow: 0 0 5px rgba(0,0,0,0.4);
     }
     &--subtitleExplain{
       color: white;
-      font-size: 40px;
+      font-size: 50px;
       text-shadow: 0 0 5px rgba(0,0,0,0.4);
     }
     &--appIcon{
@@ -736,17 +742,17 @@ span{
   width: 100%;
   background-color: #272727;
   &__menu{
-    padding-top: 50px;
+    padding-top: 40px;
     display: flex;
     justify-content: center;
-    font-size: 12px;
+    font-size: 11px;
     color: #f8f8f8;
     text-align: center;
     &--title{
       color: white;
       font-size: 16px;
       font-weight: bold;
-      padding-bottom: 20px;
+      padding-bottom: 10px;
     }
     li{
       padding-bottom: 15px;
@@ -767,8 +773,8 @@ span{
 }
 
 .purchaseButton{
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   border-radius: 20px;
   background-color: #3ccace;
   text-align: center;
@@ -782,7 +788,7 @@ span{
     font-size: 20px;
   }
   &__image{
-    font-size: 50px;
+    font-size: 70px;
     color: white;
   }
 }

@@ -1,7 +1,7 @@
 .header
   .header__symbol
-    .header__symbol--mainIcon
-      = image_tag "mainIcon.svg", alt: "Furima App", size: "140x40", class: "header__symbol--iconImage"
+    .header__symbol--icon-heade
+      = image_tag "icon-header.svg", alt: "Furima App", size: "140x40", class: "header__symbol--iconImage"
     = text_field_tag "searchWord", "", placeholder: "キーワードから探す" , class: "header__symbol--searchBox"
     .header__symbol--searchButton
       = icon("fas", "search", class:'header__symbol--searchImage') 
@@ -20,7 +20,7 @@
 .main
   .main__topVisual
     .main__topVisual--mainVisual
-      = image_tag "main.webp", alt: "Main Image", class: "main__topVisual--mainImage"
+      = image_tag "visual1.jpg", alt: "Image", class: "main__topVisual--mainImage"
       .main__topVisual--theme
         .main__topVisual--subtitle
           人生を変えるフリマアプリ
@@ -30,87 +30,87 @@
           フリマアプリです
         .main__topVisual--appIcon
           .main__topVisual--apple
-            = image_tag "apple-store-badge.svg", alt: " Apple Store", size: "150x75", class: "hmain__topVisual--applestoreIcon"
+            = image_tag "appicon-apple.svg", alt: " Apple Store", size: "150x75", class: "hmain__topVisual--applestoreIcon"
           .main__topVisual--googleplay
-            = image_tag "google-play-badge.png", alt: " Google Play", size: "180x75", class: "hmain__topVisual-googleplayIcon"
+            = image_tag "appicon-google.png", alt: " Google Play", size: "180x75", class: "hmain__topVisual-googleplayIcon"
 
-  .main__topIntroduction
-    .main__topIntroduction--title
+  .main__reason
+    .main__reason--title
       FURIMAが選ばれる３つの理由
-    %ul.main__topIntroduction--explains
-      %li.main__topIntroduction--explain1
-        .main__topIntroduction--image1
-          = image_tag "reason1.jpg", alt: "理由1", size: "200x200"
-          .main__topIntroduction--first
+    %ul.main__reason--explains
+      %li.main__reason--explain1
+        .main__reason--image1
+          = image_tag "reason1.jpg", alt: "理由1", size: "200x200", class: "main__reason--imageDate"
+          .main__reason--first
             1
-        .main__topIntroduction--subtitle1
+        .main__reason--subtitle1
           %span 3分
           ですぐに出品
-        .main__topIntroduction--detail1
+        .main__reason--detail1
           スマホで入力するだけでかんたんに出品できる！
-      %li.main__topIntroduction--explain2
-        .main__topIntroduction--image2
+      %li.main__reason--explain2
+        .main__reason--image2
           = image_tag "reason2.jpg", alt: "理由2", size: "200x200"
-        .main__topIntroduction--second
+        .main__reason--second
           2
-        .main__topIntroduction--subtitle2
+        .main__reason--subtitle2
           %span シンプル
           で使いやすい
-        .main__topIntroduction--detail2
+        .main__reason--detail2
           めんどくさい入力は必要なく、検索も購入もスムーズ！
-      %li.main__topIntroduction--explain3
-        .main__topIntroduction--image2
+      %li.main__reason--explain3
+        .main__reason--image2
           = image_tag "reason3.jpg", alt: "理由3", size: "200x200"
-          .main__topIntroduction--third
+          .main__reason--third
             3
-        .main__topIntroduction--subtitle3
+        .main__reason--subtitle3
           手数料
           %span 業界最安値
-        .main__topIntroduction--detail3
+        .main__reason--detail3
           最大3%でお得に出品&購入！
 
-  .main__middleIntroduction
-    .main__middleIntroduction--mainVisual
-      = image_tag "main2.webp", alt: "Main Image", class: "main__topVisual--mainImage"
-      .main__middleIntroduction--theme
-        .main__middleIntroduction--subtitle
+  .main__middleVisual
+    .main__middleVisual--mainVisual
+      = image_tag "visual2.jpg", alt: " Image", class: "main__middleVisual--mainImage"
+      .main__middleVisual--theme
+        .main__middleVisual--subtitle
           会員数日本一位
-        .main__middleIntroduction--subtitleExplain
+        .main__middleVisual--subtitleExplain
           FURIMAは、フリマアプリで最も人気。
           %br
           出品・購入回数も業界最多です！
           %br
           ほしかったあの商品に出会えるかもしれません。
-        .main__middleIntroduction--appIcon
-          .main__middleIntroduction--apple
-            = image_tag "apple-store-badge.svg", alt: " Apple Store", size: "150x75", class: "hmain__middleIntroduction--applestoreIcon"
-          .main__middleIntroduction--googleplay
-            = image_tag "google-play-badge.png", alt: " Google Play", size: "180x75", class: "hmain__middleIntroduction-googleplayIcon"
+        .main__middleVisual--appIcon
+          .main__middleVisual--apple
+            = image_tag "appicon-apple.svg", alt: " Apple Store", size: "150x75", class: "hmain__middleVisual--applestoreIcon"
+          .main__middleVisual--googleplay
+            = image_tag "appicon-google.png", alt: " Google Play", size: "180x75", class: "hmain__middleVisual-googleplayIcon"
 
-  .main__bottomIntroduction
-    .main__bottomIntroduction--title
+  .main__feature
+    .main__feature--title
       FURIMAの特徴
-    %ul.main__bottomIntroduction--explains
-      %li.main__bottomIntroduction--explain1
-        .main__bottomIntroduction--image1
+    %ul.main__feature--explains
+      %li.main__feature--explain1
+        .main__feature--image1
           = image_tag "feature1.svg", alt: "特徴1", size: "200x200"
-        .main__bottomIntroduction--subtitle1
+        .main__feature--subtitle1
           かんたんに売り買いできる
-        .main__bottomIntroduction--detail1
+        .main__feature--detail1
           スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
-      %li.main__bottomIntroduction--explain2
-        .main__bottomIntroduction--image2
+      %li.main__feature--explain2
+        .main__feature--image2
           = image_tag "feature2.svg", alt: "特徴2", size: "200x200"
-        .main__bottomIntroduction--subtitle2
+        .main__feature--subtitle2
           売上金は即日振込に対応
-        .main__bottomIntroduction--detail2
+        .main__feature--detail2
           午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします！
-      %li.main__bottomIntroduction--explain3
-        .main__bottomIntroduction--image2
+      %li.main__feature--explain3
+        .main__feature--image2
           = image_tag "feature3.svg", alt: "特徴3", size: "200x200"
-        .main__bottomIntroduction--subtitle3
+        .main__feature--subtitle3
           様々な支払いに対応
-        .main__bottomIntroduction--detail3
+        .main__feature--detail3
           お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
 
   .main__pickupCategory
@@ -193,19 +193,19 @@
         .main__pickupBrand--like3
           ★0
 
-  .main__bottomAd
-    .main__bottomAd--mainVisual
-      = image_tag "main3.webp", alt: "Main Image", class: "main__bottomAd--mainImage"
-      .main__bottomAd--theme
-        .main__bottomAd--subtitle
+  .main__bottomVisual
+    .main__bottomVisual--mainVisual
+      = image_tag "visual3.jpg", alt: "Image", class: "main__bottomVisual--mainImage"
+      .main__bottomVisual--theme
+        .main__bottomVisual--subtitle
           だれでもかんたん、人生を変えるフリマアプリ
-        .main__bottomAd--subtitleExplain
+        .main__bottomVisual--subtitleExplain
           今すぐ無料ダウンロード！
-        .main__bottomAd--appIcon
-          .main__bottomAd--apple
-            = image_tag "apple-store-badge.svg", alt: " Apple Store", size: "150x75", class: "hmain__middleIntroduction--applestoreIcon"
-          .main__bottomAd--googleplay
-            = image_tag "google-play-badge.png", alt: " Google Play", size: "180x75", class: "hmain__middleIntroduction-googleplayIcon"
+        .main__bottomVisual--appIcon
+          .main__bottomVisual--apple
+            = image_tag "appicon-apple.svg", alt: " Apple Store", size: "150x75", class: "hmain__bottomVisual--applestoreIcon"
+          .main__bottomVisual--googleplay
+            = image_tag "appicon-google.png", alt: " Google Play", size: "180x75", class: "hmain__bottomVisual-googleplayIcon"
 
 .footer
   .footer__menu
@@ -228,7 +228,7 @@
       %li FURIMAロゴ利用ガイドライン
       %li お知らせ
   .footer__icon
-    = image_tag "footerIcon.svg", alt: "Furima App", size: "140x40", class: "footer__icon--iconImage"
+    = image_tag "icon-footer.svg", alt: "Furima App", size: "140x40", class: "footer__icon--iconImage"
   .footer__trademark
     © FURIMA
 
