@@ -4,7 +4,7 @@
       %h1.mypage-header__upper__image
         = image_tag "logo.png", class:"mypage-image", alt:"logo-image"
       %from.mypage-header__search
-        %input.mypage-header__search__input
+        %input.mypage-header__search__input{:name => "keyword", :placeholder => "何かお探しですか？", :type => "search", :value => ""}/
         %i.fas.fa-search
     .mypage-header__bottom
       %nav.b-left
@@ -44,16 +44,16 @@
               %span
                 マイページ
   %nav.page-links
-    %ul.page-links__contain
-      %li
-        %a
-          %span
-            フリマアプリ 
+    %ul
+      %li{:itemprop => "itemListElement", :itemscope => "", :itemtype => "https://schema.org/ListItem"}
+        %a{:href => "root", :itemprop => "item"}
+          %span{:itemprop => "name"} フリマアプリ
+        %meta{:content => "2", :itemprop => "position"}
+      %li{:itemprop => "itemListElement", :itemscope => "", :itemtype => "https://schema.org/ListItem"}
         %i.fas.fa-angle-right
-      %li
-        %a
-          %span
-            マイページ
+        %span{:itemprop => "name"} マイページ
+        %meta{:content => "2", :itemprop => "position"}/
+
   %main.mypage-container
     .mypage-contain
       %section.mypage-contain__status
