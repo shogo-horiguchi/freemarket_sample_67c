@@ -1,6 +1,7 @@
 .main
   .detail-box
-    %h1.item-name ディーゼル  トレーナー  XL
+    %h1.item-name
+      = @item.name
     .detail-box__item-main-content 
       .detail-box__item-main-content__image-area
         .detail-box__item-main-content__image-area__item-photo
@@ -14,7 +15,8 @@
       %table{border: "2", bordercolor: ""}
         %tr
           %th 出品者
-          %th 渡辺直美
+          %th
+            = @item.user.nickname
         %tr
           %td カテゴリー
           %td 
@@ -35,22 +37,27 @@
           %td XXO(OO)
         %tr
           %td 商品の状態
-          %td 新品、未使用
+          %td
+            = @item.condition
         %tr
           %td 配送料の負担
-          %td 送料込み(出品者負担)
+          %td
+            = @item.shipping_charge
         %tr
           %td 配送の方法
           %td ラクラクフリマ便
         %tr
           %td 発送元地域
-          %td 知床半島
+          %td
+            = @item.origin
         %tr
           %td 発送日の目安 
-          %td 2~3日で発送
+          %td
+            = @item.schedule
     
     .detail-box__price-box
-      %span.item-price ¥7,400
+      %span.item-price
+        = @item.price
       %span.item-tax (税込)
       %span.item-shipping-fee 送料込み
 
@@ -59,18 +66,7 @@
 
     .detail-box__description
       .detail-box__description__inner
-        %p この商品はdieselのトレーナーです。
-        
-        %p 新品未使用のサイズはXLです。
-        
-        %p 気になった事や値下げ交渉などは気軽にコメントしてください
-        
-        
-        %p \#DIESEL
-        %p \#diesel
-        %p \#ディーゼル
-        %p \#トレーナー
-        %p \#スウェット
+        = simple_format(@item.text)
 
   .comment-box
     .comment-box__comment-container
