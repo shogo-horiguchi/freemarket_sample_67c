@@ -5,7 +5,7 @@
     .detail-box__item-main-content 
       .detail-box__item-main-content__image-area
         .detail-box__item-main-content__image-area__item-photo
-          = image_tag src="/assets/test1.jpg", size:'300x300'
+          = image_tag src="/assets/test1.jpg", size: '300x300'
         .detail-box__item-main-content__image-area__item-photos
           = image_tag scr="/assets/test2.jpg", size:'60x60'
           = image_tag scr="/assets/test1.jpg", size:'60x60'
@@ -31,10 +31,12 @@
 
         %tr
           %td ブランド
-          %td ディーゼルの偽物
+          %td
+            = @item.brand.name
         %tr
           %td 商品のサイズ
-          %td XXO(OO)
+          //サイズカラム
+          %td= @item.size
         %tr
           %td 商品の状態
           %td
@@ -45,24 +47,24 @@
             = @item.shipping_charge
         %tr
           %td 配送の方法
-          %td ラクラクフリマ便
+          %td= @item.shipping_way
         %tr
           %td 発送元地域
           %td
-            = @item.origin
+            = @item.shipping_origin
         %tr
           %td 発送日の目安 
           %td
-            = @item.schedule
+            = @item.shipping_schedule
     
     .detail-box__price-box
       %span.item-price
-        = @item.price
+        = @item.price.to_s(:delimited)
       %span.item-tax (税込)
       %span.item-shipping-fee 送料込み
 
-    %a{href: "#", class:"detail-box__buy-btn"}
-      購入画面に進む
+    = link_to "購入画面に進む", new_payment_path, class: "detail-box__buy-btn"
+
 
     .detail-box__description
       .detail-box__description__inner
@@ -70,10 +72,15 @@
 
   .comment-box
     .comment-box__comment-container
+      = form_for [@item, @comment] do |f|
+        .comment-textarea
+          = f.text_area :text, placeholder: "コメントする", rows: 2
+        .field
+          = f.submit '投稿する'
       .comment-box__comment-container__comments
         %h4＜コメント一覧＞
         .comment-box__comment-container__comments__comments-list
-      %textarea{type:"text", class: "comment-textarea", placeholder: "コメントする", rows: 2}
+
 
 
 
