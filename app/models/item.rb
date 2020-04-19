@@ -3,5 +3,5 @@ class Item < ApplicationRecord
   belongs_to :brand
   has_many :comments
   has_many :images
-  has_many :categories, through: :tags
+  belongs_to :category
 end
