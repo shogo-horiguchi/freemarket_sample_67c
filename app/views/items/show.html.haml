@@ -4,14 +4,12 @@
       = @item.name
     .detail-box__item-main-content 
       .detail-box__item-main-content__image-area
-        .detail-box__item-main-content__image-area__item-photo
-          = image_tag src="/assets/test1.jpg", size: '300x300'
-        .detail-box__item-main-content__image-area__item-photos
-          = image_tag scr="/assets/test2.jpg", size:'60x60'
-          = image_tag scr="/assets/test1.jpg", size:'60x60'
-          = image_tag scr="/assets/test3.jpg", size:'60x60'
-          = image_tag scr="/assets/test4.jpg", size:'60x60'
-          = image_tag scr="/assets/test5.jpg", size:'60x60'
+        - @item.images.first(1).each do |image|
+          .detail-box__item-main-content__image-area__item-photo
+            = image_tag image.url, size: '300x300'
+        - @item.images[1..-1].each do |image|
+          .detail-box__item-main-content__image-area__item-photos
+            = image_tag image.url, size:'60x60'
       %table{border: "2", bordercolor: ""}
         %tr
           %th 出品者
@@ -19,23 +17,16 @@
             = @item.user.nickname
         %tr
           %td カテゴリー
-          %td 
-            %a{href: "https://www.mercari.com/jp/category/2/"}
-              メンズ
-            %br 
-            %a{href: "https://www.mercari.com/jp/category/30/"}
-              >トップス
-            %br 
-            %a{href: "https://www.mercari.com/jp/category/310/"}
-              >スウェット
-
+          %td
+            - @item.categories.each do |category|
+              = link_to category.name, "#"
+              %br/
         %tr
           %td ブランド
           %td
             = @item.brand.name
         %tr
           %td 商品のサイズ
-          //サイズカラム
           %td= @item.size
         %tr
           %td 商品の状態
@@ -65,7 +56,6 @@
 
     = link_to "購入画面に進む", new_payment_path, class: "detail-box__buy-btn"
 
-
     .detail-box__description
       .detail-box__description__inner
         = simple_format(@item.text)
@@ -74,12 +64,18 @@
     .comment-box__comment-container
       = form_for [@item, @comment] do |f|
         .comment-textarea
-          = f.text_area :text, placeholder: "コメントする", rows: 2
+          = f.text_area :text, placeholder: "コメントする", size: "65x5"
         .field
           = f.submit '投稿する'
+    - if @item.comments
       .comment-box__comment-container__comments
         %h4＜コメント一覧＞
-        .comment-box__comment-container__comments__comments-list
+        - @item.comments.each do |comment|
+          .comment-box__comment-container__comments__comments-list
+            = comment.user.nickname
+            さん：
+            = comment.text
+
 
 
 

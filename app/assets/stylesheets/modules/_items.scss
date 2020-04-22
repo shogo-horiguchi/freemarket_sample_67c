@@ -38,8 +38,7 @@ $furima-color: #3CCACE;
         &__item-photos {
           display: flex;
           justify-content: space-between;
-          img {
-          }
+          height: auto;
         }
       }
       table {
@@ -112,7 +111,6 @@ $furima-color: #3CCACE;
   .comment-box {
     background-color: #fff;
     width: 700px;
-    // max-width: 80%;
     margin: 0 auto;
     padding: 30px;
     margin-top: 10px;
@@ -121,15 +119,19 @@ $furima-color: #3CCACE;
       &__comments {
         h4 {
           font-family: 'HiraKakuProN-W6';
+          margin-top: 20px;
         }
         &__comments-list {
           padding: 5px;
           margin-top: 10px;
         }
       }
-      .comment-textarea {
+      & .comment-textarea {
         padding: 2px 5px;
-        width: 100%;
+        max-width: 100%;
+      }
+      & .field{
+        padding: 2px 5px;
       }
     }
   }
