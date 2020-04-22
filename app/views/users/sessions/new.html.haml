@@ -17,11 +17,13 @@
     .form-group-login
       = f.label :email
       %br/
-      %input.input-box{:name => "email", :placeholder => "メールアドレス入力"}
+    .input-box
+      = f.email_field :email, placeholder: "メールアドレス入力"
     .form-group-login
       = f.label :password
       %br/
-      %input.input-box{:name => "password", :placeholder => "パスワード入力"}
+    .input-box
+      = f.password_field :password, placeholder:"パスワード入力", autocomplete: "off"
     - if devise_mapping.rememberable?
       .field
         = f.check_box :remember_me
