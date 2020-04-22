@@ -1,3 +1,12 @@
+//.mypage-default
+  //%header.mypage-header
+    //.mypage-header__upper
+      //%h1.mypage-header__upper__image
+        //= image_tag "logo.png", class:"mypage-image", alt:"logo-image"
+      //%from.mypage-header__search
+        //%input.mypage-header__search__input{:name => "keyword", :placeholder => "何かお探しですか？", :type => "search", :value => ""}/
+        //%i.fas.fa-search
+
 .header
   .header__symbol
     .header__symbol--icon-header
@@ -12,10 +21,12 @@
       .header__navi--brandButton
         ブランド
     .header__navi--rightMenu
-      .header__navi--loginButton
-        ログイン
-      .header__navi--registrationButton
-        新規会員登録
+      - if user_signed_in?
+        = link_to "マイページ", new_user_registration_path, class: "header__navi--mypage"
+      - else
+        = link_to "ログイン", new_user_session_path, class: "header__navi--loginButton"
+        = link_to "新規会員登録", new_user_registration_path, class: "header__navi--registrationButton"
+       .header__navi--loginButton
 
 .main
   .main__topVisual
@@ -237,4 +248,3 @@
   .purchaseButton__text
     出品する
   = icon("fas", "camera", class:'purchaseButton__image')
-  
