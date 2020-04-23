@@ -1,0 +1,48 @@
+%h1 新規投稿ページ
+.item-form
+  = form_for [@item], url:"/items/#{@item.id}" do |f|
+    .item-form__box
+      
+      .item-form__box__name
+        商品名
+        = f.text_field :name
+      
+      .item-form__box__image
+        商品画像
+        = f.file_field :imege
+      
+      .form-group.brand--container
+        = f.fields_for :brand do |brand|
+          = brand.label "ブランド"
+          %span.form-require-gray 任意
+          %div
+            = brand.text_field :name, placeholder: "例）シャネル", value: "", class: "input-default"
+      
+      .item-form__box__text
+        商品の説明
+        = f.text_area :text
+      
+      .item-form__box__price
+        商品の価格
+        = f.number_field :price
+      
+      .item-form__box__category
+        = f.fields_for :category do |category|
+          = category.label "カテゴリー"
+          %span.form-require-gray 任意
+          %div
+            = category.text_field :name, placeholder: "例）書籍", value: ""
+      
+      .item-form__box__shipping-origin
+        配送元
+        = f.text_area :shipping_origin
+      
+      .item-form__box__shipping-charge
+        配送料
+        = f.number_field :shipping_charge
+      
+      .item-form__box__shipping-schedule
+        配送までにかかる日数
+        = f.select :shipping_schedule, ["1~2日で発送","2~3日で発送","4~7日で発送"]
+      = f.submit 'Send', class: 'submit'
+      
