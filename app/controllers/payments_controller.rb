@@ -4,8 +4,12 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    Payment.create(payment_params)
-    redirect_to root_path
+    @payment = Payment.new(payment_params)
+    if @payment.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   private
