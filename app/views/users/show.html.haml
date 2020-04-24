@@ -46,7 +46,7 @@
   %nav.page-links
     %ul
       %li{:itemprop => "itemListElement", :itemscope => "", :itemtype => "https://schema.org/ListItem"}
-        %a{:href => "root", :itemprop => "item"}
+        %a{:href => "/", :itemprop => "item"}
           %span{:itemprop => "name"} フリマアプリ
         %meta{:content => "2", :itemprop => "position"}
       %li{:itemprop => "itemListElement", :itemscope => "", :itemtype => "https://schema.org/ListItem"}
@@ -61,7 +61,7 @@
           %figure
             = image_tag "abe.png", class:"mypage-image", alt:"user-image"
           %h2
-            阿部晋三
+            = @user.nickname
           .mypage-value
             %div
               評価
@@ -199,7 +199,7 @@
               電話番号の確認
               %i.fas.fa-angle-right
           %li.mypage-side-nav_list-item
-            %a
+            = link_to destroy_user_session_path, method: :delete do
               ログアウト
               %i.fas.fa-angle-right
   .footer
