@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :destroy]
-  
+
   def index
   end
 
@@ -13,8 +13,11 @@ class ItemsController < ApplicationController
 
   def destroy
     if current_user == @item.user
-      @item.destroy
-      redirect_to root_path, method: :delete
+      if @item.destroy
+        redirect_to root_path, method: :delete
+      else
+        redirect_to item_path(@item)
+      end
     else
       redirect_to item_path(@item)
     end
