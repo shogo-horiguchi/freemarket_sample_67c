@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
   }
-  
+
   li{
     list-style: none;
   }
@@ -13,6 +13,8 @@
   }
   
   .header{
+    position: fixed;
+    z-index: 1;
     height: 120px;
     width: 100%;
     &__symbol{
@@ -76,8 +78,9 @@
       }
     }
   }
-  .main{
+  .frontMain{
     &__topVisual{
+      padding-top: 120px;
       width: 100%;
       &--mainVisual{
         text-align: center;
