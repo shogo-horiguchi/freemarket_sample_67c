@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "items#index"
-  resources :items, only: :show do
+  resources :items, only: [:show, :destroy] do
     resources :comments, only: [:new, :create]
   end
   devise_for :users, controllers: {
