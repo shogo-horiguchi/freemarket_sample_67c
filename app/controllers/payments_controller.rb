@@ -61,6 +61,6 @@ class PaymentsController < ApplicationController
 
   private
   def payment_params
-    params.require(:payment).permit(:card_number, :expireation_year, :expireation_month, :security_key).merge(user_id: current_user.id)
+    params.require(:payment).permit(:user_id, :customer_id, :card_id).merge(user_id: current_user.id)
   end
 end
