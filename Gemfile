@@ -78,3 +78,7 @@ gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 
+gem 'ruby-vips'
+gem 'ffi'
+gem 'loofah'
+gem 'tzinfo'
