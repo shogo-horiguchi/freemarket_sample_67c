@@ -1,0 +1,37 @@
+%header.single-header
+  %h1
+    = image_tag "logo.png", class:"header-image", alt:"logo"
+.info-new-member
+  %a ↓アカウントをお持ちではない方はこちら↓
+.new-member-add
+  - if devise_mapping.registerable? && controller_name != 'registrations'
+    = link_to "新規会員登録", new_registration_path(resource_name)
+.login-line
+  %a2 
+.login-top
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .login-form-facebook
+      = f.submit "Facebookでログイン"
+    .login-form-google
+      = f.submit "Googleでログイン"
+    .form-group-login
+      = f.label :email
+      %br/
+    .input-box
+      = f.email_field :email, placeholder: "メールアドレス入力"
+    .form-group-login
+      = f.label :password
+      %br/
+    .input-box
+      = f.password_field :password, placeholder:"パスワード入力", autocomplete: "off"
+    - if devise_mapping.rememberable?
+      .field
+        = f.check_box :remember_me
+        = f.label :ログイン情報を記録する
+    .actions
+      = f.submit "ログイン"
+    .forget-password
+      - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+        = link_to "パスワードをお忘れの方", new_password_path(resource_name)
+%footer.single-footer
+  = image_tag "logo-white.png", class:"footer-image", alt:"logo-white"

@@ -1,0 +1,86 @@
+- if @item.user == current_user
+  .destroy
+    = link_to 'この商品を削除する', item_path(@item), method: :delete, class: "destroy", data: { confirm: '本当に削除しますか?' }
+
+.main
+  .detail-box
+    %h1.item-name
+      = @item.name
+    .detail-box__item-main-content 
+      .detail-box__item-main-content__image-area
+        - @item.images.first(1).each do |image|
+          .detail-box__item-main-content__image-area__item-photo
+            = image_tag image.url, size: '300x300'
+        - @item.images[1..-1].each do |image|
+          .detail-box__item-main-content__image-area__item-photos
+            = image_tag image.url, size:'60x60'
+      %table{border: "2", bordercolor: ""}
+        %tr
+          %th 出品者
+          %th
+            = @item.user.nickname
+        %tr
+          %td カテゴリー
+          %td
+            - @item.categories.each do |category|
+              = link_to category.name, "#"
+              %br/
+        %tr
+          %td ブランド
+          %td
+            = @item.brand.name
+        %tr
+          %td 商品のサイズ
+          %td= @item.size
+        %tr
+          %td 商品の状態
+          %td
+            = @item.condition
+        %tr
+          %td 配送料の負担
+          %td
+            = @item.shipping_charge
+        %tr
+          %td 配送の方法
+          %td= @item.shipping_way
+        %tr
+          %td 発送元地域
+          %td
+            = @item.shipping_origin
+        %tr
+          %td 発送日の目安 
+          %td
+            = @item.shipping_schedule
+    
+    .detail-box__price-box
+      %span.item-price
+        = @item.price.to_s(:delimited)
+      %span.item-tax (税込)
+      %span.item-shipping-fee 送料込み
+
+    = link_to "購入画面に進む", new_payment_path, class: "detail-box__buy-btn"
+
+    .detail-box__description
+      .detail-box__description__inner
+        = simple_format(@item.text)
+
+  .comment-box
+    .comment-box__comment-container
+      = form_for [@item, @comment] do |f|
+        .comment-textarea
+          = f.text_area :text, placeholder: "コメントする", size: "65x5"
+        .field
+          = f.submit '投稿する'
+    - if @item.comments
+      .comment-box__comment-container__comments
+        %h4＜コメント一覧＞
+        - @item.comments.each do |comment|
+          .comment-box__comment-container__comments__comments-list
+            = comment.user.nickname
+            さん：
+            = comment.text
+
+
+
+
+
