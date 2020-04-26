@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200412132007) do
+ActiveRecord::Schema.define(version: 20200424011846) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "last_name",       null: false
@@ -93,6 +93,20 @@ ActiveRecord::Schema.define(version: 20200412132007) do
     t.datetime "updated_at",  null: false
     t.index ["category_id"], name: "index_tags_on_category_id", using: :btree
     t.index ["item_id"], name: "index_tags_on_item_id", using: :btree
+  end
+
+  create_table "upload_files", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "upload_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
