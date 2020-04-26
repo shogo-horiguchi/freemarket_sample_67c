@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+
   def index
   end
 
@@ -20,7 +21,7 @@ end
   def show
     @user = User.find(params[:id])
     @brand = @item.brand
-    
+
   private
   def set_item
     @item = Item.find(params[:id])
