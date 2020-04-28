@@ -77,4 +77,6 @@ gem 'rails-i18n'
 
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-
+gem 'ancestry'
+gem 'pry-rails'
+gem 'rb-readline'

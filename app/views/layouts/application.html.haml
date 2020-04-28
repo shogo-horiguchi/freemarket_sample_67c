@@ -7,6 +7,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    = render 'layouts/flash'
     %header.header_common
       .mypage_header
       - if user_signed_in?
@@ -14,7 +15,6 @@
       - else
         = link_to "ログイン", new_user_session_path, class: "header__right--btn"
         = link_to "新規登録", new_user_registration_path, class: "header__right--btn"
-        = render 'layouts/flash'
     = yield
-
+    
     
