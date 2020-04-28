@@ -57,6 +57,7 @@ gem 'font-awesome-sass'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'devise'
+gem 'carrierwave'
 
 
 group :production do
@@ -78,4 +79,6 @@ gem 'rails-i18n'
 
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-
+gem 'ancestry'
+gem 'pry-rails'
+gem 'rb-readline'
