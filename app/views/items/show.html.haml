@@ -1,3 +1,7 @@
+- if @item.user == current_user
+  .destroy
+    = link_to 'この商品を削除する', item_path(@item), method: :delete, class: "destroy", data: { confirm: '本当に削除しますか?' }
+
 .main
   .detail-box
     %h1.item-name

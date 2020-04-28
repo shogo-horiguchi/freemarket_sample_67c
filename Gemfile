@@ -57,6 +57,7 @@ gem 'font-awesome-sass'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'devise'
+gem 'carrierwave'
 
 
 group :production do
@@ -69,6 +70,7 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'ancestry'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
 end
@@ -83,3 +85,7 @@ gem 'payjp'
 gem 'dotenv-rails'
 
 gem 'public_suffix', '>= 1.5.3'
+
+gem 'ancestry'
+gem 'pry-rails'
+gem 'rb-readline'

@@ -14,12 +14,13 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
   }
 
-  devise_scope :user do
-    get 'addresses', to: 'users/registrations#new_address'
-    post 'addresses', to: 'users/registrations#create_address'
+  resources :users, only: :show do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
   end
   
-  resources :users, only: :show
   resources :payments, only: [:new, :show] do
     collection do
       post 'show', to: 'payments#show'
@@ -27,6 +28,5 @@ Rails.application.routes.draw do
       post 'delete', to: 'payments#delete'
     end
   end
-
+  
 end
-
