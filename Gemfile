@@ -54,7 +54,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'haml-rails'
 gem 'font-awesome-sass'
-
+gem 'carrierwave'
+gem 'mini_magick'
 gem 'devise'
 gem 'carrierwave'
 
@@ -69,6 +70,7 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'ancestry'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
 end

@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20200428025338) do
 
+
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "last_name",       null: false
     t.string   "first_name",      null: false
@@ -74,6 +75,8 @@ ActiveRecord::Schema.define(version: 20200428025338) do
     t.integer  "category_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.string   "size"
+    t.string   "shipping_way"
     t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree

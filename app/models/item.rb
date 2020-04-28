@@ -15,6 +15,7 @@ class Item < ApplicationRecord
   validates :shipping_charge, {presence: true}
   validates :shipping_origin, {presence: true}
   validates :shipping_schedule, {presence: true}
+
 end
 
 
