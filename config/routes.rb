@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show] do
     resources :comments, only: [:new, :create]
     collection do
-      post 'purchase'
+      get 'index', to: 'items#index'
+      post 'pay', to: 'items#pay'
+      get 'done', to: 'items#done'
     end
   end
 
