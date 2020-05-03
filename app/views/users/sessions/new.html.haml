@@ -12,10 +12,6 @@
   %a2 
 .login-top
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    .login-form-facebook
-      = f.submit "Facebookでログイン"
-    .login-form-google
-      = f.submit "Googleでログイン"
     .form-group-login
       = f.label :email
       %br/
