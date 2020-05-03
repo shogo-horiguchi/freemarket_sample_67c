@@ -136,3 +136,18 @@ $furima-color: #3CCACE;
     }
   }
 }
+
+
+
+.explain{
+  margin: 20px auto 20px;
+}
+.items{
+  display: flex;
+  justify-content: center;
+}
+.item{
+  height: 200px;
+  width: 200px;
+  background-color: lightblue;
+}
