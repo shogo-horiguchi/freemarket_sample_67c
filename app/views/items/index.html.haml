@@ -139,14 +139,14 @@
     .main__pickupBrand--subtitle
       新規投稿商品
     .main__pickupBrand--explains
-      - @items.each do |item|
+      - @brands.each do |brand|
         %ul
           %li.main__pickupBrand--image
-            = image_tag item.images.last.url,  size: "200x200"
+            = image_tag brand.images.last.url,  size: "200x200"
           %li.main__pickupBrand--product
-            = item.name
+            = brand.name
           %li.main__pickupBrand--price
-            = item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse + " 円"
+            = brand.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse + " 円"
           %li.main__pickupBrand--tax
             （税込）
             .main__pickupBrand--like
