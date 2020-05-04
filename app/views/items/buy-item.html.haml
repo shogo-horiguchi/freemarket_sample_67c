@@ -1,0 +1,60 @@
+.header
+ .header__logo
+  = link_to "http://furima.tokyo/"  do
+   = image_tag  'logo.png', :size =>'170x50'
+
+.main
+ .main-item-show
+  .main-item-header
+   購入内容の確認
+  .item-container
+   .item-container__name
+    product3
+   .item-container__image
+    = image_tag  'a007.png', :size =>'500x300'
+   .item-container__price
+    ¥30,000
+   .item-container__price-detail
+    (税込）
+    %span 送料込み
+  .buy-item-content
+   .buy-item-inner
+    .buy-item-inner__price
+     支払い金額
+     %span ¥30,000(税込) 送料込み
+    .buy-item-inner__userpoint
+     ※ポイントを使用(所持ポイント: P0 )
+    .buy-item-inner__payment
+     支払い方法
+     %li
+      = link_to "変更する",""
+    .buy-item-inner__payment-method
+     クレジットカード（例）
+    .buy-item-inner__shipping-address
+     配送先
+     %li
+      = link_to "変更する",""
+    .buy-item-inner__address
+     東京都港区（例）
+    .buy-item-inner__purchase
+     %button#buy-button  購入する
+  
+.footer
+ %ul.footer__contents 
+  %li
+   = link_to "プライバシーポリシー",""
+  %li
+   = link_to "FURIMA利用規約",""
+  %li
+   = link_to "ポイントに関する特約",""
+ .footer__logo
+  = link_to "http://furima.tokyo/"  do
+   = image_tag 'logo-white.png', :size =>'170x50'
+  .footer__logo__trademark
+   © FURIMA
+  
+     
+ 
+
+ 
+
