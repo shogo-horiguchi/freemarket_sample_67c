@@ -119,81 +119,39 @@
       ピックアップカテゴリー
     .main__pickupCategory--subtitle
       新規投稿商品
-    %ul.main__pickupCategory--explains
-      %li.main__pickupCategory--explain1
-        .main__pickupCategory--image1
-          = image_tag "category1.png", alt: "カテゴリー1", size: "200x200"
-        .main__pickupCategory--product1
-          product1
-        .main__pickupCategory--price1
-          30000円
-        .main__pickupCategory--tax1
-          （税込）
-        .main__pickupCategory--like1
-          ★0
-      %li.main__pickupCategory--explain2
-        .main__pickupCategory--image2
-          = image_tag "category2.png", alt: "カテゴリー2", size: "200x200"
-        .main__pickupCategory--product2
-          product2
-        .main__pickupCategory--price2
-          20000円
-        .main__pickupCategory--tax2
-          （税込）
-        .main__pickupCategory--like2
-          ★0
-      %li.main__pickupCategory--explain3
-        .main__pickupCategory--image3
-          = image_tag "category3.png", alt: "カテゴリー3", size: "200x200"
-        .main__pickupCategory--product3
-          product3
-        .main__pickupCategory--price3
-          10000円
-        .main__pickupCategory--tax3
-          （税込）
-        .main__pickupCategory--like3
-          ★0
+    .main__pickupCategory--explains
+      - @items.each do |item|
+        %ul
+          %li.main__pickupCategory--image
+            = image_tag item.images.last.url,  size: "200x200"
+          %li.main__pickupCategory--product
+            = item.name
+          %li.main__pickupCategory--price
+            = item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse + " 円"
+          %li.main__pickupCategory--tax
+            （税込）
+            .main__pickupCategory--like
+              ★0
 
   .main__pickupBrand
     .main__pickupBrand--title
       ピックアップブランド
     .main__pickupBrand--subtitle
-      アーカイバ
-    %ul.main__pickupBrand--explains
-      %li.main__pickupBrand--explain1
-        .main__pickupBrand--image1
-          = image_tag "brand1.png", alt: "ブランド1", size: "200x200"
-        .main__pickupBrand--product1
-          product1
-        .main__pickupBrand--price1
-          30000円
-        .main__pickupBrand--tax1
-          （税込）
-        .main__pickupBrand--like1
-          ★0
-      %li.main__pickupBrand--explain2
-        .main__pickupBrand--image2
-          = image_tag "brand2.png", alt: "ブランド2", size: "200x200"
-        .main__pickupBrand--product2
-          product2
-        .main__pickupBrand--price2
-          20000円
-        .main__pickupBrand--tax2
-          （税込）
-        .main__pickupBrand--like2
-          ★0
-      %li.main__pickupBrand--explain3
-        .main__pickupBrand--image3
-          = image_tag "brand3.png", alt: "ブランド3", size: "200x200"
-        .main__pickupBrand--product3
-          product3
-        .main__pickupBrand--price3
-          10000円
-        .main__pickupBrand--tax3
-          （税込）
-        .main__pickupBrand--like3
-          ★0
-
+      新規投稿商品
+    .main__pickupBrand--explains
+      - @items.each do |item|
+        %ul
+          %li.main__pickupBrand--image
+            = image_tag item.images.last.url,  size: "200x200"
+          %li.main__pickupBrand--product
+            = item.name
+          %li.main__pickupBrand--price
+            = item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse + " 円"
+          %li.main__pickupBrand--tax
+            （税込）
+            .main__pickupBrand--like
+              ★0
+            
   .main__bottomVisual
     .main__bottomVisual--mainVisual
       = image_tag "visual3.jpg", alt: "Image", class: "main__bottomVisual--mainImage"
@@ -208,34 +166,33 @@
           .main__bottomVisual--googleplay
             = image_tag "appicon-google.png", alt: " Google Play", size: "180x75", class: "hmain__bottomVisual-googleplayIcon"
 
-.footer
-  .footer__menu
-    %ul
-      .footer__menu--title
-        FURIMAについて
-      %li 会社概要（運営会社）
-      %li プライバシーポリシー
-      %li FURIMA利用規約
-      %li ポイントに関する特約
-    %ul
-      .footer__menu--title
-        FURIMAを見る
-      %li カテゴリー一覧
-      %li ブランド一覧
-    %ul
-      .footer__menu--title
-        FURIMAについて
-      %li FURIMAガイド
-      %li FURIMAロゴ利用ガイドライン
-      %li お知らせ
-  .footer__icon
-    = image_tag "icon-footer.svg", alt: "Furima App", size: "140x40", class: "footer__icon--iconImage"
-  .footer__trademark
-    © FURIMA
+  .footer
+    .footer__menu
+      %ul
+        .footer__menu--title
+          FURIMAについて
+        %li 会社概要（運営会社）
+        %li プライバシーポリシー
+        %li FURIMA利用規約
+        %li ポイントに関する特約
+      %ul
+        .footer__menu--title
+          FURIMAを見る
+        %li カテゴリー一覧
+        %li ブランド一覧
+      %ul
+        .footer__menu--title
+          FURIMAについて
+        %li FURIMAガイド
+        %li FURIMAロゴ利用ガイドライン
+        %li お知らせ
+    .footer__icon
+      = image_tag "icon-footer.svg", alt: "Furima App", size: "140x40", class: "footer__icon--iconImage"
+    .footer__trademark
+      © FURIMA
 
 
 .purchaseButton
   .purchaseButton__text
     出品する
   = icon("fas", "camera", class:'purchaseButton__image')
-  
