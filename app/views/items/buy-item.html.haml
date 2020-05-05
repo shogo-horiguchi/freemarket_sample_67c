@@ -4,39 +4,43 @@
    = image_tag  'logo.png', :size =>'160x50'
 
 .main
- .buy-item-head
-  %h1
+ .main-item-show
+  .main-item-header
    購入内容の確認
-  .buy-item-container
-   .buy-item
+  .item-container
+   .item-container__name
     product3
-   .buy-item-image
-    = image_tag  'a007.png', :size =>'200x150'
-    .buy-mony
-     ¥30000(税込)
-    %span<>
-    送料込み
+   .item-container__image
+    = image_tag  'a007.png', :size =>'500x300'
+   .item-container__price
+    ¥30,000
+   .item-container__price-detail
+    (税込）
+    %span 送料込み
   .buy-item-content
    .buy-item-inner
-    .buy-price
+    .buy-item-inner__price
      支払い金額
-     %p ポイントを使用
-     .buy-price-cell
-      ¥30000(税込)
-      送料込み
-    .buy-cash
+     %span ¥30,000(税込) 送料込み
+    .buy-item-inner__userpoint
+     ※ポイントを使用(所持ポイント: P0 )
+    .buy-item-inner__payment
      支払い方法
-    .payment-method
-     %select{:name => "budget_d"}
-    .buy-address
+     %li
+      = link_to "変更する",""
+    .buy-item-inner__payment-method
+     クレジットカード（例）
+    .buy-item-inner__shipping-address
      配送先
-    .shipping-address
-     %select{:name => "budget_d"}
-   .buy-item-box
-    %button#buy-button  購入する
+     %li
+      = link_to "変更する",""
+    .buy-item-inner__address
+     東京都港区（例）
+    .buy-item-inner__purchase
+     %button#buy-button  購入する
   
 .footer
- %ul.contents 
+ %ul.footer__contents 
   %li
    = link_to "プライバシーポリシー",""
   %li

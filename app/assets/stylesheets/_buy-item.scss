@@ -82,16 +82,16 @@
    }
    
    &__payment-method {
-     text-align: left;
-     border-bottom: 1px solid #f3f3f3;
+      text-align: left;
+      border-bottom: 1px solid #f3f3f3;
    }
 
    &__shipping-address {
-     display: flex;
-     justify-content: space-between;
-     margin-top: 20px;
-     list-style: none;
-     padding: 34px 0;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      list-style: none;
+      padding: 34px 0;
 
     a {
       text-decoration: none;
