@@ -1,0 +1,7 @@
+@mixin displayflex() {
+  &:after {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
