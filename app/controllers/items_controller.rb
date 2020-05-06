@@ -18,6 +18,8 @@ class ItemsController < ApplicationController
     end
     
   def index
+    @items = Item.limit(3).order(id: "DESC")
+    @brands = Item.where(brand_id:"1").last(3).sort.reverse
   end
 
   def new
