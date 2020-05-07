@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
       #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
       @default_card_information = customer.cards.retrieve(payment.card_id)
     end
-    
+  end
   def index
     @items = Item.limit(3).order(id: "DESC")
     @brands = Item.where(brand_id:"1").last(3).sort.reverse

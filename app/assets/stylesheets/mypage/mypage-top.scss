@@ -157,6 +157,14 @@
         }
         ul {
           li {
+            label {
+              position: relative;
+              i {
+                position: absolute;
+                  top: 29px;
+                  right: 30px;
+              }
+            }
             a {
               background-color: #fff;
               display: block;
