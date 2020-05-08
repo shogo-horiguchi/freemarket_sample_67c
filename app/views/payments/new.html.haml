@@ -1,54 +1,42 @@
-.header
- .header__logo
-  = link_to "http://furima.tokyo/"  do
-   = image_tag  'logo.png', :size =>'160x50'
 
-.main
- .main-item-show
-  .main-item-header
-   購入内容の確認
-  .item-container
-   .item-container__name
-    product3
-   .item-container__image
-    = image_tag  'a007.png', :size =>'500x300'
-   .item-container__price
-    ¥30,000
-   .item-container__price-detail
-    (税込）
-    %span 送料込み
-  .buy-item-content
-   .buy-item-inner
-    .buy-item-inner__price
-     支払い金額
-     %span ¥30,000(税込) 送料込み
-    .buy-item-inner__userpoint
-     ※ポイントを使用(所持ポイント: P0 )
-    .buy-item-inner__payment
-     支払い方法
-     %li
-      = link_to "変更する",""
-    .buy-item-inner__payment-method
-     クレジットカード（例）
-    .buy-item-inner__shipping-address
-     配送先
-     %li
-      = link_to "変更する",""
-    .buy-item-inner__address
-     東京都港区（例）
-    .buy-item-inner__purchase
-     %button#buy-button  購入する
-  
-.footer
- %ul.footer__contents 
-  %li
-   = link_to "プライバシーポリシー",""
-  %li
-   = link_to "FURIMA利用規約",""
-  %li
-   = link_to "ポイントに関する特約",""
- .footer__logo
-  = link_to "http://furima.tokyo/"  do
-   = image_tag 'logo-white.png', :size =>'160x50'
- %p©FURIMA
- 
+支払い画面
+= form_tag(pay_payments_path, method: :post, id: 'charge-form',  name: "inputForm") do
+  %label カード番号
+  = text_field_tag "number", "", class: "number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
+  %br
+  %label 有効期限
+  %select#exp_month{name: "exp_month", type: "text"}
+    %option{value: ""} --
+    %option{value: "1"}01
+    %option{value: "2"}02
+    %option{value: "3"}03
+    %option{value: "4"}04
+    %option{value: "5"}05
+    %option{value: "6"}06
+    %option{value: "7"}07
+    %option{value: "8"}08
+    %option{value: "9"}09
+    %option{value: "10"}10
+    %option{value: "11"}11
+    %option{value: "12"}12
+  %span 月/
+  %select#exp_year{name: "exp_year", type: "text"}
+    %option{value: ""} --
+    %option{value: "2019"}19
+    %option{value: "2020"}20
+    %option{value: "2021"}21
+    %option{value: "2022"}22
+    %option{value: "2023"}23
+    %option{value: "2024"}24
+    %option{value: "2025"}25
+    %option{value: "2026"}26
+    %option{value: "2027"}27
+    %option{value: "2028"}28
+    %option{value: "2029"}29
+  %span 年
+  %br
+  %label セキュリティコード
+  = text_field_tag "cvc", "", class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
+  #card_token
+  = submit_tag "追加する", id: "token_submit"
+
