@@ -191,10 +191,16 @@
     .footer__trademar
       © FURIMA
 
-
-= link_to new_item_path do
-  .purchaseButton
-    .purchaseButton__text
-      出品する
-    = icon("fas", "camera", class:'purchaseButton__image')
+- if user_signed_in?
+  = link_to new_item_path do
+    .purchaseButton
+      .purchaseButton__text
+        出品する
+      = icon("fas", "camera", class:'purchaseButton__image')
+- else
+  = link_to new_user_registration_path do
+    .purchaseButton
+      .purchaseButton__text
+        出品する
+      = icon("fas", "camera", class:'purchaseButton__image')
 
