@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  # require 'payjp'
+  require 'payjp'
 
   def confirmation
     payment = Payment.where(user_id: current_user.id).first
