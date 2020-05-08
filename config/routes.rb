@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root "items#index"
 
   resources :items, only: [:show, :new]
+
+  resources :payments, only: [:show, :new]
   devise_for :users
   resources :users, only: :show do
 
