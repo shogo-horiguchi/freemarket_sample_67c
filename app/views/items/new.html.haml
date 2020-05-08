@@ -30,7 +30,7 @@
         カテゴリー
         %span.form-require-gray 必須
         %div
-          = f.collection_select :category_id, Category.all, :id, :name, prompt: "選択してください"
+          = f.collection_select :category, Category.all, :id, :name, prompt: "選択してください"
 
       .item-form__box__condition
         商品の状態
