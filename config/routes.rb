@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [:show, :new]
 
-  resources :payments, only: [:show, :new]
+  resources :payments, only: [:index, :show, :new]
   devise_for :users
   resources :users, only: :show do
 
@@ -12,5 +12,12 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
   end
+  
+  resources :payments, only: [:new, :show] do
+    collection do
+      post 'show', to: 'payments#show'
+      post 'pay', to: 'payments#pay'
+      post 'delete', to: 'payments#delete'
+    end
+  end
 end
-
