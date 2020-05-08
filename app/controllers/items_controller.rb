@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
 
-
-  require 'payjp'
+  # require 'payjp'
 
   def confirmation
     payment = Payment.where(user_id: current_user.id).first
@@ -16,32 +15,13 @@ class ItemsController < ApplicationController
       #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
       @default_card_information = customer.cards.retrieve(payment.card_id)
     end
+  end
     
   def index
     @items = Item.limit(3).order(id: "DESC")
     @brands = Item.where(brand_id:"1").last(3).sort.reverse
   end
 
-  def new
-    @category_parent_array = ["___"]
-    Category.where(ancestry: nil).each do |parent|
-    @category_parent_array << parent.name
-    end
-  end
-
-
-  def get_category_children
-      @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
-  end
-
-  def get_category_grandchildren
-      @category_grandchildren = Category.find("#{params[:child_id]}").children
-  end
-
-  def show
-    @user = User.find(params[:id])
-    @brand = @item.brand
-  end
     
   def pay
     payment = Payment.where(user_id: current_user.id).first
@@ -52,15 +32,6 @@ class ItemsController < ApplicationController
     :currency => 'jpy', #日本円
   )
   redirect_to action: 'done' #完了画面に移動
-  end
-
-  private
-
-  def set_item
-    @item = Item.find(params[:id])
-    @parent_category_items = nil
-    @child_category_items = Item.where(child_category_id: @children_category.id)
-    @grand_category_items = Item.where(grand_child_category_id: @grand_category.id)
   end
 
   def new
@@ -83,6 +54,7 @@ class ItemsController < ApplicationController
   end
 
   private
+
   def item_params
     params.require(:item).permit(:name, :text, :price, :condition, :shipping_charge, :shipping_origin, :shipping_schedule, :brand_id, :category_id, images_attributes: [:url]).merge(user_id: current_user.id)
   end

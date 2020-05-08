@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
   root "items#index"
 
-  resources :items, only: [:index, :show] do
+  resources :items, only: [:new, :index, :show, :create] do
     resources :comments, only: [:new, :create]
     collection do
       get 'confirmation', to: 'items#confirmation'
       post 'pay', to: 'items#pay'
       get 'done', to: 'items#done'
     end
+  end
+
+  devise_scope :user do
+    get 'addresses', to: 'users/registrations#new_address'
+    post 'addresses', to: 'users/registrations#create_address'
   end
 
   devise_for :users, controllers: {
