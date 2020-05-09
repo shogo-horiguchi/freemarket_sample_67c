@@ -87,10 +87,8 @@
 ## payments_table
 |Column|Type|Options|
 |------|----|-------|
-|card_number|integer|null: false, unique: true|
-|expiration_year|integer|null: false|
-|expiration_month|integer|null: false|
-|security_key|integer|null: false|
+|card_id|string|null: false|
+|customer_id|string|null: false|
 |user_id|references|null: false, foreign_key: true|
 ### payments_association
 - belongs_to :user
