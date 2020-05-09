@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:edit, :show, :update, :destroy]
 
-  # require 'payjp'
+  require 'payjp'
 
   def confirmation
     payment = Payment.where(user_id: current_user.id).first
@@ -44,16 +45,37 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path, notice: '商品が出品されました'
+      redirect_to item_path(@item), notice: '商品が出品されました'
     else
-      # @item = Item.create.includes(:user)
       flash.now[:alert] = '必須項目が抜けています'
       render new_item_path
     end
-    
+  end
+
+  def show
+    @brand = @item.brand
+    @comment = Comment.new
+  end
+
+  def edit
+    10.times do 
+      @item.images.build
+    end
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to item_path(@item), notice: '商品が編集されました'
+    else
+      flash.now[:alert] = '必須項目が抜けています'
+      render new_item_path
+    end
   end
 
   private
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   def item_params
     params.require(:item).permit(:name, :text, :price, :condition, :shipping_charge, :shipping_origin, :shipping_schedule, :brand_id, :category_id, images_attributes: [:url]).merge(user_id: current_user.id)

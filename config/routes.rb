@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   root "items#index"
 
 
+
   resources :payments, only: [:index, :show, :new]
   devise_for :users
   resources :users, only: :show do
-  resources :items, only: [:new, :index, :show, :create] do
+  resources :items do
     resources :comments, only: [:new, :create]
     collection do
       get 'confirmation', to: 'items#confirmation'
