@@ -58,9 +58,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    10.times do 
-      @item.images.build
-    end
+    @item.images.cache_key unless @item.images.blank?
   end
 
   def update
@@ -72,12 +70,20 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    if current_user == @item.user && @item.destroy 
+      redirect_to root_path, method: :delete
+    else
+      redirect_to item_path(@item)
+    end
+  end
+
   private
   def set_item
     @item = Item.find(params[:id])
   end
 
   def item_params
-    params.require(:item).permit(:name, :text, :price, :condition, :shipping_charge, :shipping_origin, :shipping_schedule, :brand_id, :category_id, images_attributes: [:url]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :text, :price, :condition, :shipping_charge, :shipping_origin, :shipping_schedule, :brand_id, :category_id, images_attributes: [:url, :url_cache]).merge(user_id: current_user.id)
   end
 end
