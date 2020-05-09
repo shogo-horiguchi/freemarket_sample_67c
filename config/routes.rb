@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "items#index"
 
-  resources :items, only: [:new, :index, :show, :create] do
+  resources :items do
     resources :comments, only: [:new, :create]
     collection do
       get 'confirmation', to: 'items#confirmation'
