@@ -31,7 +31,7 @@
 |city|string|null: false|
 |street|string|null: false|
 |building|string|
-|telephone|integer|unique: true|
+|telephone|integer|
 |user_id|references|null: false, foreign_key: true|
 ### addresses_association
 - belongs_to :user
@@ -68,6 +68,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+|ancestry|string|
+
 ### categories_association
 - has_many :tags
 - has_many :items, through: :tags
