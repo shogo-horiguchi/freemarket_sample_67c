@@ -437,121 +437,32 @@
         justify-content: center;
       }
   
-      &--explain1{
+      &--image{
         width: 200px;
         height: 200px;
-        position: relative;
+        background-color: lightblue;
         margin: 0 40px;
       }
-      &--product1{
-        width: 100%;
-        position: absolute;
-          top:200px;
-          left:10px;
-        font-size: 15px;
+      &--product{
         text-align: left;
-      }
-      &--price1{
-        width: 100%;
-        text-align: left;
-        position: absolute;
-          top:225px;
-          left:10px;
+        margin-left: 40px;
         font-size: 15px;
       }
-      &--tax1{
-        width: 100%;
+      &--price{
         text-align: left;
-        position: absolute;
-          top:250px;
-          left:10px;
-        font-size: 10px;
-      }
-      &--like1{
-        width: 100%;
-        text-align: right;
-        position: absolute;
-          top:225px;
-          right:10px;
+        margin-left: 40px;
         font-size: 15px;
       }
-  
-      &--explain2{
-        width: 200px;
-        height: 200px;
+      &--tax{
+        text-align: left;
+        margin-left: 40px;
+        font-size: 15px;
         position: relative;
-        margin: 0 40px;
       }
-      &--product2{
-        width: 100%;
+      &--like{
         position: absolute;
-          top:200px;
-          left:10px;
-        font-size: 15px;
-        text-align: left;
-      }
-      &--price2{
-        width: 100%;
-        text-align: left;
-        position: absolute;
-          top:225px;
-          left:10px;
-        font-size: 15px;
-      }
-      &--tax2{
-        width: 100%;
-        text-align: left;
-        position: absolute;
-          top:250px;
-          left:10px;
-        font-size: 10px;
-      }
-      &--like2{
-        width: 100%;
-        text-align: right;
-        position: absolute;
-          top:225px;
-          right:10px;
-        font-size: 15px;
-      }
-  
-      &--explain3{
-        width: 200px;
-        height: 200px;
-        position: relative;
-        margin: 0 40px;
-      }
-      &--product3{
-        width: 100%;
-        position: absolute;
-          top:200px;
-          left:10px;
-        font-size: 15px;
-        text-align: left;
-      }
-      &--price3{
-        width: 100%;
-        text-align: left;
-        position: absolute;
-          top:225px;
-          left:10px;
-        font-size: 15px;
-      }
-      &--tax3{
-        width: 100%;
-        text-align: left;
-        position: absolute;
-          top:250px;
-          left:10px;
-        font-size: 10px;
-      }
-      &--like3{
-        width: 100%;
-        text-align: right;
-        position: absolute;
-          top:225px;
-          right:10px;
-        font-size: 15px;
+          left: 160px;
+          bottom: 20px;
       }
     }
   }
@@ -581,121 +492,32 @@
         justify-content: center;
       }
   
-      &--explain1{
+      &--image{
         width: 200px;
         height: 200px;
-        position: relative;
+        background-color: lightblue;
         margin: 0 40px;
       }
-      &--product1{
-        width: 100%;
-        position: absolute;
-          top:200px;
-          left:10px;
-        font-size: 15px;
+      &--product{
         text-align: left;
-      }
-      &--price1{
-        width: 100%;
-        text-align: left;
-        position: absolute;
-          top:225px;
-          left:10px;
+        margin-left: 40px;
         font-size: 15px;
       }
-      &--tax1{
-        width: 100%;
+      &--price{
         text-align: left;
-        position: absolute;
-          top:250px;
-          left:10px;
-        font-size: 10px;
-      }
-      &--like1{
-        width: 100%;
-        text-align: right;
-        position: absolute;
-          top:225px;
-          right:10px;
+        margin-left: 40px;
         font-size: 15px;
       }
-  
-      &--explain2{
-        width: 200px;
-        height: 200px;
+      &--tax{
+        text-align: left;
+        margin-left: 40px;
+        font-size: 15px;
         position: relative;
-        margin: 0 40px;
       }
-      &--product2{
-        width: 100%;
+      &--like{
         position: absolute;
-          top:200px;
-          left:10px;
-        font-size: 15px;
-        text-align: left;
-      }
-      &--price2{
-        width: 100%;
-        text-align: left;
-        position: absolute;
-          top:225px;
-          left:10px;
-        font-size: 15px;
-      }
-      &--tax2{
-        width: 100%;
-        text-align: left;
-        position: absolute;
-          top:250px;
-          left:10px;
-        font-size: 10px;
-      }
-      &--like2{
-        width: 100%;
-        text-align: right;
-        position: absolute;
-          top:225px;
-          right:10px;
-        font-size: 15px;
-      }
-  
-      &--explain3{
-        width: 200px;
-        height: 200px;
-        position: relative;
-        margin: 0 40px;
-      }
-      &--product3{
-        width: 100%;
-        position: absolute;
-          top:200px;
-          left:10px;
-        font-size: 15px;
-        text-align: left;
-      }
-      &--price3{
-        width: 100%;
-        text-align: left;
-        position: absolute;
-          top:225px;
-          left:10px;
-        font-size: 15px;
-      }
-      &--tax3{
-        width: 100%;
-        text-align: left;
-        position: absolute;
-          top:250px;
-          left:10px;
-        font-size: 10px;
-      }
-      &--like3{
-        width: 100%;
-        text-align: right;
-        position: absolute;
-          top:225px;
-          right:10px;
-        font-size: 15px;
+          left: 160px;
+          bottom: 20px;
       }
     }
   }
