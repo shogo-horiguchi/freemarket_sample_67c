@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:edit, :show, :update, :destroy]
 
   require 'payjp'
 
@@ -44,18 +45,45 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path, notice: '商品が出品されました'
+      redirect_to item_path(@item), notice: '商品が出品されました'
     else
-      # @item = Item.create.includes(:user)
       flash.now[:alert] = '必須項目が抜けています'
       render new_item_path
     end
-    
+  end
+
+  def show
+    @brand = @item.brand
+    @comment = Comment.new
+  end
+
+  def edit
+    @item.images.cache_key unless @item.images.blank?
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to item_path(@item), notice: '商品が編集されました'
+    else
+      flash.now[:alert] = '必須項目が抜けています'
+      render new_item_path
+    end
+  end
+
+  def destroy
+    if current_user == @item.user && @item.destroy 
+      redirect_to root_path, method: :delete
+    else
+      redirect_to item_path(@item)
+    end
   end
 
   private
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   def item_params
-    params.require(:item).permit(:name, :text, :price, :condition, :shipping_charge, :shipping_origin, :shipping_schedule, :brand_id, :category_id, images_attributes: [:url]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :text, :price, :condition, :shipping_charge, :shipping_origin, :shipping_schedule, :brand_id, :category_id, images_attributes: [:url, :url_cache]).merge(user_id: current_user.id)
   end
 end

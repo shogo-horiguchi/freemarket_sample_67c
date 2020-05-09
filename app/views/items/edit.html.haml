@@ -1,4 +1,4 @@
-%h1 新規投稿ページ
+%h1 商品編集ページ
 .item-form
   = form_for @item do |f|
     .item-form__box
@@ -30,12 +30,12 @@
         カテゴリー
         %span.form-require-gray 必須
         %div
-          = f.collection_select :category, Category.all, :id, :name, prompt: "選択してください"
+          = f.collection_select :category, Category.all, :id, :name, {selected: @item.category}, prompt: "選択してください"
 
       .item-form__box__condition
         商品の状態
         %span.form-require-gray 必須
-        = f.select :condition, [["新品、未使用", 1], ["未使用に近い", 2], ["目立った傷や汚れなし", 3], ["やや傷や汚れあり", 4], ["傷や汚れあり", 5], ["全体的に状態が悪い", 6]]
+        = f.select :condition, [["新品、未使用", 1], ["未使用に近い", 2], ["目立った傷や汚れなし", 3], ["やや傷や汚れあり", 4], ["傷や汚れあり", 5], ["全体的に状態が悪い", 6]], {selected: @item.condition}
       
       .item-form__box__price
         商品の価格
@@ -55,5 +55,5 @@
       .item-form__box__shipping-schedule
         配送までにかかる日数
         %span.form-require-gray 必須
-        = f.select :shipping_schedule, [["1~2日で発送", 0],["2~3日で発送", 1],["4~7日で発送", 2]]
+        = f.select :shipping_schedule, [["1~2日で発送", 0],["2~3日で発送", 1],["4~7日で発送", 2]], {selected: @item.shipping_schedule}
       = f.submit 'Send', class: 'submit'
