@@ -117,8 +117,13 @@
               いいね！一覧
               %i.fas.fa-angle-right
           %li.mypage-side-nav_list-item
+
             %label
               =link_to "出品する"
+
+            = link_to new_item_path do
+              出品する
+
               %i.fas.fa-angle-right
           %li.mypage-side-nav_list-item
             %a
@@ -182,10 +187,15 @@
             %a
               発送元・お届け先住所変更
               %i.fas.fa-angle-right
+
           %li.mypage-side-nav_list-item
-            %a
+            = link_to new_payment_path do
               支払い方法
               %i.fas.fa-angle-right
+          -# %li.mypage-side-nav_list-item
+          -#   %a
+          -#     支払い方法
+          -#     %i.fas.fa-angle-right
           %li.mypage-side-nav_list-item
             %a
               メール/パスワード

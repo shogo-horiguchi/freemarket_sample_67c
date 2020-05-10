@@ -88,8 +88,12 @@ gem 'public_suffix', '>= 1.5.3'
 
 gem 'ancestry'
 gem 'pry-rails'
+
 gem 'rb-readline'
 
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
+
+gem 'rb-readline'
+

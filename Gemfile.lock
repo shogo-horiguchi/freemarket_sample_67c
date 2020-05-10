@@ -346,9 +346,11 @@ DEPENDENCIES
   listen (~> 3.0.5)
   mini_magick
   mysql2 (>= 0.3.18, < 0.6.0)
+
   omniauth-facebook
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
+
   payjp
   pry-rails
   public_suffix (>= 1.5.3)
