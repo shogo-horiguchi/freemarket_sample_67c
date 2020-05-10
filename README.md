@@ -107,3 +107,5 @@
 |item_id|references|null: false, foreign_key: true|
 ### images_association
 - belongs_to :item
+
+
