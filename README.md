@@ -96,7 +96,7 @@
 ## brands_table
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, unique: true|
+|name|string|unique: true|
 ### brands_association
 - has_many :items
 
@@ -107,3 +107,5 @@
 |item_id|references|null: false, foreign_key: true|
 ### images_association
 - belongs_to :item
+
+
