@@ -118,7 +118,7 @@
               %i.fas.fa-angle-right
           %li.mypage-side-nav_list-item
             %label
-              =link_to "出品する", new_item_path
+              =link_to "出品する"
               %i.fas.fa-angle-right
           %li.mypage-side-nav_list-item
             %a
@@ -227,8 +227,8 @@
     .footer__trademark
       © FURIMA
 
-  = link_to new_item_path do
-    .purchaseButton
-      .purchaseButton__text
-        出品する
-      = icon("fas", "camera", class:'purchaseButton__image')
+  -# = link_to new_item_path do
+  -#   .purchaseButton
+  -#     .purchaseButton__text
+  -#       出品する
+  -#     = icon("fas", "camera", class:'purchaseButton__image')
