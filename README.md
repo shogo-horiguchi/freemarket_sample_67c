@@ -96,7 +96,7 @@
 ## brands_table
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, unique: true|
+|name|string|unique: true|
 ### brands_association
 - has_many :items
 

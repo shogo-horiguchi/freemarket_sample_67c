@@ -38,7 +38,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    10.times do 
+    10.times do
       @item.images.build
     end
   end
@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @brand = @item.brand
+    # @brand = @item.brand
     @comment = Comment.new
   end
 
