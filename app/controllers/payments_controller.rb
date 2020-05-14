@@ -59,6 +59,9 @@ class PaymentsController < ApplicationController
     end
   end
 
+  def detail
+  end
+
   private
   def payment_params
     params.require(:payment).permit(:user_id, :customer_id, :card_id).merge(user_id: current_user.id)
