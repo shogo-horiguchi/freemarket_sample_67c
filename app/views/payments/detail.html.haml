@@ -79,7 +79,7 @@
             = icon("fas","star",class:'option-area__likeBtn')
             お気に入り
           %ul
-          %a{href:""}
+          = link_to do
             = icon("fas","flag",class:'option-area__flagBtn')
             不適切な商品の通報
 
@@ -94,15 +94,17 @@
 
       %ul.links
         %li
-          %a{href:""}
+          = link_to do
             = icon("fas","angle-left",class:'links__angle-left')
             前の商品
         %li
-          %a{href:""} 後ろの商品
+          = link_to do
+            後ろの商品
           = icon("fas","angle-right",class:'inks__angle-right')
           
       .relateditems 
-        %a{href:""} ベビー・キッズをもっとみる
+        = link_to do
+          ベビー・キッズをもっとみる 
       
 .main__bottomVisual
   .main__bottomVisual--mainVisual
