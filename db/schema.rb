@@ -11,7 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema.define(version: 20200510123356) do
+
+ActiveRecord::Schema.define(version: 20200510113437) do
+
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "last_name",       null: false
@@ -93,6 +95,15 @@ ActiveRecord::Schema.define(version: 20200510123356) do
     t.index ["user_id"], name: "index_payments_on_user_id", using: :btree
   end
 
+  create_table "sns_credentials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id", using: :btree
+  end
+
   create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "item_id",     null: false
     t.integer  "category_id", null: false
@@ -142,6 +153,7 @@ ActiveRecord::Schema.define(version: 20200510123356) do
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
   add_foreign_key "payments", "users"
+  add_foreign_key "sns_credentials", "users"
   add_foreign_key "tags", "categories"
   add_foreign_key "tags", "items"
 end
