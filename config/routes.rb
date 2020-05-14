@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: :show do
+    member do
+      get 'logout'
+    end
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
