@@ -76,216 +76,225 @@
       margin-left: 5px;
     }
   }
-  
-  .mypage-container {
-    width: 1020px;
-    overflow: hidden;
-    margin: 40px auto 0;
-    .mypage-contain {
-      float: right;
-      width: 700px;
-      &__status {
-        background-image: url("background-image-tab");
-        background-size: 700px;
-        position: relative;
-        padding: 20px;
-        height: 200px;
-        a {
-          display: block;
-          position: absolute;
-          top: 20%;
-          right: 0;
-          left: 0;
-          figure {
-            .mypage-image {
-              display: block;
-              margin: 0 auto;
-              height: 60px;
-              width: 60px;
-              border-radius: 50%;
-            }
-          }
-          h2 {
-            font-size: 14px;
-            margin: 8px 0 0;
-            text-align: center;
-          }
-          .mypage-value {
-            font-size: 14px;
-            margin: 8px 0 0;
-            text-align: center;
-            div {
-              display: inline-block;
-              margin: 0 0 0 16px;
-              span {
-                font-size: 13px;
-                margin: 0 0 0 8px;
-              }
-            }
-          }
-        }
-      }
-      &__notice-todo {
-        background-color: #fff;
-        height: 243px;
-        .mypage-contain_notice-todo_tab-contain {
-          height: calc(100% - 74px);
-          li.mypage-not-found_todo {
-            text-align: center;
-          }
-        }
-  
-      }
-      .mypage-contain_deals {
-        background-color: #fff;
-        margin: 40px 0 0;
-        height: 382px;
-        .mypage-contain_deals__header {
-          height: 72px;
-          line-height: 72px;
-          padding: 0 16px;
-        }
-      }
-    }
-    .mypage-side {
-      float: left;
-      width: 280px;
-      margin: 0 40px 0 0;
-      nav {
-        h3 {
-          margin: 40px 0 0;
-        }
-        ul {
-          li {
-            a {
-              background-color: #fff;
-              display: block;
-              padding: 16px;
-              width: 280px;
-              border: 1px solid#EEEEEE;
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  /*タブ切り替え全体のスタイル*/
-  .tabs {
-    margin-top: 50px;
-    padding-bottom: 40px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 700px;
-    margin: 0 auto;}
-  
-  /*タブのスタイル*/
-  .tab_item {
-    background-color: #DDDDDD;
-    width: 50%;
-    height: 72px;
-    line-height: 72px;
-    font-size: 16px;
-    text-align: center;
-    color: #565656;
-    display: block;
-    float: left;
-    text-align: center;
-    font-weight: bold;
-    transition: all 0.2s ease;
-  }
-  .tab_item:hover {
-    opacity: 0.75;
-  }
-  
-  /*ラジオボタンを全て消す*/
-  input[name="tab_item1"] {
-    display: none;
-  }
-
-  input[name="tab_item2"] {
-    display: none;
-  }
-
-  
-  /*タブ切り替えの中身のスタイル*/
-  .tab_content {
-    text-align: center;
-    display: none;
-    padding: 80px 40px 0;
-    clear: both;
-    overflow: hidden;
-  }
-  
-  
-  /*選択されているタブのコンテンツのみを表示*/
-  #open_trade:checked ~ #open_trade_content,
-  #open_trade-past:checked ~ #open_trade-past_content,
-  #notice:checked ~ #notice_content,
-  #todo:checked ~ #todo_content, {
-    display: block;
-  }
-  
-  /*選択されているタブのスタイルを変える*/
-  input:checked + .tab_item {
-    background-color: #FFF;
-    border-top: 2px solid red;
-  }
-
-  .footer{
-    height: 400px;
-    width: 100%;
-    background-color: #272727;
-    &__menu{
-      padding-top: 40px;
-      display: flex;
-      justify-content: center;
-      font-size: 11px;
-      color: #f8f8f8;
-      text-align: center;
-      &--title{
-        color: white;
-        font-size: 16px;
-        font-weight: bold;
-        padding-bottom: 10px;
-      }
-      li{
-        padding-bottom: 15px;
-      }
-      ul{
-        margin: 0 60px;
-      }
-    }
-    &__icon{
-      text-align: center;
-      margin-top: 30px;
-    }
-    &__trademark{
-      color: white;
-      font-size: 12px;
-      text-align: center;
-    }
-  }
-
-  .purchaseButton{
-    width: 150px;
-    height: 150px;
-    border-radius: 20px;
-    background-color: #3ccace;
-    text-align: center;
-    position: fixed;
-      right: 20px;
-      bottom: 20px;
-    z-index: 1;
-    &__text{
-      padding-top: 20px;
-      color: white;
-      font-size: 20px;
-    }
-    &__image{
-      font-size: 70px;
-      color: white;
-    }
-  }
-
 }
+.mypage-container {
+  width: 1020px;
+  overflow: hidden;
+  margin: 40px auto 0;
+  .mypage-contain {
+    float: right;
+    width: 700px;
+    &__status {
+      background-image: url("background-image-tab");
+      background-size: 700px;
+      position: relative;
+      padding: 20px;
+      height: 200px;
+      a {
+        display: block;
+        position: absolute;
+        top: 20%;
+        right: 0;
+        left: 0;
+        figure {
+          .mypage-image {
+            display: block;
+            margin: 0 auto;
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+          }
+        }
+        h2 {
+          font-size: 14px;
+          margin: 8px 0 0;
+          text-align: center;
+        }
+        .mypage-value {
+          font-size: 14px;
+          margin: 8px 0 0;
+          text-align: center;
+          div {
+            display: inline-block;
+            margin: 0 0 0 16px;
+            span {
+              font-size: 13px;
+              margin: 0 0 0 8px;
+            }
+          }
+        }
+      }
+    }
+    &__notice-todo {
+      background-color: #fff;
+      height: 243px;
+      .mypage-contain_notice-todo_tab-contain {
+        height: calc(100% - 74px);
+        li.mypage-not-found_todo {
+          text-align: center;
+        }
+      }
+
+    }
+    .mypage-contain_deals {
+      background-color: #fff;
+      margin: 40px 0 0;
+      height: 382px;
+      .mypage-contain_deals__header {
+        height: 72px;
+        line-height: 72px;
+        padding: 0 16px;
+      }
+    }
+  }
+}
+.mypage-side {
+  float: left;
+  width: 280px;
+  margin: 0 40px 0 0;
+  nav {
+    h3 {
+      margin: 40px 0 0;
+    }
+    ul {
+      li {
+        label {
+          position: relative;
+          i {
+            position: absolute;
+              top: 29px;
+              right: 30px;
+          }
+        }
+        a {
+          background-color: #fff;
+          display: block;
+          padding: 16px;
+          width: 280px;
+          border: 1px solid#EEEEEE;
+        }
+      }
+    }
+  }
+}
+
+
+/*タブ切り替え全体のスタイル*/
+.tabs {
+  margin-top: 50px;
+  padding-bottom: 40px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 700px;
+  margin: 0 auto;}
+
+/*タブのスタイル*/
+.tab_item {
+  background-color: #DDDDDD;
+  width: 50%;
+  height: 72px;
+  line-height: 72px;
+  font-size: 16px;
+  text-align: center;
+  color: #565656;
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+.tab_item:hover {
+  opacity: 0.75;
+}
+
+/*ラジオボタンを全て消す*/
+input[name="tab_item1"] {
+  display: none;
+}
+
+input[name="tab_item2"] {
+  display: none;
+}
+
+
+/*タブ切り替えの中身のスタイル*/
+.tab_content {
+  text-align: center;
+  display: none;
+  padding: 80px 40px 0;
+  clear: both;
+  overflow: hidden;
+}
+
+
+/*選択されているタブのコンテンツのみを表示*/
+#open_trade:checked ~ #open_trade_content,
+#open_trade-past:checked ~ #open_trade-past_content,
+#notice:checked ~ #notice_content,
+#todo:checked ~ #todo_content, {
+  display: block;
+}
+
+/*選択されているタブのスタイルを変える*/
+input:checked + .tab_item {
+  background-color: #FFF;
+  border-top: 2px solid red;
+}
+
+.footer{
+  height: 400px;
+  width: 100%;
+  background-color: #272727;
+  &__menu{
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+    font-size: 11px;
+    color: #f8f8f8;
+    text-align: center;
+    &--title{
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      padding-bottom: 10px;
+    }
+    li{
+      padding-bottom: 15px;
+    }
+    ul{
+      margin: 0 60px;
+    }
+  }
+  &__icon{
+    text-align: center;
+    margin-top: 30px;
+  }
+  &__trademark{
+    color: white;
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
+.purchaseButton{
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
+  background-color: #3ccace;
+  text-align: center;
+  position: fixed;
+    right: 20px;
+    bottom: 20px;
+  z-index: 1;
+  &__text{
+    padding-top: 20px;
+    color: white;
+    font-size: 20px;
+  }
+  &__image{
+    font-size: 70px;
+    color: white;
+  }
+}
+
+
