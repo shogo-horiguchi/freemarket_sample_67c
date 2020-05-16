@@ -188,8 +188,9 @@
         %li お知らせ
     .footer__icon
       = image_tag "icon-footer.svg", alt: "Furima App", size: "140x40", class: "footer__icon--iconImage"
-    .footer__trademar
+    .footer__trademark
       © FURIMA
+
 
 
 -# = link_to new_item_path do
@@ -197,4 +198,18 @@
 -#     .purchaseButton__text
 -#       出品する
 -#     = icon("fas", "camera", class:'purchaseButton__image')
+
+- if user_signed_in?
+  = link_to new_item_path do
+    .purchaseButton
+      .purchaseButton__text
+        出品する
+      = icon("fas", "camera", class:'purchaseButton__image')
+- else
+  = link_to new_user_session_path do
+    .purchaseButton
+      .purchaseButton__text
+        出品する
+      = icon("fas", "camera", class:'purchaseButton__image')
+
 

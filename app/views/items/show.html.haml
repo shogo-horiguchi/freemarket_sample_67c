@@ -1,4 +1,8 @@
+.mypage
+  = link_to 'トップページへ戻る', root_path
 - if @item.user == current_user
+  .edit
+    = link_to 'この商品を編集する', edit_item_path(@item), class: "edit"
   .destroy
     = link_to 'この商品を削除する', item_path(@item), method: :delete, class: "destroy", data: { confirm: '本当に削除しますか?' }
 
@@ -8,12 +12,17 @@
       = @item.name
     .detail-box__item-main-content 
       .detail-box__item-main-content__image-area
-        - @item.images.first(1).each do |image|
-          .detail-box__item-main-content__image-area__item-photo
-            = image_tag image.url, size: '300x300'
-        - @item.images[1..-1].each do |image|
-          .detail-box__item-main-content__image-area__item-photos
-            = image_tag image.url, size:'60x60'
+        - if @item.images.count > 1
+          - @item.images.first(1).each do |image|
+            .detail-box__item-main-content__image-area__item-photo
+              = image_tag image.url, size: '300x300'
+          - @item.images[1..-1].each do |image|
+            .detail-box__item-main-content__image-area__item-photos
+              = image_tag image.url, size:'60x60'
+        - elsif @item.images.count == 1
+          - @item.images.first(1).each do |image|
+            .detail-box__item-main-content__image-area__item-photo
+              = image_tag image.url, size: '300x300'
       %table{border: "2", bordercolor: ""}
         %tr
           %th 出品者
@@ -22,16 +31,15 @@
         %tr
           %td カテゴリー
           %td
-            - @item.categories.each do |category|
-              = link_to category.name, "#"
-              %br/
+            = @item.category.name
         %tr
           %td ブランド
           %td
             = @item.brand.name
         %tr
           %td 商品のサイズ
-          %td= @item.size
+          %td
+            = @item.size
         %tr
           %td 商品の状態
           %td

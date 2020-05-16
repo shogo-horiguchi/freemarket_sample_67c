@@ -88,6 +88,10 @@ gem 'public_suffix', '>= 1.5.3'
 
 gem 'ancestry'
 gem 'pry-rails'
+
 gem 'rb-readline'
 
 gem "gretel"
+
+gem 'rb-readline'
+
