@@ -2,11 +2,13 @@ Rails.application.routes.draw do
   root "items#index"
 
   resources :items do
-    resources :comments, only: [:new, :create]
+    resources :comments, only: [:new, :create, :show]
     collection do
       get 'confirmation', to: 'items#confirmation'
       post 'pay', to: 'items#pay'
       get 'done', to: 'items#done'
+      get 'index_selling', to: 'items#index_selling'
+      get 'index_sold', to: 'items#index_sold'
     end
   end
 
@@ -25,7 +27,7 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
   end
-  
+
   resources :payments, only: [:new, :show] do
     collection do
       post 'show', to: 'payments#show'

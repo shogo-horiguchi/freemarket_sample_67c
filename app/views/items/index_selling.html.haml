@@ -1,0 +1,40 @@
+= link_to "マイページへ", new_user_registration_path, class: "dummy"
+%br
+%br
+
+.index__myItems--subtitle
+  出品中商品
+.index__myItems--details
+  - @items.each do |item|
+    .index__myItems--image
+      = link_to image_tag(item.images.last.url, size: "200x200")
+    = link_to "商品情報を編集する", edit_item_path(item), class: "dummy"
+    %br
+    = link_to 'この商品を削除する', item_path(item), method: :delete, data: { confirm: '本当に削除しますか?' }
+    .index__myItems--name
+      商品名:
+      = item.name
+    .index__myItems--category
+      カテゴリー:
+      = item.category.name
+    .index__myItems--text
+      商品の説明:
+      = item.text
+    .index__myItems--brand
+      カテゴリー:
+      = item.brand.name
+    .index__myItems--condition
+      商品の状態:
+      = item.condition
+    .index__myItems--price
+      価格:
+      = item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse + " 円"
+    .index__myItems--shipping_origin
+      発送元:
+      = item.shipping_origin
+    .index__myItems--shipping_charge
+      配送料:
+      = item.shipping_charge.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse + " 円"
+    .index__myItems--shipping_schedule
+      配送までにかかる日数:
+      = item.shipping_schedule

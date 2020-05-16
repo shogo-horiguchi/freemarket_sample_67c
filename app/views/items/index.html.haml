@@ -123,7 +123,7 @@
       - @items.each do |item|
         %ul
           %li.main__pickupCategory--image
-            = image_tag item.images.last.url,  size: "200x200"
+            = link_to image_tag(item.images.last.url, size: "200x200"), item_path(item)
           %li.main__pickupCategory--product
             = item.name
           %li.main__pickupCategory--price
