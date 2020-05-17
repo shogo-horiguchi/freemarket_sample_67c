@@ -21,7 +21,9 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.limit(3).order(id: "DESC")
-    @brands = Item.where(brand_id:"1").last(3).sort.reverse
+    if Brand.nil?
+    else
+      @brands = Item.where(brand_id:"1").last(3).sort.reverse
   end
 
   def index_recent_posted
