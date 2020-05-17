@@ -1,5 +1,9 @@
 class PaymentsController < ApplicationController
-  require "payjp"
+
+  def index
+    @payment = Payment.new
+  end
+
 
   def new
     @payment = Payment.new
