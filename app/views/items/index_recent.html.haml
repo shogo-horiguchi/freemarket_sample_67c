@@ -1,39 +1,42 @@
-= link_to "マイページへ", new_user_registration_path, class: "dummy"
+= link_to "トップページへ", root_path, class: "dummy"
 %br
 %br
 
-.index__myItems--subtitle
-  売却済商品
+.index__items--subtitle
+  新規投稿商品
 %br
-.index__myItems--details
+.index__items--details
   - @items.each do |item|
-    .index__myItems--image
+    .index__items--userName
+      出品者:
+      = item.user.nickname
+    .index__items--image
       = link_to image_tag(item.images.last.url, size: "200x200")
-    .index__myItems--name
+    .index__items--name
       商品名:
       = item.name
-    .index__myItems--category
+    .index__items--category
       カテゴリー:
       = item.category.name
-    .index__myItems--text
+    .index__items--text
       商品の説明:
       = item.text
-    .index__myItems--brand
+    .index__items--brand
       カテゴリー:
       = item.brand.name
-    .index__myItems--condition
+    .index__items--condition
       商品の状態:
       = item.condition
-    .index__myItems--price
+    .index__items--price
       価格:
       = item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse + " 円"
-    .index__myItems--shipping_origin
+    .index__items--shipping_origin
       発送元:
       = item.shipping_origin
-    .index__myItems--shipping_charge
+    .index__items--shipping_charge
       配送料:
       = item.shipping_charge.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse + " 円"
-    .index__myItems--shipping_schedule
+    .index__items--shipping_schedule
       配送までにかかる日数:
       = item.shipping_schedule
     .index__items--likes

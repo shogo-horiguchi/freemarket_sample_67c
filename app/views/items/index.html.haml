@@ -118,7 +118,8 @@
     .main__pickupCategory--title
       ピックアップカテゴリー
     .main__pickupCategory--subtitle
-      新規投稿商品
+      = link_to index_recent_items_path do
+        新規投稿商品
     .main__pickupCategory--explains
       - @items.each do |item|
         %ul

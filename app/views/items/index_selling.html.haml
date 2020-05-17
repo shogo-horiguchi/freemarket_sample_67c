@@ -4,6 +4,7 @@
 
 .index__myItems--subtitle
   出品中商品
+%br
 .index__myItems--details
   - @items.each do |item|
     .index__myItems--image
@@ -38,3 +39,6 @@
     .index__myItems--shipping_schedule
       配送までにかかる日数:
       = item.shipping_schedule
+    .index__items--likes
+      いいね:
+    %br

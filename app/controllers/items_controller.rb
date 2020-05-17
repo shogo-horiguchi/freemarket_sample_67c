@@ -24,6 +24,10 @@ class ItemsController < ApplicationController
     @brands = Item.where(brand_id:"1").last(3).sort.reverse
   end
 
+  def index_recent
+    @items = Item.where(buyer_id: nil).order(id: "DESC")
+  end
+
   def index_selling
     @items = Item.where(buyer_id: nil).where(user_id: current_user.id).order(id: "DESC")
   end
