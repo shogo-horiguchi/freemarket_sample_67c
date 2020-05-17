@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
     if Brand.nil?
     else
       @brands = Item.where(brand_id:"1").last(3).sort.reverse
+    end
   end
 
   def index_recent_posted
