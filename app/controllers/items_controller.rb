@@ -61,7 +61,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # @brand = @item.brand
+    @brand = @item.brand
     @comment = Comment.new
   end
 
