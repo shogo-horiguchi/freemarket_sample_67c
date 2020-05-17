@@ -1,0 +1,12 @@
+=render "mypage_render/mypage-header"
+- breadcrumb :logout
+=render "layouts/breadcrumbs"
+%main.mypage-container
+  .mypage-contain
+    %li.mypage-side-nav_list-item
+  = link_to destroy_user_session_path, method: :delete do
+    ログアウト
+    %i.fas.fa-angle-right
+  =render "mypage_render/mypage-left-side"
+=render "mypage_render/footer"
+-# =render "mypage_render/puchase-button"
