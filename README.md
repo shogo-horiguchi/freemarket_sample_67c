@@ -31,7 +31,7 @@
 |city|string|null: false|
 |street|string|null: false|
 |building|string|
-|telephone|integer|unique: true|
+|telephone|integer|
 |user_id|references|null: false, foreign_key: true|
 ### addresses_association
 - belongs_to :user
@@ -68,6 +68,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+|ancestry|string|
+
 ### categories_association
 - has_many :tags
 - has_many :items, through: :tags
@@ -85,10 +87,8 @@
 ## payments_table
 |Column|Type|Options|
 |------|----|-------|
-|card_number|integer|null: false, unique: true|
-|expiration_year|integer|null: false|
-|expiration_month|integer|null: false|
-|security_key|integer|null: false|
+|card_id|string|null: false|
+|customer_id|string|null: false|
 |user_id|references|null: false, foreign_key: true|
 ### payments_association
 - belongs_to :user
@@ -96,7 +96,7 @@
 ## brands_table
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, unique: true|
+|name|string|unique: true|
 ### brands_association
 - has_many :items
 
@@ -107,3 +107,5 @@
 |item_id|references|null: false, foreign_key: true|
 ### images_association
 - belongs_to :item
+
+

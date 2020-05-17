@@ -1,239 +1,49 @@
-.mypage-default
-  %header.mypage-header
-    .mypage-header__upper
-      %h1.mypage-header__upper__image
-        = image_tag "logo.png", class:"mypage-image", alt:"logo-image"
-      %from.mypage-header__search
-        %input.mypage-header__search__input{:name => "keyword", :placeholder => "何かお探しですか？", :type => "search", :value => ""}/
-        %i.fas.fa-search
-    .mypage-header__bottom
-      %nav.b-left
-        %ul.header-nav
-          %li
-            %h2.header-nav-category
-              %a.header-nav-category-list
-              %i.fas.fa-list
-              %span
-                カテゴリーから探す
-          %li
-            %h2.header-nav-bland
-              %a.header-nav-bland-list
-              %i.fas.fa-tags
-              %span
-                ブランドから探す
-      .b-right
-        %ul.header-nav-user
-          %li
-            %a.like-list
-              %i.far.fa-heart
-              %span
-                いいね！一覧
-          %li
-            %a.notice-list
-              %i.far.fa-bell
-              %span
-                お知らせ
-          %li
-            %a.todo-list
-              %i.fas.fa-check
-              %span
-                やることリスト
-          %li
-            %a.mypage-link
-              %i.far.fa-user-circle
-              %span
-                マイページ
-  %nav.page-links
-    %ul
-      %li{:itemprop => "itemListElement", :itemscope => "", :itemtype => "https://schema.org/ListItem"}
-        %a{:href => "/", :itemprop => "item"}
-          %span{:itemprop => "name"} フリマアプリ
-        %meta{:content => "2", :itemprop => "position"}
-      %li{:itemprop => "itemListElement", :itemscope => "", :itemtype => "https://schema.org/ListItem"}
-        %i.fas.fa-angle-right
-        %span{:itemprop => "name"} マイページ
-        %meta{:content => "2", :itemprop => "position"}/
+=render "mypage_render/mypage-header"
+- breadcrumb :mypage
+=render "layouts/breadcrumbs"
+%main.mypage-container
+  .mypage-contain
+    %section.mypage-contain__status
+      %a
+        %figure
+          = image_tag "abe.png", class:"mypage-image", alt:"user-image"
+        %h2
+          = @user.nickname
+        .mypage-value
+          %div
+            評価
+            %span
+              0
+          %div
+            出品数
+            %span
+              0
+    %section.mypage-contain__notice-todo
+      %input#notice{:checked => "checked", :name => "tab_item1", :type => "radio"}/
+      %label.tab_item{:for => "notice"} お知らせ
+      %input#todo{:name => "tab_item1", :type => "radio"}/
+      %label.tab_item{:for => "todo"} やることリスト
+      #notice_content.tab_content
+        .tab_content_description
+          %p.c-txtsp お知らせはありません。
+      #todo_content.tab_content
+        .tab_content_description
+          %p.c-txtsp やることリストはありません
 
-  %main.mypage-container
-    .mypage-contain
-      %section.mypage-contain__status
-        %a
-          %figure
-            = image_tag "abe.png", class:"mypage-image", alt:"user-image"
-          %h2
-            = @user.nickname
-          .mypage-value
-            %div
-              評価
-              %span
-                0
-            %div
-              出品数
-              %span
-                0
-      %section.mypage-contain__notice-todo
-        %input#notice{:checked => "checked", :name => "tab_item1", :type => "radio"}/
-        %label.tab_item{:for => "notice"} お知らせ
-        %input#todo{:name => "tab_item1", :type => "radio"}/
-        %label.tab_item{:for => "todo"} やることリスト
-        #notice_content.tab_content
+    %section.mypage-contain_deals
+      %h2.mypage-contain_deals__header
+        購入した商品
+      .tab
+        %input#open_trade{:checked => "checked", :name => "tab_item2", :type => "radio"}/
+        %label.tab_item{:for => "open_trade"} 取引中
+        %input#open_trade-past{:name => "tab_item2", :type => "radio"}/
+        %label.tab_item{:for => "open_trade-past"} 過去の取引
+        #open_trade_content.tab_content
           .tab_content_description
-            %p.c-txtsp お知らせはありません。
-        #todo_content.tab_content
+            %p.c-txtsp 取引中の商品はありません
+        #open_trade-past_content.tab_content
           .tab_content_description
-            %p.c-txtsp やることリストはありません
-
-      %section.mypage-contain_deals
-        %h2.mypage-contain_deals__header
-          購入した商品
-        .tab
-          %input#open_trade{:checked => "checked", :name => "tab_item2", :type => "radio"}/
-          %label.tab_item{:for => "open_trade"} 取引中
-          %input#open_trade-past{:name => "tab_item2", :type => "radio"}/
-          %label.tab_item{:for => "open_trade-past"} 過去の取引
-          #open_trade_content.tab_content
-            .tab_content_description
-              %p.c-txtsp 取引中の商品はありません
-          #open_trade-past_content.tab_content
-            .tab_content_description
-              %p.c-txtsp 過去の取引はありません
-    .mypage-side
-      %nav.mypage-side-nav
-        %ul.mypage-side-nav_list
-          %li.mypage-side-nav_list-item
-            %a 
-              マイページ
-              %i.fas.fa-angle-right
-          %li.mypage-side-nav_list-item
-            %a
-              お知らせ
-              %i.fas.fa-angle-right
-          %li.mypage-side-nav_list-item
-            %a
-              やることリスト
-              %i.fas.fa-angle-right
-          %li.mypage-side-nav_list-item
-            %a
-              いいね！一覧
-              %i.fas.fa-angle-right
-          %li.mypage-side-nav_list-item
-            %label
-              =link_to "出品する", new_item_path
-              %i.fas.fa-angle-right
-          %li.mypage-side-nav_list-item
-            %a
-              下書き一覧
-              %i.fas.fa-angle-right
-          %li.mypage-side-nav_list-item
-            %a
-              出品した商品-出品中
-              %i.fas.fa-angle-right
-          %li.mypage-side-nav_list-item
-            %a
-              出品した商品-取引中
-              %i.fas.fa-angle-right
-          %li.mypage-side-nav_list-item
-            %a
-              出品した商品-売却済み
-              %i.fas.fa-angle-right
-          %li.mypage-side-nav_list-item
-            %a
-              購入した商品-取引中
-              %i.fas.fa-angle-right
-          %li.mypage-side-nav_list-item
-            %a
-              購入した商品-過去の取引
-              %i.fas.fa-angle-right
-          %li.mypage-side-nav_list-item
-            %a
-              ニュース一覧
-              %i.fas.fa-angle-right
-          %li.mypage-side-nav_list-item
-            %a
-              評価一覧
-              %i.fas.fa-angle-right
-          %li.mypage-side-nav_list-item
-            %a
-              ガイド
-              %i.fas.fa-angle-right
-          %li.mypage-side-nav_list-item
-            %a
-              お問い合わせ
-              %i.fas.fa-angle-right
-        %h3.mypage-side-nav-header
-          フリマアプリ 
-        %ul.mypage-side-nav_list
-          %li.mypage-side-nav_list-item
-            %a
-              売上・振込申請
-              %i.fas.fa-angle-right
-          %li.mypage-side-nav_list-item
-            %a
-              ポイント
-              %i.fas.fa-angle-right
-        %h3.mypage-side-nav-header
-          設定
-        %ul.mypage-side-nav_list
-          %li.mypage-side-nav_list-item
-            %a
-              プロフィール
-              %i.fas.fa-angle-right
-          %li.mypage-side-nav_list-item
-            %a
-              発送元・お届け先住所変更
-              %i.fas.fa-angle-right
-
-          %li.mypage-side-nav_list-item
-            = link_to new_payment_path do
-              支払い方法
-              %i.fas.fa-angle-right
-          -# %li.mypage-side-nav_list-item
-          -#   %a
-          -#     支払い方法
-          -#     %i.fas.fa-angle-right
-          %li.mypage-side-nav_list-item
-            %a
-              メール/パスワード
-              %i.fas.fa-angle-right
-          %li.mypage-side-nav_list-item
-            %a
-              本人情報
-              %i.fas.fa-angle-right
-          %li.mypage-side-nav_list-item
-            %a
-              電話番号の確認
-              %i.fas.fa-angle-right
-          %li.mypage-side-nav_list-item
-            = link_to destroy_user_session_path, method: :delete do
-              ログアウト
-              %i.fas.fa-angle-right
-  .footer
-    .footer__menu
-      %ul
-        .footer__menu--title
-          FURIMAについて
-        %li 会社概要（運営会社）
-        %li プライバシーポリシー
-        %li FURIMA利用規約
-        %li ポイントに関する特約
-      %ul
-        .footer__menu--title
-          FURIMAを見る
-        %li カテゴリー一覧
-        %li ブランド一覧
-      %ul
-        .footer__menu--title
-          FURIMAについて
-        %li FURIMAガイド
-        %li FURIMAロゴ利用ガイドライン
-        %li お知らせ
-    .footer__icon
-      = image_tag "logo-white.png", alt: "Furima App", size: "140x40", class: "footer__icon--iconImage"
-    .footer__trademark
-      © FURIMA
-
-  = link_to new_item_path do
-    .purchaseButton
-      .purchaseButton__text
-        出品する
-      = icon("fas", "camera", class:'purchaseButton__image')
+            %p.c-txtsp 過去の取引はありません
+  =render "mypage_render/mypage-left-side"
+=render "mypage_render/footer"
+-# =render "mypage_render/puchase-button"

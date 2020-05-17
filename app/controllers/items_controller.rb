@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
 
   require 'payjp'
 
+
   def confirmation
     payment = Payment.where(user_id: current_user.id).first
     #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
@@ -17,13 +18,24 @@ class ItemsController < ApplicationController
       @default_card_information = customer.cards.retrieve(payment.card_id)
     end
   end
-    
+
   def index
     @items = Item.limit(3).order(id: "DESC")
     @brands = Item.where(brand_id:"1").last(3).sort.reverse
   end
 
-    
+  def index_recent_posted
+    @items = Item.where(buyer_id: nil).order(id: "DESC")
+  end
+
+  def index_selling
+    @items = Item.where(buyer_id: nil).where(user_id: current_user.id).order(id: "DESC")
+  end
+
+  def index_sold
+    @items = Item.where(buyer_id: present?).where(user_id: current_user.id).order(id: "DESC")
+  end
+
   def pay
     payment = Payment.where(user_id: current_user.id).first
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
@@ -37,7 +49,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    10.times do 
+    10.times do
       @item.images.build
     end
   end
@@ -84,6 +96,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :text, :price, :condition, :shipping_charge, :shipping_origin, :shipping_schedule, :brand_id, :category_id, images_attributes: [:url, :url_cache]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :text, :price, :condition, :shipping_charge, :shipping_origin, :shipping_schedule, :brand_id, :category_id, images_attributes: [:url]).merge(saler_id: current_user.id).merge(user_id: current_user.id)
   end
 end
