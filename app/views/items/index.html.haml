@@ -117,13 +117,17 @@
   .main__pickupCategory
     .main__pickupCategory--title
       ピックアップカテゴリー
-    .main__pickupCategory--subtitle
+    = link_to index_recent_posted_items_path, class: "main__pickupCategory--subtitle" do
       新規投稿商品
     .main__pickupCategory--explains
       - @items.each do |item|
         %ul
-          %li.main__pickupCategory--image
-            = image_tag item.images.last.url,  size: "200x200"
+          = link_to item_path(item) do
+            %li.main__pickupCategory--image
+              -if item.images.blank?
+                No Image
+              -else
+                = link_to image_tag(item.images.last.url, size: "200x200"), item_path(item)
           %li.main__pickupCategory--product
             = item.name
           %li.main__pickupCategory--price
@@ -136,13 +140,17 @@
   .main__pickupBrand
     .main__pickupBrand--title
       ピックアップブランド
-    .main__pickupBrand--subtitle
+    = link_to index_recent_posted_items_path, class: "main__pickupBrand--subtitle" do
       新規投稿商品
     .main__pickupBrand--explains
       - @brands.each do |brand|
         %ul
-          %li.main__pickupBrand--image
-            = image_tag brand.images.last.url,  size: "200x200"
+          = link_to item_path(brand) do
+            %li.main__pickupBrand--image
+              -if brand.images.blank?
+                No Image
+              -else
+                = link_to image_tag(brand.images.last.url,  size: "200x200"), item_path(brand)
           %li.main__pickupBrand--product
             = brand.name
           %li.main__pickupBrand--price
@@ -190,14 +198,6 @@
       = image_tag "icon-footer.svg", alt: "Furima App", size: "140x40", class: "footer__icon--iconImage"
     .footer__trademark
       © FURIMA
-
-
-
--# = link_to new_item_path do
--#   .purchaseButton
--#     .purchaseButton__text
--#       出品する
--#     = icon("fas", "camera", class:'purchaseButton__image')
 
 - if user_signed_in?
   = link_to new_item_path do

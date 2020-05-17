@@ -24,7 +24,18 @@ class ItemsController < ApplicationController
     @brands = Item.where(brand_id:"1").last(3).sort.reverse
   end
 
-    
+  def index_recent_posted
+    @items = Item.where(buyer_id: nil).order(id: "DESC")
+  end
+
+  def index_selling
+    @items = Item.where(buyer_id: nil).where(user_id: current_user.id).order(id: "DESC")
+  end
+
+  def index_sold
+    @items = Item.where(buyer_id: present?).where(user_id: current_user.id).order(id: "DESC")
+  end
+
   def pay
     payment = Payment.where(user_id: current_user.id).first
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
@@ -54,7 +65,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # @brand = @item.brand
+    @brand = @item.brand
     @comment = Comment.new
   end
 
