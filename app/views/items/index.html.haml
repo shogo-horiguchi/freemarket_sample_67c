@@ -12,7 +12,9 @@
       .header__navi--brandButton
         ブランド
     - if user_signed_in?
-      = link_to "マイページ", new_user_registration_path, class: "header__right--btn"
+      .header__navi--rightMenu
+        = link_to "マイページ", new_user_registration_path, class: "header__navi--mypageButton"
+        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__navi--logoutButton"
     - else
       .header__navi--rightMenu
         = link_to "ログイン", new_user_session_path, class: "header__navi--loginButton"
