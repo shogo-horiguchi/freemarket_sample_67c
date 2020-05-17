@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       get 'done', to: 'items#done'
       get 'index_selling', to: 'items#index_selling'
       get 'index_sold', to: 'items#index_sold'
-      get 'index_recent', to: 'items#index_recent'
+      get 'index_recent_posted', to: 'items#index_recent_posted'
     end
   end
 

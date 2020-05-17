@@ -22,8 +22,10 @@
       商品の説明:
       = item.text
     .index__items--brand
-      カテゴリー:
-      = item.brand.name
+      ブランド:
+      -if item.brand.nil?
+      -else
+        = item.brand.name
     .index__items--condition
       商品の状態:
       = item.condition

@@ -6,12 +6,6 @@
     list-style: none;
   }
   
-  span{
-    font-weight: bold;
-    font-size: 18px;
-    color: #3ccace;
-  }
-  
   .header{
     position: fixed;
     z-index: 1;
@@ -173,6 +167,11 @@
           left: 50%;
           transform: translateX(-50%);
         font-size: 18px;
+        span{
+          font-weight: bold;
+          font-size: 18px;
+          color: #3ccace;
+        }
       }
       &--detail1{
         width: 100%;
@@ -213,6 +212,11 @@
           left: 50%;
           transform: translateX(-50%);
         font-size: 18px;
+        span{
+          font-weight: bold;
+          font-size: 18px;
+          color: #3ccace;
+        }
       }
       &--detail2{
         width: 100%;
@@ -253,6 +257,11 @@
           left: 50%;
           transform: translateX(-50%);
         font-size: 18px;
+        span{
+          font-weight: bold;
+          font-size: 18px;
+          color: #3ccace;
+        }
       }
       &--detail3{
         width: 100%;
