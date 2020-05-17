@@ -47,6 +47,7 @@ Rails.application.routes.draw do
       post 'show', to: 'payments#show'
       post 'pay', to: 'payments#pay'
       post 'delete', to: 'payments#delete'
+      get 'detail',to: 'payments#detail'
     end
   end
 end

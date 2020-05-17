@@ -1,0 +1,126 @@
+ .main-item-show {
+   padding: 40px;
+
+   &__detail {
+     width: 700px;
+     margin: 0 auto;
+
+  .item-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 24px 40px 40px;
+
+   &__name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 10px;
+   }
+
+   &__image {
+      margin: 10px 0 0;
+   } 
+
+   &__price {
+      font-size: 48px; 
+      font-weight: bold;
+   }
+
+   &__price-detail {
+      font-size: 16px; 
+      margin-bottom: 10px;
+   }
+
+   table {
+     width: 100%;
+     border: 1px solid #dedede;
+     margin: 20px 0px; 
+  }
+
+   th {
+      width: 20%;
+      background-color: #fff;
+      font-weight: 400;
+      padding: 10px;
+      border: 1px solid #dedede;
+      font-size: 14px;
+      text-align: center;
+   }
+
+   td {
+      width: 50%;
+      padding: 15px 15px;
+      border: 1px solid #dedede;
+      font-size: 14px;
+   }
+
+   .option-area {
+     display: flex;
+     justify-content: space-between;
+
+    li {
+      margin-right: auto;
+      padding: 6px 10px;
+      border-radius: 40px;
+      color: #3CCACE;
+      border: 1px solid #ffb340;
+    }
+
+    a {
+      padding: 6px 10px;
+      display: inline-block;
+      border-radius: 4px;
+      color: #333;
+      border: 1px solid #333;
+      text-decoration: none;
+    }
+   }
+  }
+
+ .comment-box {
+   text-align: center;
+
+  textarea {
+    width: 100%;
+    min-height: 104px;
+    padding: 10px;
+  }
+
+  p {
+    padding: 8px;
+    font-size: 14px;
+    background-color: #f8f8f8;
+    margin: 10px 0;
+    text-align: left;
+  }
+
+  button {
+    line-height: 48px;
+    background: #3CCACE;
+    border: 1px solid #3CCACE;
+    color: #fff;
+    width: 60%;
+    font-size: 18px;
+    border-radius: 100px;
+  }
+ }
+}
+
+ ul {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    color: #3ccace;
+ }
+
+ a {
+   text-decoration: none;
+   color: #3ccace;
+ }
+
+ .relateditems {
+   display: block;
+   margin: 24px 0 8px;
+   font-weight: bold;
+   font-size: 22px;
+ }
+}
