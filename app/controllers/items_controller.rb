@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
       @default_card_information = customer.cards.retrieve(payment.card_id)
     end
   end
-    
+
   def index
     @items = Item.limit(3).order(id: "DESC")
     @brands = Item.where(brand_id:"1").last(3).sort.reverse

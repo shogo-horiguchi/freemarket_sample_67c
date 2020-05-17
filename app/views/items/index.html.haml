@@ -192,6 +192,14 @@
     .footer__trademark
       © FURIMA
 
+
+
+-# = link_to new_item_path do
+-#   .purchaseButton
+-#     .purchaseButton__text
+-#       出品する
+-#     = icon("fas", "camera", class:'purchaseButton__image')
+
 - if user_signed_in?
   = link_to new_item_path do
     .purchaseButton
@@ -204,4 +212,5 @@
       .purchaseButton__text
         出品する
       = icon("fas", "camera", class:'purchaseButton__image')
+
 
