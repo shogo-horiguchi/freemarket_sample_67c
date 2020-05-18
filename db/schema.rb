@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200510123356) do
+ActiveRecord::Schema.define(version: 20200518141641) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "last_name",       null: false
@@ -69,17 +69,19 @@ ActiveRecord::Schema.define(version: 20200510123356) do
     t.string   "shipping_charge",                 null: false
     t.string   "shipping_origin",                 null: false
     t.string   "shipping_schedule",               null: false
-    t.integer  "user_id",                         null: false
+    t.integer  "user_id"
+    t.integer  "saler_id"
+    t.integer  "buyer_id"
     t.integer  "brand_id"
     t.integer  "category_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.string   "size"
     t.string   "shipping_way"
-    t.integer  "saler_id",                        null: false
-    t.integer  "buyer_id"
     t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
+    t.index ["buyer_id"], name: "index_items_on_buyer_id", using: :btree
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
+    t.index ["saler_id"], name: "index_items_on_saler_id", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
@@ -140,6 +142,8 @@ ActiveRecord::Schema.define(version: 20200510123356) do
   add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
+  add_foreign_key "items", "users", column: "buyer_id"
+  add_foreign_key "items", "users", column: "saler_id"
   add_foreign_key "payments", "users"
   add_foreign_key "tags", "categories"
   add_foreign_key "tags", "items"
