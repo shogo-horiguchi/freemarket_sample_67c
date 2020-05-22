@@ -1,6 +1,14 @@
-%h2 住所情報登録
-= form_for @address do |f|
-  = render "users/shared/error_messages", resource: @address
+= link_to "トップページへ", root_path, class: "dummy"
+
+.single-container
+  %header.single-header
+    %h1
+      = image_tag "logo.png", class:"header-image", alt:"logo"
+  %main.single-main
+    %section.l-single-container
+      %h2.l-single-container__refistration
+        住所情報登録
+= form_for @address, builder: WithErrorFormBuilder, html: {class: "inputForm"} do |f|
   .l-single-content
     .form-group-main
       .form-group
@@ -8,19 +16,21 @@
         %span.form-require
           必須
         %br/
-      .input-box-half
-        = f.text_field :last_name, placeholder: "例）安倍"
-      .input-box-half
-        = f.text_field :first_name, placeholder: "例）晋三"
+      .input-group-half
+        .input-box-half
+          = f.text_field :last_name, placeholder: "例）安倍"
+        .input-box-half
+          = f.text_field :first_name, placeholder: "例）晋三"
       .form-group
         = f.label :fullname_zen, "お名前（カナ）"
         %span.form-require
           必須
         %br/
-      .input-box-half
-        = f.text_field :last_name_kana, placeholder: "例）アベ"
-      .input-box-half
-        = f.text_field :first_name_kana, placeholder: "例）シンゾウ"
+      .input-group-half
+        .input-box-half
+          = f.text_field :last_name_kana, placeholder: "例）アベ"
+        .input-box-half
+          = f.text_field :first_name_kana, placeholder: "例）シンゾウ"
       .form-group
         = f.label :postal_code, "郵便番号"
         %span.form-require
@@ -33,7 +43,7 @@
         %span.form-require
           必須
         %br/
-      .input-box
+      .select-box
         = f.select :prefecture, ["北海道", "青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"], :prompt => "選択してください"
       .form-group
         = f.label :city, "市区町村"
@@ -57,5 +67,5 @@
         = f.label :telephone, "電話番号"
       .input-box
         = f.text_field :telephone, placeholder: "(例)1234567890"
-  .actions
-    = f.submit "新規登録"
+      .actions
+        = f.submit "新規登録"
