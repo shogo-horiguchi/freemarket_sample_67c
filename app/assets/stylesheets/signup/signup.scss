@@ -54,6 +54,29 @@
   line-height: 1.5;
   font-size: 16px;
   width: 100%;
+  outline: aqua;
+}
+
+.input-box input {
+  border:solid 0px;
+  width: 100%;
+  outline: 0;
+}
+
+.select-box select {
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+  width: 100%;
+  outline: aqua;
+}
+
+.input-group-half {
+  display: flex;
 }
 
 .input-box-half {
@@ -65,6 +88,12 @@
   line-height: 1.5;
   font-size: 16px;
   width: calc(50% - 6px);
+}
+
+.input-box-half input {
+  border:solid 0px;
+  width: 100%;
+  outline: 0;
 }
 
 .input-box-year {
@@ -126,3 +155,22 @@
   font-size: 12px;
   font-weight: 600;
 }
+ // エラーメッセージ
+ .field_with_errors{
+  display: inline;
+ }          
+ .field_with_errors input,
+ .field_with_errors select{
+   outline: 0;
+ }
+ .errors{
+   font-size: 5px;
+   margin-top: 15px;
+   color: red;
+ }
+
+ .new_address-header {
+   text-align: center;
+   font-size: 20px;
+   margin-top: 10px;
+ }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200425074914) do
+ActiveRecord::Schema.define(version: 20200518141641) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "last_name",       null: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20200425074914) do
   end
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",       null: false
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,15 +69,19 @@ ActiveRecord::Schema.define(version: 20200425074914) do
     t.string   "shipping_charge",                 null: false
     t.string   "shipping_origin",                 null: false
     t.string   "shipping_schedule",               null: false
-    t.integer  "user_id",                         null: false
+    t.integer  "user_id"
+    t.integer  "saler_id"
+    t.integer  "buyer_id"
     t.integer  "brand_id"
+    t.integer  "category_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.string   "size"
     t.string   "shipping_way"
-    t.integer  "saler_id",                        null: false
-    t.integer  "buyer_id"
     t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
+    t.index ["buyer_id"], name: "index_items_on_buyer_id", using: :btree
+    t.index ["category_id"], name: "index_items_on_category_id", using: :btree
+    t.index ["saler_id"], name: "index_items_on_saler_id", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
@@ -114,21 +118,20 @@ ActiveRecord::Schema.define(version: 20200425074914) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "nickname",                            null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
+    t.string   "last_name",                           null: false
+    t.string   "first_name",                          null: false
+    t.string   "last_name_kana",                      null: false
+    t.string   "first_name_kana",                     null: false
+    t.date     "birth_date",                          null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "nickname"
-    t.string   "last_name",                           null: false
-    t.string   "first_name",                          null: false
-    t.string   "last_name_kana",                      null: false
-    t.string   "first_name_kana",                     null: false
-    t.date     "birth_date"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["nickname"], name: "index_users_on_nickname", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
@@ -137,7 +140,10 @@ ActiveRecord::Schema.define(version: 20200425074914) do
   add_foreign_key "comments", "users"
   add_foreign_key "images", "items"
   add_foreign_key "items", "brands"
+  add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
+  add_foreign_key "items", "users", column: "buyer_id"
+  add_foreign_key "items", "users", column: "saler_id"
   add_foreign_key "payments", "users"
   add_foreign_key "tags", "categories"
   add_foreign_key "tags", "items"

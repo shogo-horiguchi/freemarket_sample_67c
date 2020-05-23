@@ -31,14 +31,17 @@
         %tr
           %td カテゴリー
           %td
-            = @item.category
+            = @item.category.name
         %tr
           %td ブランド
           %td
-            = @item.brand.name
+            -if @item.brand.nil?
+            -else
+              = @item.brand.name
         %tr
           %td 商品のサイズ
-          %td= @item.size
+          %td
+            = @item.size
         %tr
           %td 商品の状態
           %td
