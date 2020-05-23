@@ -20,7 +20,7 @@ class CategoriesController < ApplicationController
     @user = User.find(params[:id])
     @brand = @item.brand
   end
-
+  
   private
 
   def set_item
@@ -29,5 +29,4 @@ class CategoriesController < ApplicationController
     @child_category_items = Item.where(child_category_id: @children_category.id)
     @grand_category_items = Item.where(grand_child_category_id: @grand_category.id)
   end
-
 end

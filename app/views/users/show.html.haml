@@ -182,10 +182,15 @@
             %a
               発送元・お届け先住所変更
               %i.fas.fa-angle-right
+
           %li.mypage-side-nav_list-item
-            %a
+            = link_to new_payment_path do
               支払い方法
               %i.fas.fa-angle-right
+          -# %li.mypage-side-nav_list-item
+          -#   %a
+          -#     支払い方法
+          -#     %i.fas.fa-angle-right
           %li.mypage-side-nav_list-item
             %a
               メール/パスワード
@@ -227,7 +232,8 @@
     .footer__trademark
       © FURIMA
 
-  .purchaseButton
-    .purchaseButton__text
-      出品する
-    = icon("fas", "camera", class:'purchaseButton__image') 
+  = link_to new_item_path do
+    .purchaseButton
+      .purchaseButton__text
+        出品する
+      = icon("fas", "camera", class:'purchaseButton__image')

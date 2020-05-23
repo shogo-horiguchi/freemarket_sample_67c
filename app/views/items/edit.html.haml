@@ -1,0 +1,59 @@
+%h1 商品編集ページ
+.item-form
+  = form_for @item do |f|
+    .item-form__box
+      
+      .item-form__box__name
+        商品名
+        %span.form-require-gray 必須
+        = f.text_field :name
+      
+      .item-form__box__image
+        = f.fields_for :images do |image|
+          = image.label "画像"
+          %span.form-require-gray 必須
+          %div
+            = image.file_field :url, class: 'item-contents__image__drop-file'
+      
+      .item-form__box__brand
+        ブランド
+        %span.form-require-gray 任意
+        %div
+          = f.collection_select(:brand_id, Brand.all, :id, :name, prompt: "選択してください")
+
+      .item-form__box__text
+        商品の説明
+        %span.form-require-gray 必須
+        = f.text_area :text
+
+      .item-form__box__category
+        カテゴリー
+        %span.form-require-gray 必須
+        %div
+          = f.collection_select :category, Category.all, :id, :name, {selected: @item.category}, prompt: "選択してください"
+
+      .item-form__box__condition
+        商品の状態
+        %span.form-require-gray 必須
+        = f.select :condition, [["新品、未使用", 1], ["未使用に近い", 2], ["目立った傷や汚れなし", 3], ["やや傷や汚れあり", 4], ["傷や汚れあり", 5], ["全体的に状態が悪い", 6]], {selected: @item.condition}
+      
+      .item-form__box__price
+        商品の価格
+        %span.form-require-gray 必須
+        = f.number_field :price
+
+      .item-form__box__shipping-origin
+        配送元
+        %span.form-require-gray 必須
+        = f.text_area :shipping_origin
+      
+      .item-form__box__shipping-charge
+        配送料
+        %span.form-require-gray 必須
+        = f.number_field :shipping_charge
+      
+      .item-form__box__shipping-schedule
+        配送までにかかる日数
+        %span.form-require-gray 必須
+        = f.select :shipping_schedule, [["1~2日で発送", 0],["2~3日で発送", 1],["4~7日で発送", 2]], {selected: @item.shipping_schedule}
+      = f.submit 'Send', class: 'submit'
