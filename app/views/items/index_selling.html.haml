@@ -20,7 +20,9 @@
       = item.name
     .index__myItems--category
       カテゴリー:
-      = item.category.name
+      -if item.category.nil?
+      -else
+        = item.category.name
     .index__myItems--text
       商品の説明:
       = item.text

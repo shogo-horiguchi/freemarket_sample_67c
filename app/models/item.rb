@@ -11,6 +11,7 @@ class Item < ApplicationRecord
   validates :name, {presence: true}
   validates :price, {presence: true}
   validates :text, {presence: true}
+  validates :category_id, {presence: true}
   validates :condition, {presence: true}
   validates :shipping_charge, {presence: true}
   validates :shipping_origin, {presence: true}

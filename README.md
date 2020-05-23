@@ -108,4 +108,3 @@
 ### images_association
 - belongs_to :item
 
-
