@@ -16,7 +16,6 @@
       width: 650px;
       margin: 0 auto;
       padding: 20px 50px 200px;
-      // height: 100%;
       .head {
         font-size: 25px;
         text-align: center;
@@ -61,7 +60,6 @@
             &--icon{
               img {
                 width: 98%;
-                // height: 100%;
               }
             }
           }
@@ -91,18 +89,14 @@
               width: 100%;
               .image-block__boxes__image-box {
                 display: block;
-                // margin: 4px;
                 display: flex;
                 justify-content: space-between;
                 display: flex;
                 align-content: center;
-                // -webkit-box-align: center;
-                // align-items: center;
                 background-color: rgb(208, 238, 247);
                 cursor: pointer;
                 display: flex;
                 height: 150px;
-                // width: 100%;
                 flex-wrap: wrap;
                 -webkit-box-pack: center;
                 justify-content: center;
@@ -113,7 +107,6 @@
                 transition: all 0.5s ease-out 0s;
                 text-align: center;
                 i {
-                  // margin: 0 auto;
                   cursor: pointer;
                 }
               }
@@ -142,7 +135,6 @@
         padding-bottom: $block-padding-bottom;
         margin-top: $block-margin-top;
         &__name-block {
-          // margin-top: 70px;
           &__form {
             display: flex;
             #require {
@@ -280,7 +272,6 @@
         }
       }
       .item-send {
-        // padding: 0 20px;
         margin-top: 70px;
         border-bottom: $block-solid;
         padding-bottom: $block-padding-bottom;
@@ -391,12 +382,10 @@
         }
       }
       .item-price {
-        // padding: 0 20px;
         margin-top: 70px;
         border-bottom: $block-solid;
         padding-bottom: $block-padding-bottom;
         margin-top: $block-margin-top;
-        // height: 50px;
         p {
           color: rgb(89, 86, 92);
           font-size: 14px;
