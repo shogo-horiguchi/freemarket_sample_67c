@@ -1,0 +1,160 @@
+.header
+  .header__symbol
+    .header__symbol--icon-header
+      = image_tag "icon-header.svg", alt: "Furima App", size: "140x40", class: "header__symbol--iconImage"
+    = text_field_tag "searchWord", "", placeholder: "キーワードから探す" , class: "header__symbol--searchBox"
+    .header__symbol--searchButton
+      = icon("fas", "search", class:'header__symbol--searchImage') 
+  .header__navi
+    .header__navi--leftMenu
+      .header__navi--categoryButton
+        カテゴリー
+      .header__navi--brandButton
+        ブランド
+    - if user_signed_in?
+      = link_to "マイページ", new_user_registration_path, class: "header__right--btn"
+    - else
+      .header__navi--rightMenu
+        = link_to "ログイン", new_user_session_path, class: "header__navi--loginButton"
+        = link_to "新規登録", new_user_registration_path, class: "header__navi--registrationButton"
+  
+.main
+  .main-item-show
+    .main-item-show__detail
+      .item-container
+        .item-container__name
+          product3
+        .item-container__image
+          = image_tag  'a007.png', :size =>'500x300'
+        .item-container__price
+          ¥30,000
+        .item-container__price-detail
+          (税込）
+          %span 送料込み
+        .item-container__detail
+        親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐ
+
+        .table
+        %table
+          %tr
+            %th 出品者
+            %td
+              hoge
+          %tr
+            %th カテゴリー
+            %td
+              
+          %tr
+            %th ブランド
+            %td
+              
+          %tr
+            %th 商品のサイズ
+            %td
+              
+          %tr
+            %th 商品の状態
+            %td
+              良い
+          %tr
+            %th 配送料の負担
+            %td
+              
+          %tr
+            %th 配送の方法
+            %td
+              
+          %tr
+            %th 発送元地域
+            %td
+              東京都
+          %tr
+            %th 発送日の目安 
+            %td
+              １週間
+
+        .option-area
+          %ul
+          %li
+            = icon("fas","star",class:'option-area__likeBtn')
+            お気に入り
+          %ul
+          = link_to do
+            = icon("fas","flag",class:'option-area__flagBtn')
+            不適切な商品の通報
+
+      .comment-box
+        %textarea
+        %p 
+          相手のことを考え丁寧なコメントを心がけましょう。
+          %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %button  
+          = icon("fas","comment",class:'comment-box__comment') 
+          コメントする
+
+      %ul.links
+        %li
+          = link_to do
+            = icon("fas","angle-left",class:'links__angle-left')
+            前の商品
+        %li
+          = link_to do
+            後ろの商品
+          = icon("fas","angle-right",class:'inks__angle-right')
+          
+      .relateditems 
+        = link_to do
+          ベビー・キッズをもっとみる 
+      
+.main__bottomVisual
+  .main__bottomVisual--mainVisual
+    = image_tag "visual3.jpg", alt: "Image", class: "main__bottomVisual--mainImage"
+    .main__bottomVisual--theme
+      .main__bottomVisual--subtitle
+        だれでもかんたん、人生を変えるフリマアプリ
+      .main__bottomVisual--subtitleExplain
+        今すぐ無料ダウンロード！
+      .main__bottomVisual--appIcon
+        .main__bottomVisual--apple
+          = image_tag "appicon-apple.svg", alt: " Apple Store", size: "150x75", class: "hmain__bottomVisual--applestoreIcon"
+        .main__bottomVisual--googleplay
+          = image_tag "appicon-google.png", alt: " Google Play", size: "180x75", class: "hmain__bottomVisual-googleplayIcon"
+
+.footer
+  .footer__menu
+    %ul
+      .footer__menu--title
+        FURIMAについて
+      %li 会社概要（運営会社）
+      %li プライバシーポリシー
+      %li FURIMA利用規約
+      %li ポイントに関する特約
+    %ul
+      .footer__menu--title
+        FURIMAを見る
+      %li カテゴリー一覧
+      %li ブランド一覧
+    %ul
+      .footer__menu--title
+        FURIMAについて
+      %li FURIMAガイド
+      %li FURIMAロゴ利用ガイドライン
+      %li お知らせ
+
+  .footer__icon
+    = image_tag "icon-footer.svg", alt: "Furima App", size: "140x40", class: "footer__icon--iconImage"
+  .footer__trademar
+    %p © FURIMA
+
+- if user_signed_in?
+  = link_to new_item_path do
+    .purchaseButton
+      .purchaseButton__text
+        出品する
+      = icon("fas", "camera", class:'purchaseButton__image')
+- else
+  = link_to new_user_session_path do
+    .purchaseButton
+      .purchaseButton__text
+        出品する
+      = icon("fas", "camera", class:'purchaseButton__image')

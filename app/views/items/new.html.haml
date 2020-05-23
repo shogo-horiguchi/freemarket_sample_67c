@@ -42,12 +42,14 @@
           .item-detail__categories
             = f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "選択してください"}, {id: 'parent_category', class: 'item-detail__categories__category-box'}
 
+
           .item-detail__brand
             .item-detail__brand__form
               %b.item-head
                 ブランド
               %b#require 任意
             = f.text_area :brand_id, class: "brand-input"
+
 
           .item-detail__status
             .item-detail__status__form
