@@ -2,7 +2,7 @@
   = link_to 'トップページへ戻る', root_path
 - if @item.user == current_user
   .edit
-    = link_to 'この商品を編集する', edit_item_path(@item), class: "edit"
+    = link_to 'この商品を編集する', item_path(@item), class: "edit"
   .destroy
     = link_to 'この商品を削除する', item_path(@item, @comments), method: :delete, class: "destroy", data: { confirm: '本当に削除しますか?' }
 
