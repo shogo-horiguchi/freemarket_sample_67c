@@ -22,9 +22,9 @@ class PaymentsController < ApplicationController
 
   def pay #payjpとCardのデータベース作成を実施します。
   # ENVファイルにキーを読みに行く
-    # Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
   # 本番環境用 secrets.ymlに読みに行く
-    Rails.application.secrets.PAYJP_PRIVATE_KEY
+    # Rails.application.secrets.PAYJP_PRIVATE_KEY
     if params['payjp-token'].blank?
       redirect_to action: "new"
     else
