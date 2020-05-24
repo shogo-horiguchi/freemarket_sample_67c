@@ -52,9 +52,19 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    10.times do
+    5.times do 
       @item.images.build
     end
+
+    @category_parent_array = Category.where(ancestry: nil).inject([]) { |category_parent_array,(name)| category_parent_array << name}
+  end
+
+  def get_category_children
+    @category_children = Category.where(ancestry: "#{params[:parent_name]}")
+  end
+
+  def get_category_grandchildren
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
   def create
@@ -90,6 +100,14 @@ class ItemsController < ApplicationController
       redirect_to root_path, method: :delete
     else
       redirect_to item_path(@item)
+    end
+  end
+
+  def brand_search
+    @items = Item.search(params)
+    respond_to do |format|
+      # format.html
+      format.json
     end
   end
 

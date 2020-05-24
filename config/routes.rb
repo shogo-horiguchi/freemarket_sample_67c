@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root "items#index"
 
-  resources :items do
+  resources :items, only: [:index, :show, :new, :create] do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
     resources :comments, only: [:new, :create, :show]
     collection do
       get 'confirmation', to: 'items#confirmation'
@@ -31,10 +35,6 @@ Rails.application.routes.draw do
     member do
       get 'logout'
     end
-    collection do
-      get 'get_category_children', defaults: { format: 'json' }
-      get 'get_category_grandchildren', defaults: { format: 'json' }
-    end
   end
 
   resources :payments, only: [:new, :show] do
@@ -46,4 +46,5 @@ Rails.application.routes.draw do
     end
   end
 end
+
 
