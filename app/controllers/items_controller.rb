@@ -55,12 +55,8 @@ class ItemsController < ApplicationController
     5.times do 
       @item.images.build
     end
-    
-    @category_parent_array = []
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent
 
-    end
+    @category_parent_array = Category.where(ancestry: nil).inject([]) { |category_parent_array,(name)| category_parent_array << name}
   end
 
   def get_category_children
