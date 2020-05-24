@@ -38,8 +38,6 @@ namespace :deploy do
 
 set :default_env, {
   rbenv_root: "/usr/local/rbenv",
-  path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
-  PAYJP_PRIVATE_KEY: ENV["PAYJP_PRIVATE_KEY"],
-  PAYJP_KEY: ENV["PAYJP_KEY"]
+  path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH"
   }
 end
