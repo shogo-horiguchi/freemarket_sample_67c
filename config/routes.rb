@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "items#index"
 
-  resources :items, only: [:index, :show, :new, :create] do
+  resources :items do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
@@ -26,10 +26,11 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
   }
 
-  devise_scope :user do
-    get 'addresses', to: 'users/registrations#new_address'
-    post 'addresses', to: 'users/registrations#create_address'
-  end
+  # ２じゅうに記載？のため一旦コメントアウト
+  # devise_scope :user do
+  #   get 'addresses', to: 'users/registrations#new_address'
+  #   post 'addresses', to: 'users/registrations#create_address'
+  # end
 
   resources :users, only: :show do
     member do

@@ -4,7 +4,7 @@
   .edit
     = link_to 'この商品を編集する', item_path(@item), class: "edit"
   .destroy
-    = link_to 'この商品を削除する', item_path(@item, @comments), method: :delete, class: "destroy", data: { confirm: '本当に削除しますか?' }
+    = link_to 'この商品を削除する', item_path(@item), method: :delete, class: "destroy", data: { confirm: '本当に削除しますか?' }
 
 .main
   .detail-box

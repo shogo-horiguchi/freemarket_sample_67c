@@ -96,7 +96,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if current_user == @item.user && @item.comments.destroy_all && @item.destroy
+    if current_user == @item.user && @item.destroy
       redirect_to root_path, method: :delete
     else
       redirect_to item_path(@item)
