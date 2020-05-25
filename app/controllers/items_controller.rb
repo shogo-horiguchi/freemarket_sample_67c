@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :show, :update, :destroy]
-
+  before_action :set_category, only: [:new, :create, :edit, :update]
   require 'payjp'
 
 
@@ -52,11 +52,9 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    5.times do 
+    5.times do
       @item.images.build
     end
-
-    @category_parent_array = Category.where(ancestry: nil).inject([]) { |category_parent_array,(name)| category_parent_array << name}
   end
 
   def get_category_children
@@ -114,6 +112,10 @@ class ItemsController < ApplicationController
   private
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_category
+    @category_parent_array = Category.where(ancestry: nil).inject([]) { |category_parent_array,(name)| category_parent_array << name}
   end
 
   def item_params
