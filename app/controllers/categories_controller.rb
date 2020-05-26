@@ -1,8 +1,10 @@
 class CategoriesController < ApplicationController
 
   def show
-    @user = User.find(params[:id])
-    @brand = @item.brand
+    @category = Category.find_by(id: params[:id])
+    @items = @category.items
+    # @user = User.find(params[:id])
+    # @brand = @item.brand
   end
   
   private
