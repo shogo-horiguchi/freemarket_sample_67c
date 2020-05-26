@@ -5,8 +5,6 @@ $(function(){
 
   $('.hidden-field').change(function(){
     var index = $(this).data("image")
-    console.log(this)
-    console.log(index)
     var file = $('input[type="file"]').prop('files')[0];
     $.each(this.files, function(i, file){
       var fileReader = new FileReader();
