@@ -4,13 +4,12 @@ $(function(){
   var file_field = document.querySelector('input[type=file]')
 
   $('.hidden-field').change(function(){
+    var index = $(this).data("image")
     var file = $('input[type="file"]').prop('files')[0];
     $.each(this.files, function(i, file){
       var fileReader = new FileReader();
 
       dataBox.items.add(file)
-
-      file_field.files = dataBox.files
 
       var num = $('.item-image').length + 1 + i
       fileReader.readAsDataURL(file);
@@ -35,6 +34,7 @@ $(function(){
       };
       $('#image-block__boxes').attr('class', `item-num-${num}`)
     });
+    $(".image-label").prop("for", `item_images_attributes_${index + 1}_url`)
   });
   $(document).on("click", '.item-image__operation__delete', function(){
   var target_image = $(this).parent().parent()

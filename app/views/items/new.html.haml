@@ -11,11 +11,11 @@
         %p 最大5枚までアップロードできます
         .float-box
           .item-num-0#image-block__boxes
-            %label
+            %label.image-label{for: "item_images_attributes_0_url"}
               .image-block__boxes__image-box
                 %i.fas.fa-camera
               = f.fields_for :images do |image|
-                = image.file_field :url, type: 'file', class: 'hidden-field'
+                = image.file_field :url, type: 'file', class: "hidden-field", data: {image: image.index}
     
       .item-info
         .item-info__name-block
