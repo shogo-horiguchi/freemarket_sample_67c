@@ -1,6 +1,7 @@
 .main
   .main__block
     = form_for @item do |f|
+      = render "items/error_messages", resource: f.object
       %h2.head
         商品情報入力
       .image-block
@@ -40,7 +41,11 @@
               カテゴリー
             %b#require 必須
           .item-detail__categories
-            = f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "選択してください"}, {id: 'parent_category', class: 'item-detail__categories__category-box'}
+            = f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "選択してください"}, {id: 'parent_category'}
+            - if @children_categories.present?
+              = f.collection_select :category_id, @children_categories, :id, :name, {selected: @item.category.parent_id},{id: 'children_wrapper'}
+            - if @grand_children_categories.present?
+              = f.collection_select :category_id, @grand_children_categories, :id, :name, {selected: @item.category_id}, {id: 'grandchildren_wrapper'}
 
 
           .item-detail__brand
