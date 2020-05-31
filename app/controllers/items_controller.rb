@@ -57,21 +57,19 @@ class ItemsController < ApplicationController
     end
   end
 
-  def get_category_children
-    @category_children = Category.where(ancestry: "#{params[:parent_name]}")
-  end
-
-  def get_category_grandchildren
-    @category_grandchildren = Category.find("#{params[:child_id]}").children
-  end
-
   def create
     @item = Item.new(item_params)
     if @item.save
       redirect_to item_path(@item), notice: '商品が出品されました'
     else
+      num = @item.images.length
+      (5 - num).times do
+        @item.images.build
+      end
+      @grand_children_categories = @item.category.siblings if @item.category.present?
+      @children_categories = @item.category.parent.siblings if @item.category.present?
       flash.now[:alert] = '必須項目が抜けています'
-      render new_item_path
+      render :new
     end
   end
 
@@ -109,13 +107,21 @@ class ItemsController < ApplicationController
     end
   end
 
+  def set_category
+    @category_parent_array = Category.where(ancestry: nil).inject([]) { |category_parent_array,(name)| category_parent_array << name}
+  end
+
+  def get_category_children
+    @category_children = Category.where(ancestry: "#{params[:parent_name]}")
+  end
+
+  def get_category_grandchildren
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
   private
   def set_item
     @item = Item.find(params[:id])
-  end
-
-  def set_category
-    @category_parent_array = Category.where(ancestry: nil).inject([]) { |category_parent_array,(name)| category_parent_array << name}
   end
 
   def item_params
