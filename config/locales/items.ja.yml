@@ -4,7 +4,7 @@ ja:
      item:
       images: 画像
       name: 商品名
-      text: 商品
+      text: 商品の説明
       category_id: カテゴリー
       shipping_origin: 発送元
       shipping_charge: 配送料
