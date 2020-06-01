@@ -10,16 +10,15 @@ class Item < ApplicationRecord
   belongs_to :saler, class_name: "User", optional: true,foreign_key: "saler_id"
   belongs_to :buyer, class_name: "User", optional: true,foreign_key: "buyer_id"
 
-  validates :images, {presence: true}
-  validates :name, {presence: true}
-  validates :price, {presence: true}
-  validates :text, {presence: true}
-  validates :category_id, {presence: true}
+  validates :images, presence: {message: 'を投稿してください'}
+  validates :name, presence: {message: 'を入力してください'}
+  validates :text, presence: {message: 'について何か語ってくださいな'}
+  validates :category_id, presence: {message: 'を選択してください'}
   validates :condition, {presence: true}
-  validates :shipping_charge, {presence: true}
   validates :shipping_origin, {presence: true}
+  validates :shipping_charge, {presence: true}
   validates :shipping_schedule, {presence: true}
-
+  validates :price, presence: {message: 'を設定しない？嘘でしょ'}
 end
 
 

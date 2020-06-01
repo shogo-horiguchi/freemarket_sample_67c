@@ -1,6 +1,6 @@
 .main
   .main__block
-    = form_for @item do |f|
+    = form_for @item, builder: WithItemsErrorFormBuilder do |f|
       = render "items/error_messages", resource: f.object
       %h2.head
         商品情報入力
@@ -18,6 +18,8 @@
               = f.fields_for :images do |image|
                 = image.file_field :url, type: 'file', class: "hidden-field", data: {image: image.index}
     
+      
+      
       .item-info
         .item-info__name-block
           .item-info__name-block__form
@@ -33,6 +35,8 @@
             %b#require 必須
           = f.text_area :text, class: 'item-info__descript__descript-box', rows: '7', placeholder:"商品の説明（1000文字以内）"
 
+
+
       .item-detail
         %p 商品の詳細
         .item-detail__category
@@ -47,7 +51,6 @@
             - if @grand_children_categories.present?
               = f.collection_select :category_id, @grand_children_categories, :id, :name, {selected: @item.category_id}, {id: 'grandchildren_wrapper'}
 
-
           .item-detail__brand
             .item-detail__brand__form
               %b.item-head
@@ -55,13 +58,13 @@
               %b#require 任意
             = f.text_area :brand_id, class: "brand-input"
 
-
           .item-detail__status
             .item-detail__status__form
               %b.item-head
                 商品の状態
               %b#require 必須
             = f.select :condition, [["新品、未使用", 1], ["未使用に近い", 2], ["目立った傷や汚れなし", 3], ["やや傷や汚れあり", 4], ["傷や汚れあり", 5], ["全体的に状態が悪い", 6]]
+
 
         .item-send
           %p 配送について
