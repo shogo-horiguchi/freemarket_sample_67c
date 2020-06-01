@@ -5,6 +5,17 @@
   $block-solid:solid 1px rgb(196, 207, 207);
   $block-padding-bottom: 20px;
   $block-margin-top: 50px;
+
+  .error_message{
+    font-size: 15px;
+    color: red;
+    margin-top: 5px;
+  }
+
+  .field_with_errors {
+    outline: 0;
+    border-color: #3CCACE;
+  }
   
   .main {
     height: 100vh;
