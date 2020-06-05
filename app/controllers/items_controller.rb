@@ -25,7 +25,10 @@ class ItemsController < ApplicationController
     else
       @brands = Item.where(brand_id:"1").last(3).sort.reverse
     end
-    @parents = Category.all.order("id ASC").limit(13)
+    if Category.nil?
+    else
+      @parents = Category.all.order("id ASC").limit(13)
+    end
   end
 
   def index_recent_posted
