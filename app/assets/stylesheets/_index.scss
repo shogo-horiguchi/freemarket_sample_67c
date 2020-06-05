@@ -132,13 +132,6 @@
   }
 }
 
-
-// ul.header__navi--categoryButton {
-//   margin: 0px;               /* メニューバー外側の余白(ゼロ) */
-//   padding: 0px 0px 0px 15px; /* メニューバー内側の余白(左に15px) */
-//   background-color: #cc0000; /* バーの背景色(濃い赤色) */
-// }
-
 .category_list{
   height: 10px;
   width: 150px;          /* メニュー項目の横幅(125px) */
@@ -212,7 +205,6 @@
   font-weight:bold;
   text-decoration:none;
   color: #333;              /* メニュー項目の文字色(白色) */
-  // display: none;      /* ★標準では非表示にする */
 }
 
 .grand_child_category {
