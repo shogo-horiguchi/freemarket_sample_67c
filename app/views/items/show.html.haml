@@ -1,10 +1,5 @@
 .mypage
   = link_to 'トップページへ戻る', root_path
-- if @item.user == current_user
-  .edit
-    = link_to 'この商品を編集する', item_path(@item), class: "edit"
-  .destroy
-    = link_to 'この商品を削除する', item_path(@item), method: :delete, class: "destroy", data: { confirm: '本当に削除しますか?' }
 
 .main
   .detail-box
@@ -70,7 +65,17 @@
       %span.item-tax (税込)
       %span.item-shipping-fee 送料込み
 
-    = link_to "購入画面に進む", new_payment_path, class: "detail-box__buy-btn"
+    - if @item.user == current_user
+      .detail-box__edit-btn
+        = link_to 'この商品を編集する', item_path(@item), class: "edit"
+        = link_to 'この商品を削除する', item_path(@item), method: :delete, class: "destroy", data: { confirm: '本当に削除しますか?' }
+    - elsif user_signed_in?
+      .detail-box__buy-btn
+        = link_to "購入画面に進む", new_payment_path, class: "detail-box__buy-btn"
+    - else
+      .detail-box__login-btn
+        = link_to "ログインしてください", new_user_session_path, class: "header__navi--loginButton"
+        = link_to "新規登録してください", new_user_registration_path, class: "header__navi--registrationButton"
 
     .detail-box__description
       .detail-box__description__inner
