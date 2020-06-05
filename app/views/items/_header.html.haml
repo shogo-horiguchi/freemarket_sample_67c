@@ -1,5 +1,6 @@
-%ul.header__menu-box--left__parents
-  %li.header__menu-box--left__parents__parent
-    = link_to "レディース",  get_category_children_items_path(id: 1)
-    %ul.header__menu-box--left__children
-        = render partial: "header_child", collection: @category_children, as: "category"
+.category_list
+  .parents_list
+    - @parents.each do |parent|
+      = link_to "#{parent.name}", category_path(parent), class: "parent_category",id: "#{parent.id}"
+  .children_list
+  .grand_children_list

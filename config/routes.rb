@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :categories, only: :show 
+  resources :categories, only: [:show, :index, :new]
 
   devise_scope :user do
     get 'addresses', to: 'users/registrations#new_address'
