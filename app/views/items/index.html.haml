@@ -8,7 +8,8 @@
   .header__navi
     .header__navi--leftMenu
       .header__navi--categoryButton
-        カテゴリー
+        = link_to "カテゴリーから探す", categories_path
+        =render "header"
       .header__navi--brandButton
         ブランド
     - if user_signed_in?
@@ -119,7 +120,7 @@
   .main__pickupCategory
     .main__pickupCategory--title
       ピックアップカテゴリー
-    = link_to index_recent_posted_items_path, class: "main__pickupCategory--subtitle" do
+    = link_to category_path(id: 2), class: "main__pickupCategory--subtitle" do
       新規投稿商品
     .main__pickupCategory--explains
       - @items.each do |item|
