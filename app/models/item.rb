@@ -14,7 +14,8 @@ class Item < ApplicationRecord
   validates :name, presence: {message: 'を入力してください'}
   validates :text, presence: {message: 'について何か語ってくださいな'}
   validates :category_id, presence: {message: 'を選択してください'}
-  validates :condition, {presence: true}
+  validates :size, presence: {message: 'を選択してください'}
+  validates :condition, presence: {message: 'を選択してください'}
   validates :shipping_origin, {presence: true}
   validates :shipping_charge, {presence: true}
   validates :shipping_schedule, {presence: true}
