@@ -15,7 +15,7 @@ class CategoriesController < ApplicationController
     @category = Category.find_by(id: params[:id])
     @items = @category.items
     @user = User.find(params[:id])
-    @brand = @item.brand
+    # @brand = @item.brand
   end
   
   private

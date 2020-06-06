@@ -80,6 +80,10 @@ class ItemsController < ApplicationController
   def show
     @brand = @item.brand
     @comment = Comment.new
+    if Category.nil?
+    else
+      @parents = Category.all.order("id ASC").limit(13)
+    end
   end
 
   def edit
