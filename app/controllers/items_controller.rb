@@ -25,10 +25,7 @@ class ItemsController < ApplicationController
     else
       @brands = Item.where(brand_id:"1").last(3).sort.reverse
     end
-    if Category.nil?
-    else
       @parents = Category.all.order("id ASC").limit(13)
-    end
   end
 
   def index_recent_posted
@@ -59,6 +56,7 @@ class ItemsController < ApplicationController
     5.times do
       @item.images.build
     end
+    @parents = Category.all.order("id ASC").limit(13)
   end
 
   def create
@@ -80,10 +78,7 @@ class ItemsController < ApplicationController
   def show
     @brand = @item.brand
     @comment = Comment.new
-    if Category.nil?
-    else
-      @parents = Category.all.order("id ASC").limit(13)
-    end
+    @parents = Category.all.order("id ASC").limit(13)
   end
 
   def edit
