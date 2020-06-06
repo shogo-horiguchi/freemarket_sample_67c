@@ -35,6 +35,12 @@ class WithItemsErrorFormBuilder < ActionView::Helpers::FormBuilder
     super + pick_errors(method)
   end
 
+  def select(attribute, choices = nil, options = {}, html_options = {}, &block)
+    return super if options[:no_errors]
+    super + pick_errors(attribute)
+  end
+
+
   (field_helpers - [:label, :radio_button, :hidden_field]).each do |selector|
     class_eval <<-RUBY_EVAL, __FILE__, __LINE__ + 1
       def #{selector}(attribute, options = {})

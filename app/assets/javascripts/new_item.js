@@ -58,23 +58,6 @@ $(function(){
 });
 
 
-//ブランドインクリメンタルサーチ
-$(function(){
-  $("#item_brand_id").on("keyup", function(){
-    var input = $("item_brand_id").val();
-    $.ajax({
-      type: 'GET',
-      url: '/items/index',
-      data: { keyword: input },
-      dataType: 'json'
-    })
-    .done(function(items) {
-      console.log("成功です");
-    })
-  });
-});
-
-
 //カテゴリー選択
 $(function(){
   function appendOption(category){
@@ -160,3 +143,5 @@ $(function(){
     }
   });
 });
+
+
