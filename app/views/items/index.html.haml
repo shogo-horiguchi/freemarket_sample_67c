@@ -177,30 +177,7 @@
           .main__bottomVisual--googleplay
             = image_tag "appicon-google.png", alt: " Google Play", size: "180x75", class: "hmain__bottomVisual-googleplayIcon"
 
-  .footer
-    .footer__menu
-      %ul
-        .footer__menu--title
-          FURIMAについて
-        %li 会社概要（運営会社）
-        %li プライバシーポリシー
-        %li FURIMA利用規約
-        %li ポイントに関する特約
-      %ul
-        .footer__menu--title
-          FURIMAを見る
-        %li カテゴリー一覧
-        %li ブランド一覧
-      %ul
-        .footer__menu--title
-          FURIMAについて
-        %li FURIMAガイド
-        %li FURIMAロゴ利用ガイドライン
-        %li お知らせ
-    .footer__icon
-      = image_tag "icon-footer.svg", alt: "Furima App", size: "140x40", class: "footer__icon--iconImage"
-    .footer__trademark
-      © FURIMA
+= render 'footer'
 
 - if user_signed_in?
   = link_to new_item_path do
