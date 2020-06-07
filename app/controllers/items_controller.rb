@@ -75,21 +75,25 @@ class ItemsController < ApplicationController
     end
   end
 
+ 
   def show
     @brand = @item.brand
     @comment = Comment.new
   end
 
-  def edit
+   def edit
     @item.images.cache_key unless @item.images.blank?
   end
+
 
   def update
     if @item.update(item_params)
       redirect_to item_path(@item), notice: '商品が編集されました'
-    else
+    elsif
       flash.now[:alert] = '必須項目が抜けています'
       render new_item_path
+    else
+      render edit_item_path
     end
   end
 
