@@ -20,6 +20,11 @@ class Item < ApplicationRecord
   validates :shipping_charge, {presence: true}
   validates :shipping_schedule, {presence: true}
   validates :price, presence: {message: 'を設定しない？嘘でしょ'}
+  validates :price, numericality: { greater_than_or_equal_to: 300, message: 'は300円以上から設定できます'}, unless: :nil_price
+  validates :price, numericality: { less_than_or_equal_to: 9999999, message: 'は9999999円以下で設定してください'}, unless: :nil_price
+  def nil_price
+    price == nil
+  end
 end
 
 
