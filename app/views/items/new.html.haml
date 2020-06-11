@@ -1,7 +1,9 @@
-=render "mainheader"
+.item-main
 
-.main
-  .main__block
+  .icon
+    = image_tag "icon-header.svg", alt: "Furima App", size: "140x40", class: "iconImage"
+
+  .item-main__block
     = form_for @item, builder: WithItemsErrorFormBuilder do |f|
       = render "items/error_messages", resource: f.object
       %h2.head
