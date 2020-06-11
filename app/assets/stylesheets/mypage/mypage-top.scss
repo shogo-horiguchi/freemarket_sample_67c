@@ -63,20 +63,25 @@
         }
       }
   }
-  
-  .page-links {
-    height: 48px;
-    font-size: 14px;
-    background-color: #fff;
-    line-height: 48px;
-    ul {
-      display: flex;
-    }
-    li {
-      margin-left: 5px;
-    }
+}
+
+.page-links {
+  width: 100%;
+  height: 48px;
+  font-size: 14px;
+  background-color: #fff;
+  line-height: 48px;
+  border: 1px solid #eee;
+  -webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  position: fixed;
+  ul {
+    display: flex;
+  }
+  li {
+    margin-left: 5px;
   }
 }
+
 .mypage-container {
   width: 1020px;
   overflow: hidden;
