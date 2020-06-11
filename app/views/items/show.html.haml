@@ -83,10 +83,12 @@
   .comment-box
     .comment-box__comment-container
       = form_for [@item, @comment] do |f|
+        .comment_rule
+          相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
         .comment-textarea
-          = f.text_area :text, placeholder: "コメントする", size: "65x5"
+          = f.text_area :text, placeholder: "コメントはこちら", size: "65x5", class:"comments_text"
         .field
-          = f.submit '投稿する'
+          = f.submit 'コメント', class: "comments_button"
     - if @item.comments
       .comment-box__comment-container__comments
         %h4＜コメント一覧＞
