@@ -42,7 +42,6 @@ $(function(){
   if(file_field.files.length==1){
     $('input[type=file]').val(null)
     dataBox.clearData();
-    // console.log(dataBox)
   }else{
     $.each(file_field.files, function(i,input){
       if(input.name==target_name){
@@ -59,34 +58,17 @@ $(function(){
 });
 
 
-//ブランドインクリメンタルサーチ
-$(function(){
-  $("#item_brand_id").on("keyup", function(){
-    var input = $("item_brand_id").val();
-    $.ajax({
-      type: 'GET',
-      url: '/items/index',
-      data: { keyword: input },
-      dataType: 'json'
-    })
-    .done(function(items) {
-      console.log("成功です");
-    })
-  });
-});
-
-
 //カテゴリー選択
 $(function(){
   function appendOption(category){
-    var html = `<option value="${category.name}" data-category="${category.id}">${category.name}</option>`;
+    var html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
     return html;
   }
   function appendChidrenBox(insertHTML){
     var childSelectHtml = '';
     childSelectHtml = `<div class='listing-select-wrapper__added' id= 'children_wrapper'>
                         <div class='listing-select-wrapper__box'>
-                          <select class="listing-select-wrapper__box--select" id="child_category" name="category_id">
+                          <select class="listing-select-wrapper__box--select" id="child_category" name="item[category_id]">
                             <option value="選択してください" data-category="選択してください">選択してください</option>
                             ${insertHTML}
                           <select>
@@ -98,7 +80,7 @@ $(function(){
     var grandchildSelectHtml = '';
     grandchildSelectHtml = `<div class='listing-select-wrapper__added' id= 'grandchildren_wrapper'>
                               <div class='listing-select-wrapper__box'>
-                                <select class="listing-select-wrapper__box--select" id="grandchild_category" name="category_id">
+                                <select class="listing-select-wrapper__box--select" id="grandchild_category" name="item[category_id]">
                                   <option value="選択してください" data-category="選択してください">選択してください</option>
                                   ${insertHTML}
                                 </select>
@@ -109,9 +91,9 @@ $(function(){
   // 親カテゴリー選択後のイベント
   $('#parent_category').on('change', function(){
     var parentCategory = document.getElementById('parent_category').value;
-    if (parentCategory != "選択してください"){
+    if (parentCategory != ""){
       $.ajax({
-        url: 'get_category_children',
+        url: '/items/get_category_children',
         type: 'GET',
         data: { parent_name: parentCategory },
         dataType: 'json'
@@ -138,7 +120,7 @@ $(function(){
     var childId = $('#child_category option:selected').data('category');
     if (childId != "選択してください"){ 
       $.ajax({
-        url: 'get_category_grandchildren',
+        url: '/items/get_category_grandchildren',
         type: 'GET',
         data: { child_id: childId },
         dataType: 'json'
@@ -161,3 +143,5 @@ $(function(){
     }
   });
 });
+
+

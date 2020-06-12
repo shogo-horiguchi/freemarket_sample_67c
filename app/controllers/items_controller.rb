@@ -25,6 +25,7 @@ class ItemsController < ApplicationController
     else
       @brands = Item.where(brand_id:"1").last(3).sort.reverse
     end
+      @parents = Category.all.order("id ASC").limit(13)
   end
 
   def index_recent_posted
@@ -55,14 +56,7 @@ class ItemsController < ApplicationController
     5.times do
       @item.images.build
     end
-  end
-
-  def get_category_children
-    @category_children = Category.where(ancestry: "#{params[:parent_name]}")
-  end
-
-  def get_category_grandchildren
-    @category_grandchildren = Category.find("#{params[:child_id]}").children
+    @parents = Category.all.order("id ASC").limit(13)
   end
 
   def create
@@ -70,8 +64,14 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to item_path(@item), notice: '商品が出品されました'
     else
+      num = @item.images.length
+      (5 - num).times do
+        @item.images.build
+      end
+      @grand_children_categories = @item.category.siblings if @item.category.present?
+      @children_categories = @item.category.parent.siblings if @item.category.present?
       flash.now[:alert] = '必須項目が抜けています'
-      render new_item_path
+      render :new
     end
   end
 
@@ -79,6 +79,7 @@ class ItemsController < ApplicationController
   def show
     @brand = @item.brand
     @comment = Comment.new
+    @parents = Category.all.order("id ASC").limit(13)
   end
 
    def edit
@@ -113,16 +114,24 @@ class ItemsController < ApplicationController
     end
   end
 
+  def set_category
+    @category_parent_array = Category.where(ancestry: nil).inject([]) { |category_parent_array,(name)| category_parent_array << name}
+  end
+
+  def get_category_children
+    @category_children = Category.where(ancestry: "#{params[:parent_name]}")
+  end
+
+  def get_category_grandchildren
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
   private
   def set_item
     @item = Item.find(params[:id])
   end
 
-  def set_category
-    @category_parent_array = Category.where(ancestry: nil).inject([]) { |category_parent_array,(name)| category_parent_array << name}
-  end
-
   def item_params
-    params.require(:item).permit(:name, :text, :price, :condition, :shipping_charge, :shipping_origin, :shipping_schedule, :brand_id, :category_id, images_attributes: [:url]).merge(saler_id: current_user.id).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :text, :price, :condition, :shipping_charge, :shipping_origin, :shipping_schedule, :brand_id, :category_id, :size, images_attributes: [:url]).merge(saler_id: current_user.id).merge(user_id: current_user.id)
   end
 end

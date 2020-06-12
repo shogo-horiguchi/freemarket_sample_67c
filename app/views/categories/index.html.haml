@@ -1,0 +1,8 @@
+= link_to "トップページへ", root_path, class: "dummy"
+
+- breadcrumb :category_top
+=render "layouts/breadcrumbs"
+
+- @parents.each do |parent|
+  =link_to category_path(parent) do
+    =parent.name

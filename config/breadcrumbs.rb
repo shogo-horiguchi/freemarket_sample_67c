@@ -10,6 +10,17 @@ crumb :logout do
   link "ログアウト", logout_user_path
   parent :mypage
 end
+
+crumb :category_top do
+  link "カテゴリー一覧", categories_path
+end
+
+crumb :category_parent do 
+  @category = Category.find_by(id: params[:id])
+  link @category.name, category_path
+  parent :category_top
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
