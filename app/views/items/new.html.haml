@@ -67,7 +67,7 @@
               %b.item-head
                 ブランド
               %b#require 任意
-            = f.text_area :brand_id, class: "brand-input"
+            = f.collection_select :brand_id, @brand class: "brand-input"
 
           .item-detail__status
             .item-detail__status__form
@@ -119,4 +119,4 @@
 
         = f.submit '出品する', class: 'submit-btn'
         
-=render "footer"  
+  =render "footer"  

@@ -57,6 +57,7 @@ class ItemsController < ApplicationController
       @item.images.build
     end
     @parents = Category.all.order("id ASC").limit(13)
+    # @item.build_brand
   end
 
   def create
@@ -128,6 +129,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :text, :price, :condition, :shipping_charge, :shipping_origin, :shipping_schedule, :brand_id, :category_id, :size, images_attributes: [:url]).merge(saler_id: current_user.id).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :text, :price, :condition, :shipping_charge, :shipping_origin, :shipping_schedule, :category_id, :size, brand_attributes: [:id, :name], images_attributes: [:url]).merge(saler_id: current_user.id).merge(user_id: current_user.id)
   end
 end

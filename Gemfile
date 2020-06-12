@@ -93,3 +93,5 @@ gem 'rb-readline'
 gem "gretel"
 
 gem 'rb-readline'
+
+gem 'active_hash'
