@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :show, :update, :destroy]
   before_action :set_category, only: [:new, :create, :edit, :update]
+  before_action :set_brand, only: [:new, :create, :edit, :update]
   require 'payjp'
 
 
@@ -57,7 +58,7 @@ class ItemsController < ApplicationController
       @item.images.build
     end
     @parents = Category.all.order("id ASC").limit(13)
-    # @item.build_brand
+    @brands = Brand.all
   end
 
   def create
@@ -72,6 +73,7 @@ class ItemsController < ApplicationController
       @grand_children_categories = @item.category.siblings if @item.category.present?
       @children_categories = @item.category.parent.siblings if @item.category.present?
       flash.now[:alert] = '必須項目が抜けています'
+      @brands = Brand.all
       render :new
     end
   end
@@ -122,6 +124,10 @@ class ItemsController < ApplicationController
   def get_category_grandchildren
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
+  
+  def set_brand
+    @brands = Brand.where(active: true)
+  end
 
   private
   def set_item
@@ -129,6 +135,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :text, :price, :condition, :shipping_charge, :shipping_origin, :shipping_schedule, :category_id, :size, brand_attributes: [:id, :name], images_attributes: [:url]).merge(saler_id: current_user.id).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :text, :price, :condition, :shipping_charge, :shipping_origin, :shipping_schedule, :category_id, :size, :brand_id, images_attributes: [:url]).merge(saler_id: current_user.id).merge(user_id: current_user.id)
   end
 end

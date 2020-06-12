@@ -67,7 +67,7 @@
               %b.item-head
                 ブランド
               %b#require 任意
-            = f.collection_select :brand_id, @brand class: "brand-input"
+            = f.collection_select :brand_id, @brands, :id, :name, {prompt: "選択してください"}, {class: "brand-input"}
 
           .item-detail__status
             .item-detail__status__form

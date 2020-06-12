@@ -30,9 +30,9 @@ class WithItemsErrorFormBuilder < ActionView::Helpers::FormBuilder
     super + pick_errors(attribute)
   end
 
-  def collection_select(method, collection, value_method, text_method, options = {}, html_options = {})
+  def collection_select(attribute, collection, value_method, text_method, options = {}, html_options = {})
     return super if options[:no_errors]
-    super + pick_errors(method)
+    super + pick_errors(attribute)
   end
 
   def select(attribute, choices = nil, options = {}, html_options = {}, &block)
