@@ -69,7 +69,7 @@ $(function(){
     childSelectHtml = `<div class='listing-select-wrapper__added' id= 'children_wrapper'>
                         <div class='listing-select-wrapper__box'>
                           <select class="listing-select-wrapper__box--select" id="child_category" name="item[category_id]">
-                            <option value="選択してください" data-category="選択してください">選択してください</option>
+                            <option value="" data-category="選択してください">選択してください</option>
                             ${insertHTML}
                           <select>
                         </div>
@@ -81,7 +81,7 @@ $(function(){
     grandchildSelectHtml = `<div class='listing-select-wrapper__added' id= 'grandchildren_wrapper'>
                               <div class='listing-select-wrapper__box'>
                                 <select class="listing-select-wrapper__box--select" id="grandchild_category" name="item[category_id]">
-                                  <option value="選択してください" data-category="選択してください">選択してください</option>
+                                  <option value="" data-category="選択してください">選択してください</option>
                                   ${insertHTML}
                                 </select>
                               </div>

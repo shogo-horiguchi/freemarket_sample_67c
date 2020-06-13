@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :show, :update, :destroy]
   before_action :set_category, only: [:new, :create, :edit, :update]
+  before_action :set_brand, only: [:new, :create, :edit, :update]
   require 'payjp'
 
 
@@ -57,6 +58,7 @@ class ItemsController < ApplicationController
       @item.images.build
     end
     @parents = Category.all.order("id ASC").limit(13)
+    @brands = Brand.all
   end
 
   def create
@@ -71,6 +73,7 @@ class ItemsController < ApplicationController
       @grand_children_categories = @item.category.siblings if @item.category.present?
       @children_categories = @item.category.parent.siblings if @item.category.present?
       flash.now[:alert] = '必須項目が抜けています'
+      @brands = Brand.all
       render :new
     end
   end
@@ -124,6 +127,10 @@ class ItemsController < ApplicationController
 
   def get_category_grandchildren
     @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+  
+  def set_brand
+    @brands = Brand.where(active: true)
   end
 
   private
