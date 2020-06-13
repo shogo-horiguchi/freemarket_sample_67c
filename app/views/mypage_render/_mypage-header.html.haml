@@ -1,44 +1,71 @@
-.mypage-default
-  %header.mypage-header
-    .mypage-header__upper
-      %h1.mypage-header__upper__image
-        = image_tag "logo.png", class:"mypage-image", alt:"logo-image"
-      %from.mypage-header__search
-        %input.mypage-header__search__input{:name => "keyword", :placeholder => "何かお探しですか？", :type => "search", :value => ""}/
-        %i.fas.fa-search
-  .mypage-header__bottom
-    %nav.b-left
-      %ul.header-nav
-        %li
-          %h2.header-nav-category
-            %a.header-nav-category-list
-            %i.fas.fa-list
-            = link_to "カテゴリーから探す", categories_path
-        %li
-          %h2.header-nav-bland
-            %a.header-nav-bland-list
-            %i.fas.fa-tags
-            %span
-              ブランドから探す
-    .b-right
-      %ul.header-nav-user
-        %li
-          %a.like-list
-            %i.far.fa-heart
-            %span
-              いいね！一覧
-        %li
-          %a.notice-list
-            %i.far.fa-bell
-            %span
-              お知らせ
-        %li
-          %a.todo-list
-            %i.fas.fa-check
-            %span
-              やることリスト
-        %li
-          %a.mypage-link
-            %i.far.fa-user-circle
-            %span
-              マイページ
+.header
+  .header__symbol
+    .header__symbol--icon-header
+      = image_tag "icon-header.svg", alt: "Furima App", size: "140x40", class: "header__symbol--iconImage"
+    = text_field_tag "searchWord", "", placeholder: "キーワードから探す" , class: "header__symbol--searchBox"
+    .header__symbol--searchButton
+      = icon("fas", "search", class:'header__symbol--searchImage') 
+  .header__navi
+    .header__navi--leftMenu
+      .header__navi--categoryButton
+        = link_to "カテゴリーから探す", categories_path
+        =render "items/header"
+      .header__navi--brandButton
+        ブランド
+    - if user_signed_in?
+      .header__navi--rightMenu
+        = link_to "マイページ", new_user_registration_path, class: "header__navi--mypageButton"
+        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__navi--logoutButton"
+    - else
+      .header__navi--rightMenu
+        = link_to "ログイン", new_user_session_path, class: "header__navi--loginButton"
+        = link_to "新規登録", new_user_registration_path, class: "header__navi--registrationButton"
+
+
+
+
+
+-# .mypage-default
+-#   %header.mypage-header
+-#     .mypage-header__upper
+-#       %h1.mypage-header__upper__image
+-#         = image_tag "logo.png", class:"mypage-image", alt:"logo-image"
+-#       %from.mypage-header__search
+-#         %input.mypage-header__search__input{:name => "keyword", :placeholder => "何かお探しですか？", :type => "search", :value => ""}/
+-#         %i.fas.fa-search
+-#   .mypage-header__bottom
+-#     %nav.b-left
+-#       %ul.header-nav
+-#         %li
+-#           %h2.header-nav-category
+-#             %a.header-nav-category-list
+-#             %i.fas.fa-list
+-#             = link_to "カテゴリーから探す", categories_path
+-#         %li
+-#           %h2.header-nav-bland
+-#             %a.header-nav-bland-list
+-#             %i.fas.fa-tags
+-#             %span
+-#               ブランドから探す
+-#     .b-right
+-#       %ul.header-nav-user
+-#         %li
+-#           %a.like-list
+-#             %i.far.fa-heart
+-#             %span
+-#               いいね！一覧
+-#         %li
+-#           %a.notice-list
+-#             %i.far.fa-bell
+-#             %span
+-#               お知らせ
+-#         %li
+-#           %a.todo-list
+-#             %i.fas.fa-check
+-#             %span
+-#               やることリスト
+-#         %li
+-#           %a.mypage-link
+-#             %i.far.fa-user-circle
+-#             %span
+-#               マイページ

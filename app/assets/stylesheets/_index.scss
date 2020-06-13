@@ -138,6 +138,7 @@
   display: flex; /* ★横並びに配置する */
   list-style-type: none; /* ★リストの先頭記号を消す */
   position: relative;    /* ★サブメニュー表示の基準位置にする */
+  z-index: 1;
 }
 
 .parents_list {
