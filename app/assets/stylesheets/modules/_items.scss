@@ -222,6 +222,7 @@
             overflow: scroll;
             border-radius: 4px;
             border-color: gray;
+            resize: vertical;
           }
         }
       }
@@ -382,6 +383,7 @@
             height: 50px;
             width: 100%;
             padding: 3px;
+            resize: vertical;
           }
         }
         &__shipping-charge{
