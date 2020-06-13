@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20200612044203) do
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",                            null: false
     t.integer  "price",                           null: false
+    t.integer  "brand_id"
     t.text     "text",              limit: 65535, null: false
     t.string   "condition",                       null: false
     t.string   "shipping_charge",                 null: false
@@ -72,12 +73,10 @@ ActiveRecord::Schema.define(version: 20200612044203) do
     t.integer  "user_id"
     t.integer  "saler_id"
     t.integer  "buyer_id"
-    t.integer  "brand_id"
     t.integer  "category_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.string   "size"
-    t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
     t.index ["buyer_id"], name: "index_items_on_buyer_id", using: :btree
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
     t.index ["saler_id"], name: "index_items_on_saler_id", using: :btree
@@ -138,7 +137,6 @@ ActiveRecord::Schema.define(version: 20200612044203) do
   add_foreign_key "comments", "items"
   add_foreign_key "comments", "users"
   add_foreign_key "images", "items"
-  add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
   add_foreign_key "items", "users", column: "buyer_id"
