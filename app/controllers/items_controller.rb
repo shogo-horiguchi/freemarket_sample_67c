@@ -75,22 +75,26 @@ class ItemsController < ApplicationController
     end
   end
 
+ 
   def show
     @brand = @item.brand
     @comment = Comment.new
     @parents = Category.all.order("id ASC").limit(13)
   end
 
-  def edit
+   def edit
     @item.images.cache_key unless @item.images.blank?
   end
+
 
   def update
     if @item.update(item_params)
       redirect_to item_path(@item), notice: '商品が編集されました'
-    else
+    elsif
       flash.now[:alert] = '必須項目が抜けています'
       render new_item_path
+    else
+      render edit_item_path
     end
   end
 
@@ -128,6 +132,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :text, :price, :condition, :shipping_charge, :shipping_origin, :shipping_schedule, :brand_id, :category_id, :size, images_attributes: [:url]).merge(saler_id: current_user.id).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :text, :price, :condition, :shipping_charge, :shipping_origin, :shipping_schedule, :brand_id, :category_id, :size, images_attributes: [:url, :_destroy, :id]).merge(saler_id: current_user.id).merge(user_id: current_user.id)
   end
 end
