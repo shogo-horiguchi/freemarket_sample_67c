@@ -94,4 +94,7 @@ gem "gretel"
 
 gem 'rb-readline'
 
+
 gem 'active_hash'
+
+gem 'mini_racer'

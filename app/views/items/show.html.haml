@@ -63,7 +63,7 @@
 
     - if @item.user == current_user
       .detail-box__edit-btn
-        = link_to 'この商品を編集する', item_path(@item), class: "edit"
+        = link_to 'この商品を編集する', edit_item_path(@item), class: "edit"
         = link_to 'この商品を削除する', item_path(@item), method: :delete, class: "destroy", data: { confirm: '本当に削除しますか?' }
     - elsif user_signed_in?
       .detail-box__buy-btn
