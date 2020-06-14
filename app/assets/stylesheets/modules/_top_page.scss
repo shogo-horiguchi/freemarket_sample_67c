@@ -458,7 +458,11 @@
         display: flex;
         justify-content: center;
       }
-  
+      &--sold{
+        color: red;
+        font-weight: bold;
+        font-family: sans-serif;
+      }
       &--image{
         width: 200px;
         height: 200px;
@@ -513,7 +517,11 @@
         display: flex;
         justify-content: center;
       }
-  
+      &--sold{
+        color: red;
+        font-weight: bold;
+        font-family: sans-serif;
+      }
       &--image{
         width: 200px;
         height: 200px;
