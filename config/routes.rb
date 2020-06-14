@@ -27,13 +27,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
-
-  # ２じゅうに記載？のため一旦コメントアウト
-  # devise_scope :user do
-  #   get 'addresses', to: 'users/registrations#new_address'
-  #   post 'addresses', to: 'users/registrations#create_address'
-  # end
-
+  
   resources :users, only: :show do
     member do
       get 'logout'
