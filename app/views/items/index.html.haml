@@ -132,7 +132,12 @@
               -else
                 = link_to image_tag(item.images.last.url, size: "200x200"), item_path(item)
           %li.main__pickupCategory--product
-            = item.name
+            -if item.buyer_id.present?
+              = item.name
+              .main__pickupCategory--sold
+                (SOLD)
+            -else
+              = item.name
           %li.main__pickupCategory--price
             = item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse + " 円"
           %li.main__pickupCategory--tax
@@ -155,7 +160,12 @@
               -else
                 = link_to image_tag(brand.images.last.url,  size: "200x200"), item_path(brand)
           %li.main__pickupBrand--product
-            = brand.name
+            -if item.buyer_id.present?
+              = brand.name
+              .main__pickupCategory--sold
+                (SOLD)
+            -else
+              = brand.name
           %li.main__pickupBrand--price
             = brand.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse + " 円"
           %li.main__pickupBrand--tax

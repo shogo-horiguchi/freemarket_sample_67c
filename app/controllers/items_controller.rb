@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit, :show, :update, :destroy]
+  before_action :set_item, only: [:edit, :show, :update, :destroy, :confirmation, :pay, :done]
   before_action :set_category, only: [:new, :create, :edit, :update]
   before_action :set_brand, only: [:new, :create, :edit, :update]
   require 'payjp'
@@ -10,7 +10,8 @@ class ItemsController < ApplicationController
     #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
     if payment.blank?
       #登録された情報がない場合にカード登録画面に移動
-      redirect_to controller: "payment", action: "new"
+      # redirect_to controller: "payment", action: "new"
+      redirect_to new_payment_path
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       #保管した顧客IDでpayjpから情報取得
@@ -38,17 +39,18 @@ class ItemsController < ApplicationController
   end
 
   def index_sold
-    @items = Item.where(buyer_id: present?).where(user_id: current_user.id).order(id: "DESC")
+    @items = Item.where('buyer_id IS NOT NULL').where(user_id: current_user.id).order(id: "DESC")
   end
 
   def pay
     payment = Payment.where(user_id: current_user.id).first
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     Payjp::Charge.create(
-    :amount => 13500, #支払金額を入力（itemテーブル等に紐づけても良い）
+    :amount => @item.price, #支払金額を入力（itemテーブル等に紐づけても良い）
     :customer => payment.customer_id, #顧客ID
     :currency => 'jpy', #日本円
   )
+  @item.update( buyer_id: current_user.id)
   redirect_to action: 'done' #完了画面に移動
   end
 
@@ -141,4 +143,5 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :text, :price, :condition, :shipping_charge, :shipping_origin, :shipping_schedule, :brand_id, :category_id, :size, images_attributes: [:url, :_destroy, :id]).merge(saler_id: current_user.id).merge(user_id: current_user.id)
   end
+
 end
