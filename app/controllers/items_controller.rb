@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :show, :update, :destroy]
   before_action :set_category, only: [:new, :create, :edit, :update]
+  before_action :set_brand, only: [:new, :create, :edit, :update]
   require 'payjp'
 
 
@@ -25,6 +26,7 @@ class ItemsController < ApplicationController
     else
       @brands = Item.where(brand_id:"1").last(3).sort.reverse
     end
+    @parents = Category.all.order("id ASC").limit(13)
   end
 
   def index_recent_posted
@@ -55,14 +57,8 @@ class ItemsController < ApplicationController
     5.times do
       @item.images.build
     end
-  end
-
-  def get_category_children
-    @category_children = Category.where(ancestry: "#{params[:parent_name]}")
-  end
-
-  def get_category_grandchildren
-    @category_grandchildren = Category.find("#{params[:child_id]}").children
+    @parents = Category.all.order("id ASC").limit(13)
+    @brands = Brand.all
   end
 
   def create
@@ -70,14 +66,22 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to item_path(@item), notice: '商品が出品されました'
     else
+      num = @item.images.length
+      (5 - num).times do
+        @item.images.build
+      end
+      @grand_children_categories = @item.category.siblings if @item.category.present?
+      @children_categories = @item.category.parent.siblings if @item.category.present?
       flash.now[:alert] = '必須項目が抜けています'
-      render new_item_path
+      @brands = Brand.all
+      render :new
     end
   end
 
   def show
     @brand = @item.brand
     @comment = Comment.new
+    @parents = Category.all.order("id ASC").limit(13)
   end
 
   def edit
@@ -87,13 +91,16 @@ class ItemsController < ApplicationController
   def update
     if @item.update(item_params)
       redirect_to item_path(@item), notice: '商品が編集されました'
-    else
+    elsif
       flash.now[:alert] = '必須項目が抜けています'
       render new_item_path
+    else
+      render edit_item_path
     end
   end
 
   def destroy
+    @item.destroy
     if current_user == @item.user && @item.destroy
       redirect_to root_path, method: :delete
     else
@@ -109,6 +116,22 @@ class ItemsController < ApplicationController
     end
   end
 
+  def set_category
+    @category_parent_array = Category.where(ancestry: nil).inject([]) { |category_parent_array,(name)| category_parent_array << name}
+  end
+
+  def get_category_children
+    @category_children = Category.where(ancestry: "#{params[:parent_name]}")
+  end
+
+  def get_category_grandchildren
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+  
+  def set_brand
+    @brands = Brand.where(active: true)
+  end
+
   private
   def set_item
     @item = Item.find(params[:id])
@@ -119,6 +142,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :text, :price, :condition, :shipping_charge, :shipping_origin, :shipping_schedule, :brand_id, :category_id, images_attributes: [:url]).merge(saler_id: current_user.id).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :text, :price, :condition, :shipping_charge, :shipping_origin, :shipping_schedule, :brand_id, :category_id, images_attributes: [:url, :_destroy, :id]).merge(saler_id: current_user.id).merge(user_id: current_user.id)
   end
 end

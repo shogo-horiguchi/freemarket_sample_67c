@@ -94,3 +94,5 @@ gem "gretel"
 
 gem 'rb-readline'
 
+gem 'mini_racer'
+

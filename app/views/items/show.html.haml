@@ -2,7 +2,7 @@
   = link_to 'トップページへ戻る', root_path
 - if @item.user == current_user
   .edit
-    = link_to 'この商品を編集する', item_path(@item), class: "edit"
+    = link_to 'この商品を編集する', edit_item_path(@item), class: "edit"
   .destroy
     = link_to 'この商品を削除する', item_path(@item), method: :delete, class: "destroy", data: { confirm: '本当に削除しますか?' }
 
@@ -29,7 +29,6 @@
         %tr
           %th 出品者
           %td hoge
-            = @item.user.nickname
         %tr
           %th カテゴリー
           %td
@@ -43,10 +42,7 @@
             -else
               = @item.brand.name
         %tr
-          %td 商品のサイズ
-=======
           %th 商品のサイズ
->>>>>>> Stashed changes
           %td
             = @item.size
         %tr

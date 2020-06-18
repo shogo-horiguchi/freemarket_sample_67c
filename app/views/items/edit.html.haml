@@ -1,59 +1,115 @@
-%h1 商品編集ページ
-.item-form
-  = form_for @item do |f|
-    .item-form__box
-      
-      .item-form__box__name
-        商品名
-        %span.form-require-gray 必須
-        = f.text_field :name
-      
-      .item-form__box__image
-        = f.fields_for :images do |image|
-          = image.label "画像"
-          %span.form-require-gray 必須
-          %div
-            = image.file_field :url, class: 'item-contents__image__drop-file'
-      
-      .item-form__box__brand
-        ブランド
-        %span.form-require-gray 任意
-        %div
-          = f.collection_select(:brand_id, Brand.all, :id, :name, prompt: "選択してください")
+.main
+  .main__block
+    = form_for @item do |f|
+      %h2.head
+        商品編集入力
+      .image-block
+        .image-block__form
+          %b.item-head
+            出品画像
+          %b#require 必須
+        %p 最大5枚までアップロードできます
+        .float-box
+          - if @item.persisted?
+            - @item.images.each_with_index do |image,i|
+              .item-image
+                .item-image__content
+                  .item-image__content--icon
+                    = image_tag image.url, data: { index: i }, width: 100, height:100, class: 'item-image__operation'
+                .item-image__operation{data: {index: i}}
+                  .item-image__operation__delete x
+          .item-num-0#image-block__boxes
+            %label.image-label{for: "item_images_attributes_0_url"}
+              .image-block__boxes__image-box
+                %i.fas.fa-camera
+              = f.fields_for :images do |image|
+                - if @item.persisted?
+                  = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy' 
+                = image.file_field :url, type: 'file', class: "hidden-field", data: {image: image.index}
+    
+      .item-info
+        .item-info__name-block
+          .item-info__name-block__form
+            %b.item-head
+              商品名
+            %b#require 必須
+          = f.text_field :name, class: 'item-info__name-block__name-box'
+        
+        .item-info__descript
+          .item-info__descript__form
+            %b.item-head
+              商品の説明
+            %b#require 必須
+          = f.text_area :text, class: 'item-info__descript__descript-box', rows: '7', placeholder:"商品の説明（1000文字以内）"
 
-      .item-form__box__text
-        商品の説明
-        %span.form-require-gray 必須
-        = f.text_area :text
+      .item-detail
+        %p 商品の詳細
+        .item-detail__category
+          .item-detail__category__form
+            %b.item-head
+              カテゴリー
+            %b#require 必須
+          .item-detail__categories
+            = f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "選択してください"}, {id: 'parent_category'}
+            - if @children_categories.present?
+              = f.collection_select :category_id, @children_categories, :id, :name, {selected: @item.category.parent_id},{id: 'children_wrapper'}
+            - if @grand_children_categories.present?
+              = f.collection_select :category_id, @grand_children_categories, :id, :name, {selected: @item.category_id}, {id: 'grandchildren_wrapper'}
 
-      .item-form__box__category
-        カテゴリー
-        %span.form-require-gray 必須
-        %div
-          = f.collection_select :category, Category.all, :id, :name, {selected: @item.category}, prompt: "選択してください"
 
-      .item-form__box__condition
-        商品の状態
-        %span.form-require-gray 必須
-        = f.select :condition, [["新品、未使用", 1], ["未使用に近い", 2], ["目立った傷や汚れなし", 3], ["やや傷や汚れあり", 4], ["傷や汚れあり", 5], ["全体的に状態が悪い", 6]], {selected: @item.condition}
-      
-      .item-form__box__price
-        商品の価格
-        %span.form-require-gray 必須
-        = f.number_field :price
+          .item-detail__brand
+            .item-detail__brand__form
+              %b.item-head
+                ブランド
+              %b#require 任意
+            = f.text_area :brand_id, class: "brand-input"
 
-      .item-form__box__shipping-origin
-        配送元
-        %span.form-require-gray 必須
-        = f.text_area :shipping_origin
+
+          .item-detail__status
+            .item-detail__status__form
+              %b.item-head
+                商品の状態
+              %b#require 必須
+            = f.select :condition, [["新品、未使用", 1], ["未使用に近い", 2], ["目立った傷や汚れなし", 3], ["やや傷や汚れあり", 4], ["傷や汚れあり", 5], ["全体的に状態が悪い", 6]]
+
+        .item-send
+          %p 配送について
+          .item-send__area
+            .item-send__area__form
+              %b.item-head
+                発送元の地域
+              %b#require 必須
+            = f.text_area :shipping_origin, class: "area-box"
+          
+          .item-send__shipping-charge
+            .item-send__shipping-charge__form
+              %b.item-head
+                配送料
+              %b#require 必須
+            .item-send__shipping-charge__input
+              %span ¥
+              = f.number_field :shipping_charge, class: "charge-box"
+          
+          
+          .item-send__day
+            .item-send__day__form
+              %b.item-head
+                発送までにかかる日数
+              %b#require 必須
+            = f.select :shipping_schedule, [["1~2日で発送", 0],["2~3日で発送", 1],["4~7日で発送", 2]]
+          
+
+        .item-price
+          %p 価格（¥300~9,999,999）
+          .item-price__contents
+            .item-price__contents__form
+              %b.item-head
+                販売価格
+              %b#require 必須
+            .item-price__contents__input 
+              %span ¥
+              = f.number_field :price, class:"item-price__contents__input__price-box"
+
+        = f.submit '変更', class: 'submit-btn'
+        
       
-      .item-form__box__shipping-charge
-        配送料
-        %span.form-require-gray 必須
-        = f.number_field :shipping_charge
-      
-      .item-form__box__shipping-schedule
-        配送までにかかる日数
-        %span.form-require-gray 必須
-        = f.select :shipping_schedule, [["1~2日で発送", 0],["2~3日で発送", 1],["4~7日で発送", 2]], {selected: @item.shipping_schedule}
-      = f.submit 'Send', class: 'submit'
