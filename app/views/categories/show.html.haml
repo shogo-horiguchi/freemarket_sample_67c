@@ -1,0 +1,74 @@
+.header
+  .header__symbol
+    .header__symbol--icon-header
+      = image_tag "icon-header.svg", alt: "Furima App", size: "140x40", class: "header__symbol--iconImage"
+    = text_field_tag "searchWord", "", placeholder: "キーワードから探す" , class: "header__symbol--searchBox"
+    .header__symbol--searchButton
+      = icon("fas", "search", class:'header__symbol--searchImage') 
+  .header__navi
+    .header__navi--leftMenu
+      .header__navi--categoryButton
+        = link_to "カテゴリーから探す", categories_path
+        =render "items/header"
+      .header__navi--brandButton
+        ブランド
+    - if user_signed_in?
+      .header__navi--rightMenu
+        = link_to "マイページ", new_user_registration_path, class: "header__navi--mypageButton"
+        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__navi--logoutButton"
+    - else
+      .header__navi--rightMenu
+        = link_to "ログイン", new_user_session_path, class: "header__navi--loginButton"
+        = link_to "新規登録", new_user_registration_path, class: "header__navi--registrationButton"
+
+.category_body
+  - breadcrumb :category_parent
+  =render "layouts/breadcrumbs"
+
+  .index__items--subtitle
+    新規投稿商品
+  .index__items--details
+    - @items.each do |item|
+      .index__items--userName
+        出品者:
+        = item.user.nickname
+      = link_to item_path(item) do           
+        .index__items--image
+          -if item.images.blank?
+            No Image
+          -else
+            = link_to image_tag(item.images.last.url, size: "200x200"), item_path(item)
+      .index__items--name
+        商品名:
+        = item.name
+      .index__items--category
+        カテゴリー:
+        -if item.category.nil?
+        -else
+          = item.category.name
+      .index__items--text
+        商品の説明:
+        = item.text
+      .index__items--brand
+        ブランド:
+        -if item.brand.nil?
+        -else
+          = item.brand.name
+      .index__items--condition
+        商品の状態:
+        = item.condition
+      .index__items--price
+        価格:
+        = item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse + " 円"
+      .index__items--shipping_origin
+        発送元:
+        = item.shipping_origin
+      .index__items--shipping_charge
+        配送料:
+        = item.shipping_charge.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse + " 円"
+      .index__items--shipping_schedule
+        配送までにかかる日数:
+        = item.shipping_schedule
+      .index__items--likes
+        いいね:
+      %br

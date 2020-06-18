@@ -5,20 +5,54 @@
   $block-solid:solid 1px rgb(196, 207, 207);
   $block-padding-bottom: 20px;
   $block-margin-top: 50px;
+
+  .error_message{
+    font-size: 15px;
+    color: red;
+    margin-top: 5px;
+  }
+
+  .field_with_errors {
+    outline: 0;
+    border-color: #3CCACE;
+  }
+
   
-  .main {
+  .item-main {
     height: 100vh;
     width: 100vw;
     background-color: #f8f8f8;
     overflow: scroll;
+    .icon {
+      height: 80px;
+      text-align: center;
+      margin-bottom: 20px;
+      padding-top: 40px;
+      .iconImage {
+        margin: 0 auto;
+      }
+    }
     &__block {
       background-color: #ffffff;
       width: 650px;
       margin: 0 auto;
       padding: 20px 50px 200px;
+      .error{
+        background-color: red;
+        width: 100%;
+        color: white;
+        padding: 10px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        ul {
+          background-color: #f5f5f5;
+          color: #160606;
+          padding: 10px 10px 20px;
+          font-size: 16px;
+        }
+      }
       .head {
         font-size: 25px;
-        text-align: center;
         margin-bottom: 70px;
         color: #3CCACE;
         border-bottom: solid 1px;
@@ -188,6 +222,7 @@
             overflow: scroll;
             border-radius: 4px;
             border-color: gray;
+            resize: vertical;
           }
         }
       }
@@ -201,6 +236,29 @@
           font-size: 14px;
         }
         &__category {
+          margin-top: 40px;
+          &__form {
+            display: flex;
+            #require {
+              background-color: #ff0211;
+              height: 15px;
+              width: 33px;
+              font-size: 13px;
+              margin-left: 10px;
+              margin-top: 5px;
+              line-height: 15px;
+              color: #fff;
+              border-radius: 3px;
+              text-align: center;
+            }
+          }
+          select {
+            margin-top: 20px;
+            height: 50px;
+            width: 100%;
+          }
+        }
+        &__size {
           margin-top: 40px;
           &__form {
             display: flex;
@@ -325,6 +383,7 @@
             height: 50px;
             width: 100%;
             padding: 3px;
+            resize: vertical;
           }
         }
         &__shipping-charge{
@@ -463,6 +522,11 @@
           word-wrap: break-word;
           line-height: 1.4;
         }
+        .soldImage{
+          color: red;
+          font-weight: bold;
+          font-family: sans-serif;
+        }
         &__item-main-content {
           height: 100%;
           width: 100%;
@@ -571,9 +635,77 @@
             max-width: 100%;
           }
           & .field{
+            height: 50px;
+            width: 100%;
             padding: 2px 5px;
           }
         }
       }
     }
+
+  .comments_button {
+    width: 100%;
+    padding: 10px 40px;
+    font-size: 1.2em;
+    background-color: #3CCACE;
+    color: #fff;
+    border-style: none;
+  }
+
+  .comments_text {
+    resize: vertical;
+    width: 100%;
+  }
+
+  .comment_rule {
+    background-color: #fff6de;
+    padding: 10px;
+    margin: 5px;
+    font-size: 14px;
+  }
     
+  .detail-box__login-btn {
+    display: flex;
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: #ffffff;
+    a {
+      height: 48px;
+      padding: 10px 16px 8px;
+      border-radius: 4px;
+      border: 1px solid white;
+      background-color: $furima-color;
+      line-height: 1.5;
+      font-size: 16px;
+      width: calc(50% - 6px);
+      color: white;
+    }
+  }
+
+  .detail-box__edit-btn {
+    display: flex;
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: #ffffff;
+    a {
+      height: 48px;
+      padding: 10px 16px 8px;
+      border-radius: 4px;
+      border: 1px solid white;
+      background-color: $furima-color;
+      line-height: 1.5;
+      font-size: 16px;
+      width: calc(50% - 6px);
+      color: white;
+    }
+  }

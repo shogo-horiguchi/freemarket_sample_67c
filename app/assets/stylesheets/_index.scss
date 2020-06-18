@@ -131,3 +131,94 @@
     }
   }
 }
+
+.category_list{
+  height: 10px;
+  width: 150px;          /* メニュー項目の横幅(125px) */
+  display: flex; /* ★横並びに配置する */
+  list-style-type: none; /* ★リストの先頭記号を消す */
+  position: relative;    /* ★サブメニュー表示の基準位置にする */
+  z-index: 1;
+}
+
+.parents_list {
+  height: 455px;
+  background-color: white; /* メニュー項目の背景色(濃い赤色) */
+  color: #333;              /* メニュー項目の文字色(白色) */
+  text-decoration: none;     /* メニュー項目の装飾(下線を消す) */
+  font-weight: bold;         /* 太字にする */
+  display: none;            /* ★項目内全域をリンク可能にする */
+}
+
+.parents_list a {
+  background-color: white;
+  margin: 0px;        /* ★サブメニュー外側の余白(ゼロ) */
+  padding: 0px;       /* ★サブメニュー内側の余白(ゼロ) */
+  line-height: 35px;   /* サブメニュー1項目の高さ(35px) */
+  text-align: left;    /* 文字列の配置(左寄せ) */
+  padding-left: 5px;   /* 文字列前方の余白(5px) */
+  font-weight: normal; /* 太字にはしない */
+  width: 230px;               /* サブメニュー1項目の横幅(135px) */
+  font-weight:bold;
+  text-decoration:none;
+  color: #333;              /* メニュー項目の文字色(白色) */
+  display: block;            /* ★項目内全域をリンク可能にする */
+}
+.parents_list a:hover {
+  background-color: #3ccace; /* サブメニュー項目にマウスが載ったときの背景色(淡い黄色) */
+  color: white;            /* サブメニュー項目にマウスが載ったときの文字色(濃い緑色) */
+}
+
+.children_list a:hover {
+  background-color: #3ccace; /* サブメニュー項目にマウスが載ったときの背景色(淡い黄色) */
+  color: white;           /* サブメニュー項目にマウスが載ったときの文字色(濃い緑色) */
+}
+
+.grand_children_list a:hover {
+  background-color: #3ccace; /* サブメニュー項目にマウスが載ったときの背景色(淡い黄色) */
+  color: white;           /* サブメニュー項目にマウスが載ったときの文字色(濃い緑色) */
+}
+
+.grand_child_list a:hover {
+  background-color: #ffff80; /* サブメニュー項目にマウスが載ったときの背景色(淡い黄色) */
+  color: red;            /* サブメニュー項目にマウスが載ったときの文字色(濃い緑色) */
+}
+
+.children_list {
+  height: 455px;
+  display: inline-block; /* ★横並びに配置する */
+}
+
+.grand_children_list {
+  height: 455px;
+}
+
+.child_category {
+  background-color: white;
+  margin: 0px;        /* ★サブメニュー外側の余白(ゼロ) */
+  padding: 0px;       /* ★サブメニュー内側の余白(ゼロ) */
+  line-height: 35px;   /* サブメニュー1項目の高さ(35px) */
+  text-align: left;    /* 文字列の配置(左寄せ) */
+  padding-left: 5px;   /* 文字列前方の余白(5px) */
+  font-weight: normal; /* 太字にはしない */
+  display: block;            /* ★項目内全域をリンク可能にする */
+  width: 230px;               /* サブメニュー1項目の横幅(135px) */
+  font-weight:bold;
+  text-decoration:none;
+  color: #333;              /* メニュー項目の文字色(白色) */
+}
+
+.grand_child_category {
+  background-color: white;
+  margin: 0px;        /* ★サブメニュー外側の余白(ゼロ) */
+  padding: 0px;       /* ★サブメニュー内側の余白(ゼロ) */
+  line-height: 35px;   /* サブメニュー1項目の高さ(35px) */
+  text-align: left;    /* 文字列の配置(左寄せ) */
+  padding-left: 5px;   /* 文字列前方の余白(5px) */
+  font-weight: normal; /* 太字にはしない */
+  display: block;            /* ★項目内全域をリンク可能にする */
+  width: 230px;               /* サブメニュー1項目の横幅(135px) */
+  font-weight:bold;
+  text-decoration:none;
+  color: #333;              /* メニュー項目の文字色(白色) */
+}

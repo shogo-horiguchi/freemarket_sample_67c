@@ -1,6 +1,16 @@
+= link_to "購入確認画面に戻る", item_path(@item)
+%br
+%br
 %h2 購入を確定しますか？
-%p Apple MacBook Pro 13インチ
-%p ¥135,000(送料込み)
+%br
+商品名
+= @item.name
+%br
+%br
+価格
+= @item.price
+(送料込み)
+%br
 %br
 %h3 支払い方法
 - if @default_card_information.blank?

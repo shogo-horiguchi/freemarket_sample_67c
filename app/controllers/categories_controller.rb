@@ -1,8 +1,20 @@
 class CategoriesController < ApplicationController
+  def index
+    @parents = Category.all.order("id ASC").limit(13)
+  end
+
+  def new
+    @children = Category.find(params[:parent_id]).children
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
 
   def show
-    @user = User.find(params[:id])
-    @brand = @item.brand
+    @category = Category.find_by(id: params[:id])
+    @items = @category.items
+    @parents = Category.all.order("id ASC").limit(13)
   end
   
   private

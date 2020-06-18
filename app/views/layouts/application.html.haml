@@ -4,19 +4,13 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title FreemarketSample67c
     %script{src: "https://js.pay.jp/", type: "text/javascript"}
+    %script{:src => "https://code.jquery.com/jquery-1.12.4.min.js", :type => "text/javascript"}
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     
   %body
     = render 'layouts/flash'
-    -# %header.header_common
-    -#   .mypage_header
-    -#   - if user_signed_in?
-    -#     = link_to "マイページ", new_user_registration_path, class: "header__right--btn"
-    -#   - else
-    -#     = link_to "ログイン", new_user_session_path, class: "header__right--btn"
-    -#     = link_to "新規登録", new_user_registration_path, class: "header__right--btn"
     = yield
     
     

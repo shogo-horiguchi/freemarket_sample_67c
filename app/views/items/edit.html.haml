@@ -28,7 +28,7 @@
                 = image.file_field :url, type: 'file', class: "hidden-field", data: {image: image.index}
                 - if @item.persisted?
                   - @item.images.count
-                  =file_field_tag :url, name: "item[images_attributes][#{@item.images.count}][url]",class: "image-block__boxes"
+                  = file_field_tag :url, name: "item[images_attributes][#{@item.images.count}][url]",class: "image-block__boxes"
                   = image.file_field :url, type: 'file', class: "hidden-field", data: {image: image.index}
     
       .item-info

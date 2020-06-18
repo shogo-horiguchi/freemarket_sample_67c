@@ -2,20 +2,26 @@ Rails.application.routes.draw do
   root "items#index"
 
   resources :items do
+    member do
+      get 'edit', to: 'items#edit'
+      get 'confirmation', to: 'items#confirmation'
+      post 'pay', to: 'items#pay'
+      get 'done', to: 'items#done'
+    end
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
+    
     resources :comments, only: [:new, :create, :show]
     collection do
-      get 'confirmation', to: 'items#confirmation'
-      post 'pay', to: 'items#pay'
-      get 'done', to: 'items#done'
       get 'index_selling', to: 'items#index_selling'
       get 'index_sold', to: 'items#index_sold'
       get 'index_recent_posted', to: 'items#index_recent_posted'
     end
   end
+
+  resources :categories, only: [:show, :index, :new]
 
   devise_scope :user do
     get 'addresses', to: 'users/registrations#new_address'
@@ -25,12 +31,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
-
-  # ２じゅうに記載？のため一旦コメントアウト
-  # devise_scope :user do
-  #   get 'addresses', to: 'users/registrations#new_address'
-  #   post 'addresses', to: 'users/registrations#create_address'
-  # end
 
   resources :users, only: :show do
     member do
@@ -43,9 +43,8 @@ Rails.application.routes.draw do
       post 'show', to: 'payments#show'
       post 'pay', to: 'payments#pay'
       post 'delete', to: 'payments#delete'
-      get 'detail',to: 'payments#detail'
+      get 'detail', to: 'payments#detail'
     end
   end
 end
-
 

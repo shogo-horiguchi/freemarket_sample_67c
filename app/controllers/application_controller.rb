@@ -2,6 +2,10 @@ class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def set_parents
+    @parents = Category.where(ancestry: nil)
+  end
+
   def after_sign_in_path_for(resource) 
     user_path(resource) 
   end
@@ -39,4 +43,5 @@ class ApplicationController < ActionController::Base
       username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
     end
   end
+  
 end

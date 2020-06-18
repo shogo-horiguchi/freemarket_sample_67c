@@ -1,15 +1,14 @@
-.mypage
-  = link_to 'トップページへ戻る', root_path
-- if @item.user == current_user
-  .edit
-    = link_to 'この商品を編集する', edit_item_path(@item), class: "edit"
-  .destroy
-    = link_to 'この商品を削除する', item_path(@item), method: :delete, class: "destroy", data: { confirm: '本当に削除しますか?' }
+=render "mainheader"
 
 .main
   .detail-box
     %h1.item-name
-      = @item.name
+      -if @item.buyer_id.present?
+        = @item.name
+        .soldImage
+          (SOLD)
+      -else
+        = @item.name
     .detail-box__item-main-content 
       .detail-box__item-main-content__image-area
         - if @item.images.count > 1
@@ -54,11 +53,7 @@
           %td
             = @item.shipping_charge
         %tr
-          %th 配送の方法
-          %td
-            = @item.shipping_way
-        %tr
-          %th 発送元地域
+          %td 発送元地域
           %td
             = @item.shipping_origin
         %tr
@@ -71,8 +66,22 @@
         = @item.price.to_s(:delimited)
       %span.item-tax (税込)
       %span.item-shipping-fee 送料込み
-
-    = link_to "購入画面に進む", new_payment_path, class: "detail-box__buy-btn"
+    -if @item.buyer_id.present?
+      %br
+      %br
+      %br
+    -else
+      - if @item.user == current_user
+        .detail-box__edit-btn
+          = link_to 'この商品を編集する', edit_item_path(@item), class: "edit"
+          = link_to 'この商品を削除する', item_path(@item), method: :delete, class: "destroy", data: { confirm: '本当に削除しますか?' }
+      - elsif user_signed_in?
+        .detail-box__buy-btn
+          = link_to "購入画面に進む", confirmation_item_path(@item), class: "detail-box__buy-btn"
+      - else
+        .detail-box__login-btn
+          = link_to "ログインしてください", new_user_session_path, class: "header__navi--loginButton"
+          = link_to "新規登録してください", new_user_registration_path, class: "header__navi--registrationButton"
 
     .detail-box__description
       .detail-box__description__inner
@@ -81,10 +90,12 @@
   .comment-box
     .comment-box__comment-container
       = form_for [@item, @comment] do |f|
+        .comment_rule
+          相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
         .comment-textarea
-          = f.text_area :text, placeholder: "コメントする", size: "65x5"
+          = f.text_area :text, placeholder: "コメントはこちら", size: "65x5", class:"comments_text"
         .field
-          = f.submit '投稿する'
+          = f.submit 'コメント', class: "comments_button"
     - if @item.comments
       .comment-box__comment-container__comments
         %h4＜コメント一覧＞
@@ -94,7 +105,4 @@
             さん：
             = comment.text
 
-
-
-
-
+=render "footer"
