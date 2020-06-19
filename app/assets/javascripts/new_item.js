@@ -37,6 +37,10 @@ $(function(){
     $(".image-label").prop("for", `item_images_attributes_${index + 1}_url`)
   });
   $(document).on("click", '.item-image__operation__delete', function(){
+    const targetIndex = $(this).parent().data('index')
+    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
+    if (hiddenCheck) hiddenCheck.prop('checked', true);
+    
   var target_image = $(this).parent().parent()
   var target_name = $(target_image).data('image')
   if(file_field.files.length==1){
@@ -57,6 +61,22 @@ $(function(){
   })
 });
 
+
+//ブランドインクリメンタルサーチ
+$(function(){
+  $("#item_brand_id").on("keyup", function(){
+    var input = $("item_brand_id").val();
+    $.ajax({
+      type: 'GET',
+      url: '/items/index',
+      data: { keyword: input },
+      dataType: 'json'
+    })
+    .done(function(items) {
+      console.log("成功です");
+    })
+  });
+});
 
 //カテゴリー選択
 $(function(){

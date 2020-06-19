@@ -22,33 +22,34 @@
           - @item.images.first(1).each do |image|
             .detail-box__item-main-content__image-area__item-photo
               = image_tag image.url, size: '300x300'
+      
+      .table
       %table{border: "2", bordercolor: ""}
         %tr
           %th 出品者
-          %th
-            = @item.user.nickname
+          %td hoge
         %tr
-          %td カテゴリー
+          %th カテゴリー
           %td
             -if @item.category.nil?
             -else
               = @item.category.name
         %tr
-          %td ブランド
+          %th ブランド
           %td
             -if @item.brand.nil?
             -else
               = @item.brand.name
         %tr
-          %td 商品のサイズ
+          %th 商品のサイズ
           %td
             = @item.size
         %tr
-          %td 商品の状態
+          %th 商品の状態
           %td
             = @item.condition
         %tr
-          %td 配送料の負担
+          %th 配送料の負担
           %td
             = @item.shipping_charge
         %tr
@@ -56,7 +57,7 @@
           %td
             = @item.shipping_origin
         %tr
-          %td 発送日の目安 
+          %th 発送日の目安 
           %td
             = @item.shipping_schedule
     

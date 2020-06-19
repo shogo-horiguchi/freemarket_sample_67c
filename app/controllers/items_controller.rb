@@ -27,7 +27,9 @@ class ItemsController < ApplicationController
     else
       @brands = Item.where(brand_id:"1").last(3).sort.reverse
     end
+
       @parents = Category.all.order("id ASC").limit(13)
+
   end
 
   def index_recent_posted
@@ -104,6 +106,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    @item.destroy
     if current_user == @item.user && @item.destroy
       redirect_to root_path, method: :delete
     else
@@ -141,7 +144,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
+
     params.require(:item).permit(:name, :text, :price, :condition, :shipping_charge, :shipping_origin, :shipping_schedule, :brand_id, :category_id, :size, images_attributes: [:url, :_destroy, :id]).merge(saler_id: current_user.id).merge(user_id: current_user.id)
   end
-
 end
