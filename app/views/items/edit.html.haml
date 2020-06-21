@@ -1,6 +1,11 @@
-.main
-  .main__block
-    = form_for @item do |f|
+.item-main
+
+  .icon
+    = image_tag "icon-header.svg", alt: "Furima App", size: "140x40", class: "iconImage"
+
+  .item-main__block
+    = form_for @item, builder: WithItemsErrorFormBuilder do |f|
+      = render "items/error_messages", resource: f.object
       %h2.head
         商品編集入力
       .image-block
@@ -30,7 +35,10 @@
                   - @item.images.count
                   = file_field_tag :url, name: "item[images_attributes][#{@item.images.count}][url]",class: "image-block__boxes"
                   = image.file_field :url, type: 'file', class: "hidden-field", data: {image: image.index}
+            
     
+      
+      
       .item-info
         .item-info__name-block
           .item-info__name-block__form
@@ -46,6 +54,8 @@
             %b#require 必須
           = f.text_area :text, class: 'item-info__descript__descript-box', rows: '7', placeholder:"商品の説明（1000文字以内）"
 
+
+
       .item-detail
         %p 商品の詳細
         .item-detail__category
@@ -59,22 +69,28 @@
               = f.collection_select :category_id, @children_categories, :id, :name, {selected: @item.category.parent_id},{id: 'children_wrapper'}
             - if @grand_children_categories.present?
               = f.collection_select :category_id, @grand_children_categories, :id, :name, {selected: @item.category_id}, {id: 'grandchildren_wrapper'}
-
+          
+          .item-detail__size
+            .item-detail__size__form
+              %b.item-head
+                商品のサイズ
+              %b#require 必須
+            = f.select :size, [["A4サイズ(フリマ便)"], ["小〜中サイズ(ラクラクフリマ便)"], ["中〜大サイズ(フリフリフリマ便)"]], {include_blank: '選択してください'},{ id: "item-size"}
 
           .item-detail__brand
             .item-detail__brand__form
               %b.item-head
                 ブランド
               %b#require 任意
-            = f.text_area :brand_id, class: "brand-input"
-
+            = f.collection_select :brand_id, @brands, :id, :name, {prompt: "選択してください"}, {class: "brand-input"}
 
           .item-detail__status
             .item-detail__status__form
               %b.item-head
                 商品の状態
               %b#require 必須
-            = f.select :condition, [["新品、未使用", 1], ["未使用に近い", 2], ["目立った傷や汚れなし", 3], ["やや傷や汚れあり", 4], ["傷や汚れあり", 5], ["全体的に状態が悪い", 6]]
+            = f.select :condition, [["新品、未使用"], ["未使用に近い"], ["目立った傷や汚れなし"], ["やや傷や汚れあり"], ["傷や汚れあり"], ["全体的に状態が悪い"]], {include_blank: '選択してください'}
+
 
         .item-send
           %p 配送について
@@ -93,6 +109,8 @@
             .item-send__shipping-charge__input
               %span ¥
               = f.number_field :shipping_charge, class: "charge-box"
+
+          
           
           
           .item-send__day
@@ -100,7 +118,7 @@
               %b.item-head
                 発送までにかかる日数
               %b#require 必須
-            = f.select :shipping_schedule, [["1~2日で発送", 0],["2~3日で発送", 1],["4~7日で発送", 2]]
+            = f.select :shipping_schedule, [["1~2日で発送"],["2~3日で発送"],["4~7日で発送"]]
           
 
         .item-price
@@ -114,6 +132,5 @@
               %span ¥
               = f.number_field :price, class:"item-price__contents__input__price-box"
 
-        = f.submit '変更', class: 'submit-btn'
-        
-      
+        = f.submit '変更する', class: 'submit-btn'
+  =render "footer"  
