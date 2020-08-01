@@ -160,7 +160,7 @@
               -else
                 = link_to image_tag(brand.images.last.url,  size: "200x200"), item_path(brand)
           %li.main__pickupBrand--product
-            -if bland.item.buyer_id.present?
+            -if brand.item.buyer_id.present?
               = brand.item.name
               .main__pickupBrand--sold
                 (SOLD)
