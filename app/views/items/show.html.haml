@@ -63,7 +63,7 @@
     
     .detail-box__price-box
       %span.item-price
-        = @item.price.to_s(:delimited)
+        = @item.price.to_s(:delimited) + " 円"
       %span.item-tax (税込)
       %span.item-shipping-fee 送料込み
     -if @item.buyer_id.present?

@@ -18,19 +18,19 @@
         %br/
       .input-group-half
         .input-box-half
-          = f.text_field :last_name, placeholder: "例）安倍"
+          = f.text_field :last_name, placeholder: "例）フリマ"
         .input-box-half
-          = f.text_field :first_name, placeholder: "例）晋三"
+          = f.text_field :first_name, placeholder: "例）太郎"
       .form-group
-        = f.label :fullname_zen, "お名前（カナ）"
+        = f.label :fullname_zen, "お名前（全角カナ）"
         %span.form-require
           必須
         %br/
       .input-group-half
         .input-box-half
-          = f.text_field :last_name_kana, placeholder: "例）アベ"
+          = f.text_field :last_name_kana, placeholder: "例）フリマ"
         .input-box-half
-          = f.text_field :first_name_kana, placeholder: "例）シンゾウ"
+          = f.text_field :first_name_kana, placeholder: "例）タロウ"
       .form-group
         = f.label :postal_code, "郵便番号"
         %span.form-require
@@ -66,6 +66,6 @@
       .form-group
         = f.label :telephone, "電話番号"
       .input-box
-        = f.text_field :telephone, placeholder: "(例)1234567890"
+        = f.text_field :telephone, placeholder: "(例)12-3456-7890"
       .actions
         = f.submit "新規登録"
